@@ -42,7 +42,9 @@ class Chronus_Pro_Header_Bar {
 		// Check if there are menus.
 		if ( has_nav_menu( 'social' ) or has_nav_menu( 'secondary' ) ) {
 
-			echo '<div id="header-bar" class="header-bar clearfix">';
+			echo '<div id="header-top" class="header-bar-wrap">';
+
+			echo '<div id="header-bar" class="header-bar container clearfix">';
 
 			// Check if there is a social menu.
 			if ( has_nav_menu( 'social' ) ) {
@@ -84,6 +86,8 @@ class Chronus_Pro_Header_Bar {
 				echo '</nav>';
 
 			}
+
+			echo '</div>';
 
 			echo '</div>';
 		}

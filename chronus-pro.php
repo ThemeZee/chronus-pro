@@ -109,12 +109,12 @@ class Chronus_Pro {
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/customizer/class-customizer.php';
 
 		// Include Pro Features.
-		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-custom-colors.php';
-		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-custom-fonts.php';
-		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-line.php';
-		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-widgets.php';
+		#require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-custom-colors.php';
+		#require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-custom-fonts.php';
+		#require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-line.php';
+		#require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-widgets.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-header-bar.php';
-		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-header-spacing.php';
+		#require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-header-spacing.php';
 
 		// Include Magazine Widgets.
 		require_once CHRONUS_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-horizontal-box.php';
