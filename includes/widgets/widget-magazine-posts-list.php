@@ -5,13 +5,13 @@
  * Display the latest posts from a selected category in a list layout.
  * Intented to be used in the Magazine Homepage widget area to built a magazine layouted page.
  *
- * @package Wellington Pro
+ * @package Chronus Pro
  */
 
 /**
  * Magazine Widget Class
  */
-class Wellington_Pro_Magazine_Posts_List_Widget extends WP_Widget {
+class Chronus_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 
 	/**
 	 * Widget Constructor
@@ -20,11 +20,11 @@ class Wellington_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 
 		// Setup Widget.
 		parent::__construct(
-			'wellington-magazine-posts-list', // ID.
-			esc_html__( 'Magazine (List)', 'wellington-pro' ), // Name.
+			'chronus-magazine-posts-list', // ID.
+			esc_html__( 'Magazine (List)', 'chronus-pro' ), // Name.
 			array(
-				'classname' => 'wellington-magazine-list-widget',
-				'description' => esc_html__( 'Displays your posts from a selected category in a simple list layout. Please use this widget ONLY in the Magazine Homepage widget area.', 'wellington-pro' ),
+				'classname' => 'chronus-magazine-list-widget',
+				'description' => esc_html__( 'Displays your posts from a selected category in a simple list layout. Please use this widget ONLY in the Magazine Homepage widget area.', 'chronus-pro' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
@@ -55,7 +55,7 @@ class Wellington_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 	function widget( $args, $instance ) {
 
 		// Show message to admins if Theme is not updated.
-		if ( ! function_exists( 'wellington_get_magazine_post_ids' ) ) {
+		if ( ! function_exists( 'chronus_get_magazine_post_ids' ) ) {
 			if ( current_user_can( 'edit_theme_options' ) ) {
 				echo '<p>INFO: Magazine Widget is missing theme functions and can not be displayed. Please update the theme to the latest version. This message is only shown to admins.</p>';
 			}
@@ -105,7 +105,7 @@ class Wellington_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 	function render( $settings ) {
 
 		// Get cached post ids.
-		$post_ids = wellington_get_magazine_post_ids( $this->id, $settings['category'], $settings['number'] );
+		$post_ids = chronus_get_magazine_post_ids( $this->id, $settings['category'], $settings['number'] );
 
 		// Fetch posts from database.
 		$query_arguments = array(
@@ -145,7 +145,7 @@ class Wellington_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 		if ( ! empty( $widget_title ) ) :
 
 			// Link Widget Title to category archive when possible.
-			$widget_title = wellington_magazine_widget_title( $widget_title, $settings['category'] );
+			$widget_title = chronus_magazine_widget_title( $widget_title, $settings['category'] );
 
 			// Display Widget Title.
 			echo $args['before_title'] . $widget_title . $args['after_title'];
@@ -167,7 +167,7 @@ class Wellington_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 		$instance['category'] = (int) $new_instance['category'];
 		$instance['number'] = (int) $new_instance['number'];
 
-		wellington_flush_magazine_post_ids();
+		chronus_flush_magazine_post_ids();
 
 		return $instance;
 	}
@@ -184,16 +184,16 @@ class Wellington_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'wellington-pro' ); ?>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'chronus-pro' ); ?>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $settings['title'] ); ?>" />
 			</label>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php esc_html_e( 'Category:', 'wellington-pro' ); ?></label><br/>
+			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php esc_html_e( 'Category:', 'chronus-pro' ); ?></label><br/>
 			<?php // Display Category Select.
 				$args = array(
-					'show_option_all'    => esc_html__( 'All Categories', 'wellington-pro' ),
+					'show_option_all'    => esc_html__( 'All Categories', 'chronus-pro' ),
 					'show_count' 		 => true,
 					'hide_empty'		 => false,
 					'selected'           => $settings['category'],
@@ -205,7 +205,7 @@ class Wellington_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number of posts:', 'wellington-pro' ); ?>
+			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number of posts:', 'chronus-pro' ); ?>
 				<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo absint( $settings['number'] ); ?>" size="3" />
 			</label>
 		</p>

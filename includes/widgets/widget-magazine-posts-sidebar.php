@@ -5,13 +5,13 @@
  * Display the latest posts from a selected category.
  * Intented to be used in one of the sidebar widget areas.
  *
- * @package Wellington Pro
+ * @package Chronus Pro
  */
 
 /**
  * Magazine Widget Class
  */
-class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
+class Chronus_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 
 	/**
 	 * Widget Constructor
@@ -20,11 +20,11 @@ class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 
 		// Setup Widget.
 		parent::__construct(
-			'wellington-magazine-posts-sidebar', // ID.
-			esc_html__( 'Magazine (Sidebar)', 'wellington-pro' ), // Name.
+			'chronus-magazine-posts-sidebar', // ID.
+			esc_html__( 'Magazine (Sidebar)', 'chronus-pro' ), // Name.
 			array(
-				'classname' => 'wellington-magazine-sidebar-widget',
-				'description' => esc_html__( 'Displays your posts from a selected category. You can use this widget in the Main Sidebar widget area.', 'wellington-pro' ),
+				'classname' => 'chronus-magazine-sidebar-widget',
+				'description' => esc_html__( 'Displays your posts from a selected category. You can use this widget in the Main Sidebar widget area.', 'chronus-pro' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);
@@ -56,7 +56,7 @@ class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 	function widget( $args, $instance ) {
 
 		// Show message to admins if Theme is not updated.
-		if ( ! function_exists( 'wellington_get_magazine_post_ids' ) ) {
+		if ( ! function_exists( 'chronus_get_magazine_post_ids' ) ) {
 			if ( current_user_can( 'edit_theme_options' ) ) {
 				echo '<p>INFO: Magazine Widget is missing theme functions and can not be displayed. Please update the theme to the latest version. This message is only shown to admins.</p>';
 			}
@@ -106,7 +106,7 @@ class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 	function render( $settings ) {
 
 		// Get cached post ids.
-		$post_ids = wellington_get_magazine_post_ids( $this->id, $settings['category'], $settings['number'] );
+		$post_ids = chronus_get_magazine_post_ids( $this->id, $settings['category'], $settings['number'] );
 
 		// Fetch posts from database.
 		$query_arguments = array(
@@ -120,10 +120,10 @@ class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 		if ( $posts_query->have_posts() ) :
 
 			// Limit the number of words for the excerpt.
-			add_filter( 'excerpt_length', 'wellington_magazine_posts_excerpt_length' );
+			add_filter( 'excerpt_length', 'chronus_magazine_posts_excerpt_length' );
 
 			// Pass Excerpt Setting to template file.
-			set_query_var( 'wellington_post_excerpt', (bool) $settings['excerpt'] );
+			set_query_var( 'chronus_post_excerpt', (bool) $settings['excerpt'] );
 
 			// Display Posts.
 			while ( $posts_query->have_posts() ) : $posts_query->the_post();
@@ -133,7 +133,7 @@ class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 			endwhile;
 
 			// Remove excerpt filter.
-			remove_filter( 'excerpt_length', 'wellington_magazine_posts_excerpt_length' );
+			remove_filter( 'excerpt_length', 'chronus_magazine_posts_excerpt_length' );
 
 		endif;
 
@@ -155,7 +155,7 @@ class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 		if ( ! empty( $widget_title ) ) :
 
 			// Link Widget Title to category archive when possible.
-			$widget_title = wellington_magazine_widget_title( $widget_title, $settings['category'] );
+			$widget_title = chronus_magazine_widget_title( $widget_title, $settings['category'] );
 
 			// Display Widget Title.
 			echo $args['before_title'] . $widget_title . $args['after_title'];
@@ -178,7 +178,7 @@ class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 		$instance['number'] = (int) $new_instance['number'];
 		$instance['excerpt'] = ! empty( $new_instance['excerpt'] );
 
-		wellington_flush_magazine_post_ids();
+		chronus_flush_magazine_post_ids();
 
 		return $instance;
 	}
@@ -195,16 +195,16 @@ class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'wellington-pro' ); ?>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'chronus-pro' ); ?>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $settings['title'] ); ?>" />
 			</label>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php esc_html_e( 'Category:', 'wellington-pro' ); ?></label><br/>
+			<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php esc_html_e( 'Category:', 'chronus-pro' ); ?></label><br/>
 			<?php // Display Category Select.
 				$args = array(
-					'show_option_all' => esc_html__( 'All Categories', 'wellington-pro' ),
+					'show_option_all' => esc_html__( 'All Categories', 'chronus-pro' ),
 					'show_count' 		  => true,
 					'hide_empty'		  => false,
 					'selected'        => $settings['category'],
@@ -216,7 +216,7 @@ class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number of posts:', 'wellington-pro' ); ?>
+			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number of posts:', 'chronus-pro' ); ?>
 				<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo (int) $settings['number']; ?>" size="3" />
 			</label>
 		</p>
@@ -224,7 +224,7 @@ class Wellington_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'excerpt' ); ?>">
 				<input class="checkbox" type="checkbox" <?php checked( $settings['excerpt'] ); ?> id="<?php echo $this->get_field_id( 'excerpt' ); ?>" name="<?php echo $this->get_field_name( 'excerpt' ); ?>" />
-				<?php esc_html_e( 'Display post excerpt', 'wellington-pro' ); ?>
+				<?php esc_html_e( 'Display post excerpt', 'chronus-pro' ); ?>
 			</label>
 		</p>
 

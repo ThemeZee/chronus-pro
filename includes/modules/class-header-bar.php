@@ -2,9 +2,9 @@
 /**
  * Footer Widgets
  *
- * Registers footer widget areas and hooks into the Wellington theme to display widgets
+ * Registers footer widget areas and hooks into the Chronus theme to display widgets
  *
- * @package Wellington Pro
+ * @package Chronus Pro
  */
 
 // Exit if accessed directly.
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Header Bar Class
  */
-class Wellington_Pro_Header_Bar {
+class Chronus_Pro_Header_Bar {
 
 	/**
 	 * Footer Widgets Setup
@@ -22,13 +22,13 @@ class Wellington_Pro_Header_Bar {
 	 */
 	static function setup() {
 
-		// Return early if Wellington Theme is not active.
-		if ( ! current_theme_supports( 'wellington-pro' ) ) {
+		// Return early if Chronus Theme is not active.
+		if ( ! current_theme_supports( 'chronus-pro' ) ) {
 			return;
 		}
 
 		// Display Header Bar.
-		add_action( 'wellington_header_bar', array( __CLASS__, 'display_header_bar' ) );
+		add_action( 'chronus_header_bar', array( __CLASS__, 'display_header_bar' ) );
 
 	}
 
@@ -96,21 +96,21 @@ class Wellington_Pro_Header_Bar {
 	 */
 	static function register_nav_menus() {
 
-		// Return early if Wellington Theme is not active.
-		if ( ! current_theme_supports( 'wellington-pro' ) ) {
+		// Return early if Chronus Theme is not active.
+		if ( ! current_theme_supports( 'chronus-pro' ) ) {
 			return;
 		}
 
 		register_nav_menus( array(
-			'secondary' => esc_html__( 'Top Navigation', 'wellington-pro' ),
-			'social' => esc_html__( 'Social Icons', 'wellington-pro' ),
+			'secondary' => esc_html__( 'Top Navigation', 'chronus-pro' ),
+			'social' => esc_html__( 'Social Icons', 'chronus-pro' ),
 		) );
 
 	}
 }
 
 // Run Class.
-add_action( 'init', array( 'Wellington_Pro_Header_Bar', 'setup' ) );
+add_action( 'init', array( 'Chronus_Pro_Header_Bar', 'setup' ) );
 
 // Register navigation menus in backend.
-add_action( 'after_setup_theme', array( 'Wellington_Pro_Header_Bar', 'register_nav_menus' ), 20 );
+add_action( 'after_setup_theme', array( 'Chronus_Pro_Header_Bar', 'register_nav_menus' ), 20 );

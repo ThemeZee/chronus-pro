@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  * @author Easy Digital Downloads
  * @version 1.6.10
  */
-class Wellington_Pro_Plugin_Updater {
+class Chronus_Pro_Plugin_Updater {
 
 	private $api_url     = '';
 	private $api_data    = array();

@@ -1,11 +1,11 @@
 /*
- * Wellington Pro CSS
+ * Chronus Pro CSS
  *
  * Copyright(C) 2017, ThemeZee.com - support@themezee.com
  * License: GPL v3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
- * @package Wellington Pro
+ * @package Chronus Pro
  */
 
 
@@ -30,7 +30,7 @@
 
 .top-navigation-menu {
 	display: inline;
-	float: right;
+	float: left;
 	margin: 0;
 	padding: 0 0.5em;
 	list-style-position: outside;
@@ -38,7 +38,7 @@
 }
 
 .top-navigation-menu li {
-	float: right;
+	float: left;
 }
 
 .top-navigation-menu a {
@@ -53,7 +53,7 @@
 
 .top-navigation-menu > .menu-item-has-children > a:after {
 	display: inline-block;
-	margin: 0.6em 0.4em 0 0;
+	margin: 0.6em 0 0 0.4em;
 	content: '\f431';
 	vertical-align: top;
 	text-decoration: inherit;
@@ -103,24 +103,24 @@
 
 .top-navigation-menu ul .menu-item-has-children > a:after {
 	display: inline-block;
-	margin: 0.3em 0.3em 0 0;
+	margin: 0.3em 0 0 0.3em;
 	content: '\f431';
 	vertical-align: top;
 	text-decoration: inherit;
 	font-size: 14px;
 	font-family: 'Genericons';
 	line-height: 1;
-	-webkit-transform: rotate(-270deg);
-	-moz-transform: rotate(-270deg);
-	-o-transform: rotate(-270deg);
-	-ms-transform: rotate(-270deg);
+	-webkit-transform: rotate(270deg);
+	-moz-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 .top-navigation-menu li ul ul {
 	top: 0;
-	right: 100%;
+	left: 100%;
 	margin: -1px 0 0;
 }
 
@@ -138,7 +138,7 @@
 }
 
 .header-bar .social-icons-navigation {
-	float: left;
+	float: right;
 	margin: 0 0.8em;
 }
 
@@ -163,44 +163,44 @@
 
 /* Magazine Posts Boxed Widget Horizontal Style */
 .widget-magazine-posts .magazine-horizontal-box .large-post .wp-post-image {
-	float: right;
-	box-sizing: border-box;
-	margin: 0;
-	padding-left: 1em;
-	width: 50%;
-}
-
-.widget-magazine-posts .magazine-horizontal-box .large-post .post-content {
 	float: left;
 	box-sizing: border-box;
+	margin: 0;
 	padding-right: 1em;
 	width: 50%;
 }
 
+.widget-magazine-posts .magazine-horizontal-box .large-post .post-content {
+	float: right;
+	box-sizing: border-box;
+	padding-left: 1em;
+	width: 50%;
+}
+
 .widget-magazine-posts .magazine-horizontal-box .medium-posts {
-	margin-left: -2em;
+	margin-right: -2em;
 }
 
 /* Magazine Posts Boxed Widget Vertical Style */
 .widget-magazine-posts .magazine-vertical-box .large-post {
-	float: right;
+	float: left;
 	box-sizing: border-box;
 	margin-bottom: 1em;
-	padding-left: 1em;
+	padding-right: 1em;
 	width: 50%;
 }
 
 .widget-magazine-posts .magazine-vertical-box .small-posts {
 	box-sizing: border-box;
-	margin-right: 50%;
-	padding-right: 1em;
+	margin-left: 50%;
+	padding-left: 1em;
 	width: 50%;
 }
 
 /* Magazine Posts List */
 .widget-magazine-posts-list .type-post .wp-post-image {
-	float: right;
-	margin: 0 0 1em 2em;
+	float: left;
+	margin: 0 2em 1em 0;
 	padding: 0;
 	max-width: 45%;
 }
@@ -236,7 +236,7 @@
 }
 
 .footer-widgets {
-	margin-left: -2.5em;
+	margin-right: -2.5em;
 }
 
 .footer-widgets .widget {
@@ -245,9 +245,9 @@
 
 /* Default: Four Column Footer Widgets */
 .footer-widget-column {
-	float: right;
+	float: left;
 	box-sizing: border-box;
-	padding-left: 2.5em;
+	padding-right: 2.5em;
 	width: 25%;
 }
 
@@ -295,7 +295,7 @@
 # Footer Navigation
 --------------------------------------------------------------*/
 .footer-navigation {
-	float: left;
+	float: right;
 }
 
 .footer-navigation-menu {
@@ -309,7 +309,7 @@
 
 .footer-navigation-menu li {
 	position: relative;
-	float: right;
+	float: left;
 }
 
 .footer-navigation-menu a {
@@ -357,7 +357,7 @@
 	}
 
 	.footer-widgets {
-		margin-left: -2em;
+		margin-right: -2em;
 	}
 
 	.footer-widgets .widget {
@@ -365,7 +365,7 @@
 	}
 
 	.footer-widget-column {
-		padding-left: 2em;
+		padding-right: 2em;
 	}
 }
 
@@ -418,7 +418,7 @@
 	}
 
 	.footer-widget-column:nth-child(3):nth-last-child(2) {
-		clear: right;
+		clear: left;
 	}
 }
 
@@ -447,8 +447,8 @@
 	}
 
 	.widget-magazine-posts-sidebar .type-post .wp-post-image {
-		float: right;
-		margin: 0 0 0 2em;
+		float: left;
+		margin: 0 2em 0 0;
 		max-width: 45%;
 	}
 
@@ -484,7 +484,7 @@
 	}
 
 	.top-navigation-menu li ul ul {
-		margin-right: 0;
+		margin-left: 0;
 	}
 
 	.top-navigation-menu li:hover ul ul,
@@ -520,7 +520,7 @@
 
 	.top-navigation-toggle:after {
 		display: inline-block;
-		float: right;
+		float: left;
 		content: '\f419';
 		vertical-align: middle;
 		text-decoration: inherit;
@@ -535,7 +535,7 @@
 	/* Top Navigation Menu */
 	.top-navigation-menu {
 		display: none;
-		float: right;
+		float: left;
 		margin: 0;
 		padding: 0;
 		width: 100%;
@@ -544,7 +544,7 @@
 
 	.top-navigation-menu a {
 		display: block;
-		clear: right;
+		clear: left;
 		padding: 1em 1.25em;
 		border-bottom: 1px solid rgba(0,0,0,0.15);
 	}
@@ -560,20 +560,20 @@
 
 	.top-navigation-menu ul a {
 		display: block;
-		padding-right: 3em;
+		padding-left: 3em;
 		width: 100%;
 	}
 
 	.top-navigation-menu ul li ul a {
-		padding-right: 4em;
+		padding-left: 4em;
 	}
 
 	.top-navigation-menu ul li ul li ul a {
-		padding-right: 5em;
+		padding-left: 5em;
 	}
 
 	.top-navigation-menu ul li ul li ul li ul a {
-		padding-right: 6em;
+		padding-left: 6em;
 	}
 
 	.top-navigation-menu ul li:last-child a {
@@ -583,7 +583,7 @@
 	/* Mobile Submenu Dropdowns */
 	.top-navigation-menu .submenu-dropdown-toggle {
 		display: block;
-		float: left;
+		float: right;
 		margin: 0;
 		padding: 0.75em 1.25em;
 		color: #303030;
@@ -684,9 +684,9 @@
 	}
 
 	.widget-magazine-posts .magazine-vertical-box .small-posts {
-		margin-right: 0;
+		margin-left: 0;
 		padding-top: 1em;
-		padding-right: 0;
+		padding-left: 0;
 		width: 100%;
 	}
 
@@ -736,12 +736,12 @@
 @media only screen and (max-width: 35em) {
 	/* Footer Widgets */
 	.footer-widgets {
-		margin-left: 0;
+		margin-right: 0;
 	}
 
 	#footer-widgets .footer-widget-column {
 		float: none;
-		padding-left: 0;
+		padding-right: 0;
 		width: 100%;
 	}
 }

@@ -3,24 +3,24 @@
  *
  * Reloads changes on Theme Customizer Preview asynchronously for better usability
  *
- * @package Wellington Pro
+ * @package Chronus Pro
  */
 
 ( function( $ ) {
 
 	/* Link & Button Color Option */
-	wp.customize( 'wellington_theme_options[link_color]', function( value ) {
+	wp.customize( 'chronus_theme_options[link_color]', function( value ) {
 		value.bind( function( newval ) {
 
 			var title_color = '#303030',
 				widget_title_color = '#303030';
 
-			if( typeof wp.customize.value( 'wellington_theme_options[title_color]' ) !== 'undefined' ) {
-				title_color = wp.customize.value( 'wellington_theme_options[title_color]' ).get();
+			if( typeof wp.customize.value( 'chronus_theme_options[title_color]' ) !== 'undefined' ) {
+				title_color = wp.customize.value( 'chronus_theme_options[title_color]' ).get();
 			}
 
-			if( typeof wp.customize.value( 'wellington_theme_options[widget_title_color]' ) !== 'undefined' ) {
-				widget_title_color = wp.customize.value( 'wellington_theme_options[widget_title_color]' ).get();
+			if( typeof wp.customize.value( 'chronus_theme_options[widget_title_color]' ) !== 'undefined' ) {
+				widget_title_color = wp.customize.value( 'chronus_theme_options[widget_title_color]' ).get();
 			}
 
 			$( '.entry-content a:link, .entry-content a:visited, .widget a:link, .widget a:visited, .post-navigation a:link, .post-navigation a:visited, .comments-area a:link, .comments-area a:visited, .breadcrumbs a:link, .breadcrumbs a:visited' )
@@ -67,7 +67,7 @@
 	} );
 
 	/* Top Navigation Color Option */
-	wp.customize( 'wellington_theme_options[top_navi_color]', function( value ) {
+	wp.customize( 'chronus_theme_options[top_navi_color]', function( value ) {
 		value.bind( function( newval ) {
 			$( '.header-bar-wrap, .top-navigation-menu ul' )
 				.css( 'background', newval );
@@ -100,7 +100,7 @@
 	} );
 
 	/* Main Navigation Color Option */
-	wp.customize( 'wellington_theme_options[navi_color]', function( value ) {
+	wp.customize( 'chronus_theme_options[navi_color]', function( value ) {
 		value.bind( function( newval ) {
 			$( '.primary-navigation-wrap, .main-navigation-menu ul' )
 				.css( 'background', newval );
@@ -133,13 +133,13 @@
 	} );
 
 	/* Title Color Option */
-	wp.customize( 'wellington_theme_options[title_color]', function( value ) {
+	wp.customize( 'chronus_theme_options[title_color]', function( value ) {
 		value.bind( function( newval ) {
 
 			var link_color = '#ee3333';
 
-			if( typeof wp.customize.value( 'wellington_theme_options[link_color]' ) !== 'undefined' ) {
-				link_color = wp.customize.value( 'wellington_theme_options[link_color]' ).get();
+			if( typeof wp.customize.value( 'chronus_theme_options[link_color]' ) !== 'undefined' ) {
+				link_color = wp.customize.value( 'chronus_theme_options[link_color]' ).get();
 			}
 
 			$( '.site-title, .site-title a:link, .site-title a:visited, .page-title, .entry-title, .entry-title a:link, .entry-title a:visited' )
@@ -164,13 +164,13 @@
 	} );
 
 	/* Widget Title Color Option */
-	wp.customize( 'wellington_theme_options[widget_title_color]', function( value ) {
+	wp.customize( 'chronus_theme_options[widget_title_color]', function( value ) {
 		value.bind( function( newval ) {
 
 			var link_color = '#ee3333';
 
-			if( typeof wp.customize.value( 'wellington_theme_options[link_color]' ) !== 'undefined' ) {
-				link_color = wp.customize.value( 'wellington_theme_options[link_color]' ).get();
+			if( typeof wp.customize.value( 'chronus_theme_options[link_color]' ) !== 'undefined' ) {
+				link_color = wp.customize.value( 'chronus_theme_options[link_color]' ).get();
 			}
 
 			$( '.widget-title, .widget-title a:link, .widget-title a:visited, .archive-title, .comments-header .comments-title, .comment-reply-title span' )
@@ -185,7 +185,7 @@
 	} );
 
 	/* Footer Widgets Color Option */
-	wp.customize( 'wellington_theme_options[footer_widgets_color]', function( value ) {
+	wp.customize( 'chronus_theme_options[footer_widgets_color]', function( value ) {
 		value.bind( function( newval ) {
 			$( '.footer-widgets-background' )
 				.css( 'background', newval );
@@ -210,7 +210,7 @@
 	} );
 
 	/* Footer Color Option */
-	wp.customize( 'wellington_theme_options[footer_color]', function( value ) {
+	wp.customize( 'chronus_theme_options[footer_color]', function( value ) {
 		value.bind( function( newval ) {
 			$( '.footer-wrap' )
 				.css( 'background', newval );
@@ -235,17 +235,17 @@
 	} );
 
 	/* Theme Fonts */
-	wp.customize( 'wellington_theme_options[text_font]', function( value ) {
+	wp.customize( 'chronus_theme_options[text_font]', function( value ) {
 		value.bind( function( newval ) {
 
 			// Embed Font.
 			var fontFamilyUrl = newval.split( " " ).join( "+" );
 			var googleFontPath = "https://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
-			var googleFontSource = "<link id='wellington-pro-custom-text-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
-			var checkLink = $( "head" ).find( "#wellington-pro-custom-text-font" ).length;
+			var googleFontSource = "<link id='chronus-pro-custom-text-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
+			var checkLink = $( "head" ).find( "#chronus-pro-custom-text-font" ).length;
 
 			if (checkLink > 0) {
-				$( "head" ).find( "#wellington-pro-custom-text-font" ).remove();
+				$( "head" ).find( "#chronus-pro-custom-text-font" ).remove();
 			}
 			$( "head" ).append( googleFontSource );
 
@@ -256,17 +256,17 @@
 		} );
 	} );
 
-	wp.customize( 'wellington_theme_options[title_font]', function( value ) {
+	wp.customize( 'chronus_theme_options[title_font]', function( value ) {
 		value.bind( function( newval ) {
 
 			// Embed Font.
 			var fontFamilyUrl = newval.split( " " ).join( "+" );
 			var googleFontPath = "https://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
-			var googleFontSource = "<link id='wellington-pro-custom-title-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
-			var checkLink = $( "head" ).find( "#wellington-pro-custom-title-font" ).length;
+			var googleFontSource = "<link id='chronus-pro-custom-title-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
+			var checkLink = $( "head" ).find( "#chronus-pro-custom-title-font" ).length;
 
 			if (checkLink > 0) {
-				$( "head" ).find( "#wellington-pro-custom-title-font" ).remove();
+				$( "head" ).find( "#chronus-pro-custom-title-font" ).remove();
 			}
 			$( "head" ).append( googleFontSource );
 
@@ -277,17 +277,17 @@
 		} );
 	} );
 
-	wp.customize( 'wellington_theme_options[navi_font]', function( value ) {
+	wp.customize( 'chronus_theme_options[navi_font]', function( value ) {
 		value.bind( function( newval ) {
 
 			// Embed Font.
 			var fontFamilyUrl = newval.split( " " ).join( "+" );
 			var googleFontPath = "https://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
-			var googleFontSource = "<link id='wellington-pro-custom-navi-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
-			var checkLink = $( "head" ).find( "#wellington-pro-custom-navi-font" ).length;
+			var googleFontSource = "<link id='chronus-pro-custom-navi-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
+			var checkLink = $( "head" ).find( "#chronus-pro-custom-navi-font" ).length;
 
 			if (checkLink > 0) {
-				$( "head" ).find( "#wellington-pro-custom-navi-font" ).remove();
+				$( "head" ).find( "#chronus-pro-custom-navi-font" ).remove();
 			}
 			$( "head" ).append( googleFontSource );
 
@@ -298,17 +298,17 @@
 		} );
 	} );
 
-	wp.customize( 'wellington_theme_options[widget_title_font]', function( value ) {
+	wp.customize( 'chronus_theme_options[widget_title_font]', function( value ) {
 		value.bind( function( newval ) {
 
 			// Embed Font.
 			var fontFamilyUrl = newval.split( " " ).join( "+" );
 			var googleFontPath = "https://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
-			var googleFontSource = "<link id='wellington-pro-custom-widget-title-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
-			var checkLink = $( "head" ).find( "#wellington-pro-custom-widget-title-font" ).length;
+			var googleFontSource = "<link id='chronus-pro-custom-widget-title-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
+			var checkLink = $( "head" ).find( "#chronus-pro-custom-widget-title-font" ).length;
 
 			if (checkLink > 0) {
-				$( "head" ).find( "#wellington-pro-custom-widget-title-font" ).remove();
+				$( "head" ).find( "#chronus-pro-custom-widget-title-font" ).remove();
 			}
 			$( "head" ).append( googleFontSource );
 

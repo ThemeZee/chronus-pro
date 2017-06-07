@@ -4,7 +4,7 @@
  *
  * Adds header spacing settings and CSS
  *
- * @package Wellington Pro
+ * @package Chronus Pro
  */
 
 // Exit if accessed directly.
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Header Spacing Class
  */
-class Wellington_Pro_Header_Spacing {
+class Chronus_Pro_Header_Spacing {
 
 	/**
 	 * Site Logo Setup
@@ -22,13 +22,13 @@ class Wellington_Pro_Header_Spacing {
 	 */
 	static function setup() {
 
-		// Return early if Wellington Theme is not active.
-		if ( ! current_theme_supports( 'wellington-pro' ) ) {
+		// Return early if Chronus Theme is not active.
+		if ( ! current_theme_supports( 'chronus-pro' ) ) {
 			return;
 		}
 
 		// Add Custom Spacing CSS code to custom stylesheet output.
-		add_filter( 'wellington_pro_custom_css_stylesheet', array( __CLASS__, 'custom_spacing_css' ) );
+		add_filter( 'chronus_pro_custom_css_stylesheet', array( __CLASS__, 'custom_spacing_css' ) );
 
 		// Add Site Logo Settings.
 		add_action( 'customize_register', array( __CLASS__, 'header_settings' ) );
@@ -43,7 +43,7 @@ class Wellington_Pro_Header_Spacing {
 	static function custom_spacing_css( $custom_css ) {
 
 		// Get Theme Options from Database.
-		$theme_options = Wellington_Pro_Customizer::get_theme_options();
+		$theme_options = Chronus_Pro_Customizer::get_theme_options();
 
 		// Set Header Spacing.
 		if ( 25 !== $theme_options['header_spacing'] ) {
@@ -88,42 +88,42 @@ class Wellington_Pro_Header_Spacing {
 	static function header_settings( $wp_customize ) {
 
 		// Add Section for Header Settings.
-		$wp_customize->add_section( 'wellington_pro_section_header', array(
-			'title'    => __( 'Header Settings', 'wellington-pro' ),
+		$wp_customize->add_section( 'chronus_pro_section_header', array(
+			'title'    => __( 'Header Settings', 'chronus-pro' ),
 			'priority' => 20,
-			'panel' => 'wellington_options_panel',
+			'panel' => 'chronus_options_panel',
 			)
 		);
 
 		// Add Header Spacing setting.
-		$wp_customize->add_setting( 'wellington_theme_options[header_spacing]', array(
+		$wp_customize->add_setting( 'chronus_theme_options[header_spacing]', array(
 			'default'           => 25,
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
 			'sanitize_callback' => 'absint',
 			)
 		);
-		$wp_customize->add_control( 'wellington_theme_options[header_spacing]', array(
-			'label'    => __( 'Header Spacing (default: 25)', 'wellington-pro' ),
-			'section'  => 'wellington_pro_section_header',
-			'settings' => 'wellington_theme_options[header_spacing]',
+		$wp_customize->add_control( 'chronus_theme_options[header_spacing]', array(
+			'label'    => __( 'Header Spacing (default: 25)', 'chronus-pro' ),
+			'section'  => 'chronus_pro_section_header',
+			'settings' => 'chronus_theme_options[header_spacing]',
 			'type'     => 'text',
 			'priority' => 10,
 			)
 		);
 
 		// Add Logo Spacing setting.
-		$wp_customize->add_setting( 'wellington_theme_options[logo_spacing]', array(
+		$wp_customize->add_setting( 'chronus_theme_options[logo_spacing]', array(
 			'default'           => 0,
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
 			'sanitize_callback' => 'absint',
 			)
 		);
-		$wp_customize->add_control( 'wellington_theme_options[logo_spacing]', array(
-			'label'    => __( 'Logo Spacing (default: 0)', 'wellington-pro' ),
-			'section'  => 'wellington_pro_section_header',
-			'settings' => 'wellington_theme_options[logo_spacing]',
+		$wp_customize->add_control( 'chronus_theme_options[logo_spacing]', array(
+			'label'    => __( 'Logo Spacing (default: 0)', 'chronus-pro' ),
+			'section'  => 'chronus_pro_section_header',
+			'settings' => 'chronus_theme_options[logo_spacing]',
 			'type'     => 'text',
 			'priority' => 20,
 			)
@@ -133,4 +133,4 @@ class Wellington_Pro_Header_Spacing {
 }
 
 // Run Class.
-add_action( 'init', array( 'Wellington_Pro_Header_Spacing', 'setup' ) );
+add_action( 'init', array( 'Chronus_Pro_Header_Spacing', 'setup' ) );

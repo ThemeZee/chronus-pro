@@ -4,7 +4,7 @@
  *
  * Adds color settings to Customizer and generates color CSS code
  *
- * @package Wellington Pro
+ * @package Chronus Pro
  */
 
 // Exit if accessed directly.
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Custom Colors Class
  */
-class Wellington_Pro_Custom_Colors {
+class Chronus_Pro_Custom_Colors {
 
 	/**
 	 * Custom Colors Setup
@@ -22,13 +22,13 @@ class Wellington_Pro_Custom_Colors {
 	 */
 	static function setup() {
 
-		// Return early if Wellington Theme is not active.
-		if ( ! current_theme_supports( 'wellington-pro' ) ) {
+		// Return early if Chronus Theme is not active.
+		if ( ! current_theme_supports( 'chronus-pro' ) ) {
 			return;
 		}
 
 		// Add Custom Color CSS code to custom stylesheet output.
-		add_filter( 'wellington_pro_custom_css_stylesheet', array( __CLASS__, 'custom_colors_css' ) );
+		add_filter( 'chronus_pro_custom_css_stylesheet', array( __CLASS__, 'custom_colors_css' ) );
 
 		// Add Custom Color Settings.
 		add_action( 'customize_register', array( __CLASS__, 'color_settings' ) );
@@ -44,10 +44,10 @@ class Wellington_Pro_Custom_Colors {
 	static function custom_colors_css( $custom_css ) {
 
 		// Get Theme Options from Database.
-		$theme_options = Wellington_Pro_Customizer::get_theme_options();
+		$theme_options = Chronus_Pro_Customizer::get_theme_options();
 
 		// Get Default Fonts from settings.
-		$default_options = Wellington_Pro_Customizer::get_default_options();
+		$default_options = Chronus_Pro_Customizer::get_default_options();
 
 		// Set Link Color.
 		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
@@ -370,18 +370,18 @@ class Wellington_Pro_Custom_Colors {
 	static function color_settings( $wp_customize ) {
 
 		// Add Section for Theme Colors.
-		$wp_customize->add_section( 'wellington_pro_section_colors', array(
-			'title'    => __( 'Theme Colors', 'wellington-pro' ),
+		$wp_customize->add_section( 'chronus_pro_section_colors', array(
+			'title'    => __( 'Theme Colors', 'chronus-pro' ),
 			'priority' => 60,
-			'panel' => 'wellington_options_panel',
+			'panel' => 'chronus_options_panel',
 			)
 		);
 
 		// Get Default Colors from settings.
-		$default_options = Wellington_Pro_Customizer::get_default_options();
+		$default_options = Chronus_Pro_Customizer::get_default_options();
 
 		// Add Top Navigation Color setting.
-		$wp_customize->add_setting( 'wellington_theme_options[top_navi_color]', array(
+		$wp_customize->add_setting( 'chronus_theme_options[top_navi_color]', array(
 			'default'           => $default_options['top_navi_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
@@ -389,16 +389,16 @@ class Wellington_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'wellington_theme_options[top_navi_color]', array(
-				'label'      => _x( 'Top Navigation', 'color setting', 'wellington-pro' ),
-				'section'    => 'wellington_pro_section_colors',
-				'settings'   => 'wellington_theme_options[top_navi_color]',
+			$wp_customize, 'chronus_theme_options[top_navi_color]', array(
+				'label'      => _x( 'Top Navigation', 'color setting', 'chronus-pro' ),
+				'section'    => 'chronus_pro_section_colors',
+				'settings'   => 'chronus_theme_options[top_navi_color]',
 				'priority' => 10,
 			)
 		) );
 
 		// Add Navigation Primary Color setting.
-		$wp_customize->add_setting( 'wellington_theme_options[navi_color]', array(
+		$wp_customize->add_setting( 'chronus_theme_options[navi_color]', array(
 			'default'           => $default_options['navi_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
@@ -406,16 +406,16 @@ class Wellington_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'wellington_theme_options[navi_color]', array(
-				'label'      => _x( 'Main Navigation', 'color setting', 'wellington-pro' ),
-				'section'    => 'wellington_pro_section_colors',
-				'settings'   => 'wellington_theme_options[navi_color]',
+			$wp_customize, 'chronus_theme_options[navi_color]', array(
+				'label'      => _x( 'Main Navigation', 'color setting', 'chronus-pro' ),
+				'section'    => 'chronus_pro_section_colors',
+				'settings'   => 'chronus_theme_options[navi_color]',
 				'priority' => 20,
 			)
 		) );
 
 		// Add Link and Button Color setting.
-		$wp_customize->add_setting( 'wellington_theme_options[link_color]', array(
+		$wp_customize->add_setting( 'chronus_theme_options[link_color]', array(
 			'default'           => $default_options['link_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
@@ -423,16 +423,16 @@ class Wellington_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'wellington_theme_options[link_color]', array(
-				'label'      => _x( 'Links and Buttons', 'color setting', 'wellington-pro' ),
-				'section'    => 'wellington_pro_section_colors',
-				'settings'   => 'wellington_theme_options[link_color]',
+			$wp_customize, 'chronus_theme_options[link_color]', array(
+				'label'      => _x( 'Links and Buttons', 'color setting', 'chronus-pro' ),
+				'section'    => 'chronus_pro_section_colors',
+				'settings'   => 'chronus_theme_options[link_color]',
 				'priority' => 30,
 			)
 		) );
 
 		// Add Navigation Secondary Color setting.
-		$wp_customize->add_setting( 'wellington_theme_options[title_color]', array(
+		$wp_customize->add_setting( 'chronus_theme_options[title_color]', array(
 			'default'           => $default_options['title_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
@@ -440,16 +440,16 @@ class Wellington_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'wellington_theme_options[title_color]', array(
-				'label'      => _x( 'Post Titles', 'color setting', 'wellington-pro' ),
-				'section'    => 'wellington_pro_section_colors',
-				'settings'   => 'wellington_theme_options[title_color]',
+			$wp_customize, 'chronus_theme_options[title_color]', array(
+				'label'      => _x( 'Post Titles', 'color setting', 'chronus-pro' ),
+				'section'    => 'chronus_pro_section_colors',
+				'settings'   => 'chronus_theme_options[title_color]',
 				'priority' => 40,
 			)
 		) );
 
 		// Add Widget Title Color setting.
-		$wp_customize->add_setting( 'wellington_theme_options[widget_title_color]', array(
+		$wp_customize->add_setting( 'chronus_theme_options[widget_title_color]', array(
 			'default'           => $default_options['widget_title_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
@@ -457,16 +457,16 @@ class Wellington_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'wellington_theme_options[widget_title_color]', array(
-				'label'      => _x( 'Widget Titles', 'color setting', 'wellington-pro' ),
-				'section'    => 'wellington_pro_section_colors',
-				'settings'   => 'wellington_theme_options[widget_title_color]',
+			$wp_customize, 'chronus_theme_options[widget_title_color]', array(
+				'label'      => _x( 'Widget Titles', 'color setting', 'chronus-pro' ),
+				'section'    => 'chronus_pro_section_colors',
+				'settings'   => 'chronus_theme_options[widget_title_color]',
 				'priority' => 50,
 			)
 		) );
 
 		// Add Footer Widget Color setting.
-		$wp_customize->add_setting( 'wellington_theme_options[footer_widgets_color]', array(
+		$wp_customize->add_setting( 'chronus_theme_options[footer_widgets_color]', array(
 			'default'           => $default_options['footer_widgets_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
@@ -474,16 +474,16 @@ class Wellington_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'wellington_theme_options[footer_widgets_color]', array(
-				'label'      => _x( 'Footer Widgets', 'color setting', 'wellington-pro' ),
-				'section'    => 'wellington_pro_section_colors',
-				'settings'   => 'wellington_theme_options[footer_widgets_color]',
+			$wp_customize, 'chronus_theme_options[footer_widgets_color]', array(
+				'label'      => _x( 'Footer Widgets', 'color setting', 'chronus-pro' ),
+				'section'    => 'chronus_pro_section_colors',
+				'settings'   => 'chronus_theme_options[footer_widgets_color]',
 				'priority' => 60,
 			)
 		) );
 
 		// Add Footer Color setting.
-		$wp_customize->add_setting( 'wellington_theme_options[footer_color]', array(
+		$wp_customize->add_setting( 'chronus_theme_options[footer_color]', array(
 			'default'           => $default_options['footer_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
@@ -491,10 +491,10 @@ class Wellington_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'wellington_theme_options[footer_color]', array(
-				'label'      => _x( 'Footer', 'color setting', 'wellington-pro' ),
-				'section'    => 'wellington_pro_section_colors',
-				'settings'   => 'wellington_theme_options[footer_color]',
+			$wp_customize, 'chronus_theme_options[footer_color]', array(
+				'label'      => _x( 'Footer', 'color setting', 'chronus-pro' ),
+				'section'    => 'chronus_pro_section_colors',
+				'settings'   => 'chronus_theme_options[footer_color]',
 				'priority' => 70,
 			)
 		) );
@@ -538,4 +538,4 @@ class Wellington_Pro_Custom_Colors {
 }
 
 // Run Class.
-add_action( 'init', array( 'Wellington_Pro_Custom_Colors', 'setup' ) );
+add_action( 'init', array( 'Chronus_Pro_Custom_Colors', 'setup' ) );
