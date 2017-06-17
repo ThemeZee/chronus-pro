@@ -334,14 +334,7 @@
 ## 14.1 - Desktop X-Large ( < 1360px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 85em) {
-	.site {
-		box-shadow: 0 2px 2px #aaa;
-	}
 
-	.header-bar-wrap {
-		background: #fafafa;
-		box-shadow: 0 0 2px #aaa;
-	}
 }
 
 /*--------------------------------------------------------------
@@ -369,14 +362,6 @@
 ## Desktop Medium ( < 1040px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 70em) {
-	.site {
-		box-shadow: none;
-	}
-
-	.header-bar-wrap {
-		border-bottom: 1px solid #ddd;
-		box-shadow: none;
-	}
 
 	.widget-magazine-posts .magazine-horizontal-box .large-post .more-link  {
 		display: none;
