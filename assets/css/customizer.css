@@ -48,3 +48,24 @@
 .customize-control-chronus_pro_custom_font .actions .button:hover {
 	cursor: pointer;
 }
+
+/* Magazine Sections */
+.adding-magazine-widget #available-widgets #available-widgets-list [id*='widget-tpl-chronus-magazine-posts-sidebar'] {
+	display: none !important;
+}
+
+.adding-magazine-widget #available-widgets [id*='widget-tpl-chronus-magazine-posts-horizontal-box'] .widget-top::before {
+	background-image: url( '../images/magazine-horizontal-box.png' );
+}
+
+.adding-magazine-widget #available-widgets [id*='widget-tpl-chronus-magazine-posts-vertical-box'] .widget-top::before {
+	background-image: url( '../images/magazine-vertical-box.png' );
+}
+
+.adding-magazine-widget #available-widgets [id*='widget-tpl-chronus-magazine-posts-list'] .widget-top::before {
+	background-image: url( '../images/magazine-list.png' );
+}
+
+.adding-magazine-widget #available-widgets [id*='widget-tpl-chronus-magazine-posts-single'] .widget-top::before {
+	background-image: url( '../images/magazine-single.png' );
+}

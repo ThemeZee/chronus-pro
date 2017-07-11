@@ -20,7 +20,7 @@ class Chronus_Pro_Magazine_Vertical_Box_Widget extends WP_Widget {
 
 		// Setup Widget.
 		parent::__construct(
-			'chronus-magazine-vertical-box', // ID.
+			'chronus-magazine-posts-vertical-box', // ID.
 			esc_html__( 'Magazine (Vertical Box)', 'chronus-pro' ), // Name.
 			array(
 				'classname' => 'chronus-magazine-vertical-box-widget',

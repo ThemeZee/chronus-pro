@@ -24,7 +24,7 @@ class Chronus_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 			esc_html__( 'Magazine (List)', 'chronus-pro' ), // Name.
 			array(
 				'classname' => 'chronus-magazine-list-widget',
-				'description' => esc_html__( 'Displays your posts from a selected category in a simple list layout.', 'chronus-pro' ),
+				'description' => esc_html__( 'Displays your posts from a selected category in a list layout.', 'chronus-pro' ),
 				'customize_selective_refresh' => true,
 			) // Args.
 		);

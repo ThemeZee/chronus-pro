@@ -20,7 +20,7 @@ class Chronus_Pro_Magazine_Horizontal_Box_Widget extends WP_Widget {
 
 		// Setup Widget.
 		parent::__construct(
-			'chronus-magazine-posts-boxed', // ID.
+			'chronus-magazine-posts-horizontal-box', // ID.
 			esc_html__( 'Magazine (Horizontal Box)', 'chronus-pro' ), // Name.
 			array(
 				'classname' => 'chronus-magazine-horizontal-box-widget',
