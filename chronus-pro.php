@@ -112,7 +112,7 @@ class Chronus_Pro {
 		#require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-custom-colors.php';
 		#require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-custom-fonts.php';
 		#require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-line.php';
-		#require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-widgets.php';
+		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-widgets.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-header-bar.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . '/includes/modules/class-scroll-to-top.php';
 
@@ -208,7 +208,9 @@ class Chronus_Pro {
 	 */
 	static function plugin_action_links( $actions ) {
 
-		$settings_link = array( 'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'themes.php?page=chronus-pro' ), __( 'Settings', 'chronus-pro' ) ) );
+		$settings_link = array(
+			'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'themes.php?page=chronus-pro' ), __( 'Settings', 'chronus-pro' ) ),
+		);
 
 		return array_merge( $settings_link, $actions );
 	}
