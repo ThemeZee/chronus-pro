@@ -368,18 +368,12 @@
 	background: #303030;
 }
 
-.scroll-to-top-button:after {
-	display: inline-block;
-	margin: 0 0 0 3px;
-	color: #fff;
-	content: '\f432';
+.scroll-to-top-button .icon {
+	height: 19px;
+	width: 19px;
+	margin: 0.25em 0 0;
 	vertical-align: top;
-	text-decoration: inherit;
-	font-size: 28px;
-	font-family: 'Genericons';
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	fill: #fff;
 }
 
 /*--------------------------------------------------------------

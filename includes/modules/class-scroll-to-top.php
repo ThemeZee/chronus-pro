@@ -49,6 +49,9 @@ class Chronus_Pro_Scroll_To_Top {
 
 			wp_enqueue_script( 'chronus-pro-scroll-to-top', CHRONUS_PRO_PLUGIN_URL . 'assets/js/scroll-to-top.js', array( 'jquery' ), CHRONUS_PRO_VERSION, true );
 
+			// Passing Parameters to navigation.js.
+			wp_localize_script( 'chronus-pro-scroll-to-top', 'chronus_pro_scroll_button', chronus_get_svg( 'collapse' ) );
+
 		endif;
 	}
 
