@@ -48,25 +48,6 @@ class Chronus_Pro_Header_Bar {
 
 			echo '<div id="header-bar" class="header-bar container clearfix">';
 
-			// Check if there is a top navigation menu.
-			if ( has_nav_menu( 'secondary' ) ) {
-
-				echo '<nav id="top-navigation" class="secondary-navigation navigation clearfix" role="navigation">';
-
-				// Display Top Navigation.
-				wp_nav_menu( array(
-					'theme_location' => 'secondary',
-					'container' => false,
-					'menu_class' => 'top-navigation-menu',
-					'echo' => true,
-					'fallback_cb' => '',
-					)
-				);
-
-				echo '</nav>';
-
-			}
-
 			// Check if there is a social menu.
 			if ( has_nav_menu( 'social' ) ) {
 
@@ -86,6 +67,25 @@ class Chronus_Pro_Header_Bar {
 				);
 
 				echo '</div>';
+
+			}
+
+			// Check if there is a top navigation menu.
+			if ( has_nav_menu( 'secondary' ) ) {
+
+				echo '<nav id="top-navigation" class="secondary-navigation navigation clearfix" role="navigation">';
+
+				// Display Top Navigation.
+				wp_nav_menu( array(
+					'theme_location' => 'secondary',
+					'container' => false,
+					'menu_class' => 'top-navigation-menu',
+					'echo' => true,
+					'fallback_cb' => '',
+					)
+				);
+
+				echo '</nav>';
 
 			}
 
