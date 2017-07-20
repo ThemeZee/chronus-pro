@@ -8,6 +8,13 @@
 
 ( function( $ ) {
 
+	// Footer textfield.
+	wp.customize( 'chronus_theme_options[footer_text]', function( value ) {
+		value.bind( function( to ) {
+			$( '.site-info span.footer-text' ).text( to );
+		} );
+	} );
+
 	/* Link & Button Color Option */
 	wp.customize( 'chronus_theme_options[link_color]', function( value ) {
 		value.bind( function( newval ) {

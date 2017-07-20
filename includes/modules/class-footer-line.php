@@ -50,20 +50,16 @@ class Chronus_Pro_Footer_Line {
 		$theme_options = Chronus_Pro_Customizer::get_theme_options();
 
 		// Display Footer Text.
-		if ( '' !== $theme_options['footer_text'] ) :
+		if ( '' !== $theme_options['footer_text'] || is_customize_preview() ) :
 
-			echo do_shortcode( wp_kses_post( $theme_options['footer_text'] ) );
+			echo '<span class="footer-text">' . do_shortcode( wp_kses_post( $theme_options['footer_text'] ) ) . '</span>';
 
 		endif;
 
 		// Call Credit Link function of theme if credit link is activated.
-		if ( true === $theme_options['credit_link'] ) :
+		if ( true === $theme_options['credit_link'] && function_exists( 'chronus_footer_text' ) ) :
 
-			if ( function_exists( 'chronus_footer_text' ) ) :
-
-				chronus_footer_text();
-
-			endif;
+			chronus_footer_text();
 
 		endif;
 	}
@@ -114,7 +110,7 @@ class Chronus_Pro_Footer_Line {
 		$wp_customize->add_setting( 'chronus_theme_options[footer_text]', array(
 			'default'           => '',
 			'type'           	=> 'option',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => array( __CLASS__, 'sanitize_footer_text' ),
 			)
 		);
@@ -126,6 +122,12 @@ class Chronus_Pro_Footer_Line {
 			'priority' => 30,
 			)
 		);
+
+		// Add selective refresh for footer text.
+		$wp_customize->selective_refresh->add_partial( 'chronus_theme_options[footer_text]', array(
+			'selector'        => '.site-info span.footer-text',
+			'render_callback' => array( __CLASS__, 'customize_partial_footer_text' ),
+		) );
 
 		// Add Credit Link setting.
 		$wp_customize->add_setting( 'chronus_theme_options[credit_link]', array(
@@ -158,6 +160,14 @@ class Chronus_Pro_Footer_Line {
 		else :
 			return stripslashes( wp_filter_post_kses( addslashes( $value ) ) );
 		endif;
+	}
+
+	/**
+	 * Render the footer text for the selective refresh partial.
+	 */
+	function customize_partial_footer_text() {
+		$theme_options = Chronus_Pro_Customizer::get_theme_options();
+		echo do_shortcode( wp_kses_post( $theme_options['footer_text'] ) );
 	}
 
 	/**
