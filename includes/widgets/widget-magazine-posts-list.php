@@ -77,7 +77,7 @@ class Chronus_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 			<?php // Display Title.
 			$this->widget_title( $args, $settings ); ?>
 
-			<div class="widget-magazine-posts-content">
+			<div class="widget-magazine-posts-content magazine-list">
 
 				<?php $this->render( $settings ); ?>
 
@@ -122,7 +122,7 @@ class Chronus_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 			// Display Posts.
 			while ( $posts_query->have_posts() ) : $posts_query->the_post();
 
-				get_template_part( 'template-parts/widgets/magazine-full-post', 'list' );
+				get_template_part( 'template-parts/widgets/magazine-large-post', 'list' );
 
 			endwhile;
 

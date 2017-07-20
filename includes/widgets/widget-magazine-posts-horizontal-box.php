@@ -135,7 +135,9 @@ class Chronus_Pro_Magazine_Horizontal_Box_Widget extends WP_Widget {
 
 				else :
 
+					echo '<div class="post-column">';
 					get_template_part( 'template-parts/widgets/magazine-medium-post', 'horizontal-box' );
+					echo '</div>';
 
 				endif;
 

@@ -129,8 +129,11 @@ class Chronus_Pro_Magazine_Vertical_Box_Widget extends WP_Widget {
 				// Display first post differently.
 				if ( 0 === $posts_query->current_post ) :
 
+					echo '<div class="large-post-wrap">';
+
 					get_template_part( 'template-parts/widgets/magazine-large-post', 'vertical-box' );
 
+					echo '</div>';
 					echo '<div class="small-posts clearfix">';
 
 				else :

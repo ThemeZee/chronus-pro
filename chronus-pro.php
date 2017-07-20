@@ -114,13 +114,12 @@ class Chronus_Pro {
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-line.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-widgets.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-header-bar.php';
-		require_once CHRONUS_PRO_PLUGIN_DIR . '/includes/modules/class-scroll-to-top.php';
+		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-scroll-to-top.php';
 
 		// Include Magazine Widgets.
-		require_once CHRONUS_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-horizontal-box.php';
-		require_once CHRONUS_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-vertical-box.php';
+		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-horizontal-box.php';
+		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-vertical-box.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-list.php';
-		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-sidebar.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-single.php';
 
 	}
@@ -195,7 +194,6 @@ class Chronus_Pro {
 		register_widget( 'Chronus_Pro_Magazine_Horizontal_Box_Widget' );
 		register_widget( 'Chronus_Pro_Magazine_Vertical_Box_Widget' );
 		register_widget( 'Chronus_Pro_Magazine_Posts_List_Widget' );
-		register_widget( 'Chronus_Pro_Magazine_Posts_Sidebar_Widget' );
 		register_widget( 'Chronus_Pro_Magazine_Posts_Single_Widget' );
 
 	}
