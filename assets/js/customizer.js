@@ -11,7 +11,7 @@
 	// Footer textfield.
 	wp.customize( 'chronus_theme_options[footer_text]', function( value ) {
 		value.bind( function( to ) {
-			$( '.site-info span.footer-text' ).text( to );
+			$( '.site-info .footer-text' ).text( to );
 		} );
 	} );
 

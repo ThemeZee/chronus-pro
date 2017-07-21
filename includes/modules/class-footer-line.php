@@ -28,40 +28,17 @@ class Chronus_Pro_Footer_Line {
 			return;
 		}
 
-		// Remove default footer text function and replace it with new one.
-		remove_action( 'chronus_footer_text', 'chronus_footer_text' );
-		add_action( 'chronus_footer_text', array( __CLASS__, 'footer_text' ) );
-
 		// Display footer navigation.
 		add_action( 'chronus_before_footer', array( __CLASS__, 'display_footer_menu' ) );
 
+		// Display Footer Text in theme.
+		add_action( 'chronus_footer_text', array( __CLASS__, 'footer_text' ) );
+
+		// Hide Credit Link.
+		add_filter( 'chronus_hide_elements', array( __CLASS__, 'hide_credit_link' ), 20 );
+
 		// Add Footer Settings in Customizer.
 		add_action( 'customize_register', array( __CLASS__, 'footer_settings' ) );
-	}
-
-	/**
-	 * Displays Credit Link and user defined Footer Text based on theme settings.
-	 *
-	 * @return void
-	 */
-	static function footer_text() {
-
-		// Get Theme Options from Database.
-		$theme_options = Chronus_Pro_Customizer::get_theme_options();
-
-		// Display Footer Text.
-		if ( '' !== $theme_options['footer_text'] || is_customize_preview() ) :
-
-			echo '<span class="footer-text">' . do_shortcode( wp_kses_post( $theme_options['footer_text'] ) ) . '</span>';
-
-		endif;
-
-		// Call Credit Link function of theme if credit link is activated.
-		if ( true === $theme_options['credit_link'] && function_exists( 'chronus_footer_text' ) ) :
-
-			chronus_footer_text();
-
-		endif;
 	}
 
 	/**
@@ -89,6 +66,43 @@ class Chronus_Pro_Footer_Line {
 			echo '</nav><!-- #footer-links -->';
 
 		}
+	}
+
+	/**
+	 * Displays Credit Link and user defined Footer Text based on theme settings.
+	 *
+	 * @return void
+	 */
+	static function footer_text() {
+
+		// Get Theme Options from Database.
+		$theme_options = Chronus_Pro_Customizer::get_theme_options();
+
+		// Display Footer Text.
+		if ( '' !== $theme_options['footer_text'] || is_customize_preview() ) :
+
+			echo '<span class="footer-text">' . do_shortcode( wp_kses_post( $theme_options['footer_text'] ) ) . '</span>';
+
+		endif;
+
+	}
+
+	/**
+	 * Hide Credit Link if deactivated.
+	 *
+	 * @return void
+	 */
+	static function hide_credit_link( $elements ) {
+
+		// Get Theme Options from Database.
+		$theme_options = Chronus_Pro_Customizer::get_theme_options();
+
+		// Hide Credit Link?
+		if ( false === $theme_options['credit_link'] ) {
+			$elements[] = '.site-info .credit-link';
+		}
+
+		return $elements;
 	}
 
 	/**
@@ -125,7 +139,7 @@ class Chronus_Pro_Footer_Line {
 
 		// Add selective refresh for footer text.
 		$wp_customize->selective_refresh->add_partial( 'chronus_theme_options[footer_text]', array(
-			'selector'        => '.site-info span.footer-text',
+			'selector'        => '.site-info .footer-text',
 			'render_callback' => array( __CLASS__, 'customize_partial_footer_text' ),
 		) );
 
@@ -133,7 +147,7 @@ class Chronus_Pro_Footer_Line {
 		$wp_customize->add_setting( 'chronus_theme_options[credit_link]', array(
 			'default'           => true,
 			'type'           	=> 'option',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'chronus_sanitize_checkbox',
 			)
 		);
@@ -165,7 +179,7 @@ class Chronus_Pro_Footer_Line {
 	/**
 	 * Render the footer text for the selective refresh partial.
 	 */
-	function customize_partial_footer_text() {
+	static function customize_partial_footer_text() {
 		$theme_options = Chronus_Pro_Customizer::get_theme_options();
 		echo do_shortcode( wp_kses_post( $theme_options['footer_text'] ) );
 	}
