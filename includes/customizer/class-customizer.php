@@ -59,9 +59,6 @@ class Chronus_Pro_Customizer {
 	static function get_default_options() {
 
 		$default_options = array(
-			'header_logo'          => '',
-			'header_spacing'       => 30,
-			'logo_spacing'         => 0,
 			'scroll_to_top'        => false,
 			'footer_text'          => '',
 			'credit_link'          => true,
@@ -72,10 +69,10 @@ class Chronus_Pro_Customizer {
 			'widget_title_color'   => '#303030',
 			'footer_widgets_color' => '#303030',
 			'footer_color'         => '#303030',
-			'text_font'            => 'Gudea',
-			'title_font'           => 'Magra',
-			'navi_font'            => 'Gudea',
-			'widget_title_font'    => 'Magra',
+			'text_font'            => 'Raleway',
+			'title_font'           => 'Rambla',
+			'navi_font'            => 'Rambla',
+			'widget_title_font'    => 'Rambla',
 			'available_fonts'      => 'favorites',
 		);
 

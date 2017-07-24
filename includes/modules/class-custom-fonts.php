@@ -79,7 +79,6 @@ class Chronus_Pro_Custom_Fonts {
 			$custom_css .= '
 				/* Headings Font Setting */
 				.site-title,
-				.page-title,
 				.entry-title {
 					font-family: "' . esc_attr( $theme_options['title_font'] ) . '";
 				}
@@ -92,8 +91,11 @@ class Chronus_Pro_Custom_Fonts {
 
 			$custom_css .= '
 				/* Navigation Font Setting */
-				.top-navigation-menu a,
-				.main-navigation-menu a {
+				.top-navigation-menu,
+				.top-navigation-toggle,
+				.main-navigation-menu,
+				.main-navigation-toggle,
+				.footer-navigation-menu {
 					font-family: "' . esc_attr( $theme_options['navi_font'] ) . '";
 				}
 				';
@@ -108,7 +110,9 @@ class Chronus_Pro_Custom_Fonts {
 				.widget-title,
 				.archive-title,
 				.comments-header .comments-title,
-				.comment-reply-title span {
+				.comment-reply-title,
+				.pagination a,
+				.pagination .current {
 					font-family: "' . esc_attr( $theme_options['widget_title_font'] ) . '";
 				}
 				';

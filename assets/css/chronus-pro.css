@@ -45,6 +45,9 @@
 	order: 1;
 	-webkit-box-ordinal-group: 2;
 	-ms-flex-order: 1;
+	font-size: 17px;
+	font-size: 1.0625rem;
+	font-family: 'Rambla', Tahoma, Arial;
 }
 
 .top-navigation-menu li {
@@ -57,9 +60,6 @@
 	padding: 0.75em 1em;
 	color: #fff;
 	text-decoration: none;
-	font-size: 17px;
-	font-size: 1.0625rem;
-	font-family: 'Rambla', Tahoma, Arial;
 }
 
 .top-navigation-menu > .menu-item-has-children > a .icon {
@@ -97,6 +97,8 @@
 	color: #fff;
 	list-style-position: outside;
 	list-style-type: none;
+	font-size: 16px;
+	font-size: 1rem;
 }
 
 .top-navigation-menu ul li {
@@ -110,8 +112,6 @@
 	min-width: 250px;
 	min-width: 16rem;
 	border-bottom: 1px solid rgba(255,255,255,0.1);
-	font-size: 16px;
-	font-size: 1rem;
 }
 
 .top-navigation-menu ul .menu-item-has-children > a .icon {
@@ -326,6 +326,9 @@
 	padding: 0;
 	list-style-position: outside;
 	list-style-type: none;
+	font-size: 20px;
+	font-size: 1.25rem;
+	font-family: 'Rambla', Tahoma, Arial;
 }
 
 .footer-navigation-menu li {
@@ -338,9 +341,6 @@
 	padding: 0.75em 1em;
 	color: #303030;
 	text-decoration: none;
-	font-size: 20px;
-	font-size: 1.25rem;
-	font-family: 'Rambla', Tahoma, Arial;
 }
 
 .footer-navigation-menu a:link,
