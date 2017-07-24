@@ -32,7 +32,6 @@ class Chronus_Pro_Custom_Colors {
 
 		// Add Custom Color Settings.
 		add_action( 'customize_register', array( __CLASS__, 'color_settings' ) );
-
 	}
 
 	/**
@@ -49,45 +48,153 @@ class Chronus_Pro_Custom_Colors {
 		// Get Default Fonts from settings.
 		$default_options = Chronus_Pro_Customizer::get_default_options();
 
+		// Set Page Background Color.
+		if ( $theme_options['page_bg_color'] !== $default_options['page_bg_color'] ) {
+
+			$custom_css .= '
+				/* Page Background Color Setting */
+				.site {
+					background: ' . $theme_options['page_bg_color'] . ';
+				}
+			';
+
+			// Check if a dark background color was chosen.
+			if ( self::is_color_dark( $theme_options['page_bg_color'] ) ) {
+				$custom_css .= '
+					body,
+					button,
+					input,
+					select,
+					textarea,
+					blockquote cite,
+					blockquote small,
+					input[type="text"]:focus,
+					input[type="email"]:focus,
+					input[type="url"]:focus,
+					input[type="password"]:focus,
+					input[type="search"]:focus,
+					textarea:focus,
+					.site-title,
+					.site-title a:link,
+					.site-title a:visited,
+					.main-navigation-menu,
+					.main-navigation-menu a:link,
+					.main-navigation-menu a:visited,
+					.widget-title,
+					.widget-title a:link,
+					.widget-title a:visited,
+					.entry-title,
+					.entry-title a:link,
+					.entry-title a:visited,
+					.archive-title,
+					.comments-header .comments-title,
+					.comment-reply-title,
+					.main-navigation-toggle,
+					.footer-navigation-menu a,
+					.footer-navigation-menu a:link,
+					.footer-navigation-menu a:visited {
+						color: #ffffff;
+					}
+
+					.site-title a:hover,
+					.site-title a:active,
+					.entry-title a:hover,
+					.entry-title a:active,
+					.widget-title a:hover,
+					.widget-title a:active,
+					.main-navigation-menu a:hover,
+					.main-navigation-menu a:active,
+					.footer-navigation-menu a:hover,
+					.footer-navigation-menu a:active {
+						color: #cc5555;
+					}
+
+					.entry-meta {
+						color: rgba(255,255,255,0.45);
+					}
+
+					.entry-meta .meta-date:after,
+					.entry-meta .meta-author:after {
+						color: rgba(255,255,255,0.15);
+					}
+
+					blockquote {
+						border-color: #ffffff;
+					}
+
+					pre,
+					th,
+					td,
+					button,
+					input[type="button"],
+					input[type="reset"],
+					input[type="submit"],
+					input[type="text"],
+					input[type="email"],
+					input[type="url"],
+					input[type="password"],
+					input[type="search"],
+					textarea,
+					.site-header,
+					.primary-navigation-wrap,
+					.widget ul li,
+					.widget ol li,
+					.sticky,
+					.infinite-scroll #infinite-handle span,
+					.featured-posts-wrap,
+					.comment,
+					.site-footer,
+					.main-navigation-menu,
+					.tzwb-tabbed-content .tzwb-tabnavi li a,
+					.tzwb-social-icons .social-icons-menu li a,
+					.footer-widgets-background,
+					.footer-navigation {
+						border-color: rgba(255,255,255,0.075);
+					}
+
+					input[type="text"]:focus,
+					input[type="email"]:focus,
+					input[type="url"]:focus,
+					input[type="password"]:focus,
+					input[type="search"]:focus,
+					textarea:focus {
+						border: 1px solid  rgba(255,255,255,0.2);
+					}
+
+					.search-form .search-submit:hover .icon-search,
+					.search-form .search-submit:active .icon-search,
+					.main-navigation-menu > .menu-item-has-children > a .icon,
+					.main-navigation-toggle .icon,
+					.main-navigation-menu .submenu-dropdown-toggle .icon,
+					.tzwb-social-icons .social-icons-menu li a:hover .icon  {
+						fill: #ffffff;
+					}
+				';
+			}
+		}
+
 		// Set Link Color.
 		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
 
 			$custom_css .= '
 				/* Link and Button Color Setting */
 				a:link,
-				a:visited {
+				a:visited,
+				button,
+				input[type="button"],
+				input[type="reset"],
+				input[type="submit"],
+				.infinite-scroll #infinite-handle span,
+				.tzwb-tabbed-content .tzwb-tabnavi li a:link,
+				.tzwb-tabbed-content .tzwb-tabnavi li a:visited,
+				.widget-title a:hover,
+				.widget-title a:active {
 					color: ' . $theme_options['link_color'] . ';
 				}
 
 				a:hover,
 				a:focus,
-				a:active {
-					color: #303030;
-				}
-
-				button,
-				input[type="button"],
-				input[type="reset"],
-				input[type="submit"],
-				.more-link,
-				.entry-categories .meta-categories a,
-				.widget_tag_cloud .tagcloud a:hover,
-				.widget_tag_cloud .tagcloud a:active,
-				.entry-tags .meta-tags a:hover,
-				.entry-tags .meta-tags a:active,
-				.pagination a:hover,
-				.pagination a:active,
-				.pagination .current,
-				.infinite-scroll #infinite-handle span:hover,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
-				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab,
-				.tzwb-social-icons .social-icons-menu li a:link,
-				.tzwb-social-icons .social-icons-menu li a:visited {
-					color: #fff;
-					background: ' . $theme_options['link_color'] . ';
-				}
-
+				a:active,
 				button:hover,
 				input[type="button"]:hover,
 				input[type="reset"]:hover,
@@ -100,10 +207,25 @@ class Chronus_Pro_Custom_Colors {
 				input[type="button"]:active,
 				input[type="reset"]:active,
 				input[type="submit"]:active,
-				.more-link:hover,
-				.more-link:active,
-				.tzwb-social-icons .social-icons-menu li a:active,
-				.tzwb-social-icons .social-icons-menu li a:hover {
+				.infinite-scroll #infinite-handle span:hover,
+				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
+				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
+				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
+					color: #303030;
+				}
+
+				.search-form .search-submit .icon-search,
+				.tzwb-social-icons .social-icons-menu li a .icon {
+					fill: ' . $theme_options['link_color'] . ';
+				}
+
+				.scroll-to-top-button,
+				.scroll-to-top-button:focus,
+				.scroll-to-top-button:active {
+					background: ' . $theme_options['link_color'] . ';
+				}
+
+				.scroll-to-top-button:hover {
 					background: #303030;
 				}
 			';
@@ -121,40 +243,49 @@ class Chronus_Pro_Custom_Colors {
 			';
 
 			// Check if a dark background color was chosen.
-			if ( self::is_color_dark( $theme_options['top_navi_color'] ) ) {
+			if ( self::is_color_light( $theme_options['top_navi_color'] ) ) {
 				$custom_css .= '
-					.header-bar-wrap,
 					.top-navigation-menu,
-					.top-navigation-menu a,
 					.top-navigation-menu ul,
-					.top-navigation-menu ul a,
-					.top-navigation-menu ul li:last-child a {
-						border-color: rgba(255,255,255,0.1);
+					.top-navigation-menu a,
+					.top-navigation-menu ul a {
+						border-color: rgba(0,0,0,0.05);
 					}
 
+					.top-navigation-menu ul,
 					.top-navigation-menu a:link,
 					.top-navigation-menu a:visited,
 					.top-navigation-toggle,
 					.top-navigation-toggle:focus,
-					.top-navigation-menu .submenu-dropdown-toggle,
-					.header-bar .social-icons-menu li a:link,
-					.header-bar .social-icons-menu li a:visited {
-					    color: #ffffff;
+					.top-navigation-menu .submenu-dropdown-toggle {
+					    color: #303030;
 					}
 
 					.top-navigation-menu a:hover,
 					.top-navigation-menu a:active,
 					.top-navigation-toggle:hover,
-					.top-navigation-toggle:active,
-					.top-navigation-menu .submenu-dropdown-toggle:hover,
-					.top-navigation-menu .submenu-dropdown-toggle:active,
-					.header-bar .social-icons-menu li a:hover,
-					.header-bar .social-icons-menu li a:active {
-						color: rgba(255,255,255,0.5);
+					.top-navigation-toggle:active {
+						color: rgba(0,0,0,0.5);
 					}
 
-					.top-navigation-menu li.current-menu-item > a {
-						background: rgba(255,255,255,0.075);
+					.top-navigation-menu > .menu-item-has-children > a .icon,
+					.top-navigation-menu ul .menu-item-has-children > a .icon,
+					.header-bar .social-icons-menu li a .icon,
+					.top-navigation-toggle .icon,
+					.top-navigation-menu .submenu-dropdown-toggle .icon {
+						fill: #303030;
+					}
+
+					.top-navigation-menu > .menu-item-has-children > a:hover .icon,
+					.top-navigation-menu > .menu-item-has-children > a:active .icon,
+					.top-navigation-menu ul .menu-item-has-children > a:hover .icon,
+					.top-navigation-menu ul .menu-item-has-children > a:active .icon,
+					.header-bar .social-icons-menu li a:hover .icon,
+					.top-navigation-toggle:hover .icon,
+					.top-navigation-toggle:active .icon,
+					.top-navigation-menu .submenu-dropdown-toggle:hover .icon,
+					.top-navigation-menu .submenu-dropdown-toggle:active .icon {
+						fill: rgba(0,0,0,0.5);
 					}
 				';
 			}
@@ -165,42 +296,52 @@ class Chronus_Pro_Custom_Colors {
 
 			$custom_css .= '
 				/* Main Navigation Color Setting */
-				.primary-navigation-wrap,
 				.main-navigation-menu ul {
 					background: ' . $theme_options['navi_color'] . ';
+				}
+
+				.main-navigation-menu a:hover,
+				.main-navigation-menu a:active,
+				.main-navigation-toggle:hover,
+				.main-navigation-toggle:active {
+					color: ' . $theme_options['navi_color'] . ';
+				}
+
+				.main-navigation-menu > .menu-item-has-children > a:hover .icon,
+				.main-navigation-menu > .menu-item-has-children > a:active .icon,
+				.main-navigation-toggle:hover .icon,
+				.main-navigation-toggle:active .icon,
+				.main-navigation-menu .submenu-dropdown-toggle:hover .icon,
+				.main-navigation-menu .submenu-dropdown-toggle:active .icon {
+					fill: ' . $theme_options['navi_color'] . ';
 				}
 			';
 
 			// Check if a light background color was chosen.
 			if ( self::is_color_light( $theme_options['navi_color'] ) ) {
 				$custom_css .= '
-					.main-navigation-menu,
-					.main-navigation-menu a,
+					.main-navigation-menu ul a {
+						border-color: rgba(0,0,0,0.05);
+					}
+
 					.main-navigation-menu ul,
-					.main-navigation-menu ul a,
-					.main-navigation-menu ul li:last-child a {
-						border-color: rgba(0,0,0,0.15);
+					.main-navigation-menu ul a:link,
+					.main-navigation-menu ul a:visited {
+						color: rgba(0,0,0,0.75);
 					}
 
-					.main-navigation-menu a:link,
-					.main-navigation-menu a:visited,
-					.main-navigation-toggle,
-					.main-navigation-toggle:focus,
-					.main-navigation-menu .submenu-dropdown-toggle {
-					    color: #111111;
-					}
-
-					.main-navigation-menu a:hover,
-					.main-navigation-menu a:active,
-					.main-navigation-toggle:hover,
-					.main-navigation-toggle:active,
-					.main-navigation-menu .submenu-dropdown-toggle:hover,
-					.main-navigation-menu .submenu-dropdown-toggle:active {
+					.main-navigation-menu ul a:hover,
+					.main-navigation-menu ul a:active{
 						color: rgba(0,0,0,0.5);
 					}
 
-					.main-navigation-menu li.current-menu-item > a {
-						background: rgba(0,0,0,0.05);
+					.main-navigation-menu ul .menu-item-has-children > a .icon {
+						fill: rgba(0,0,0,0.75);
+					}
+
+					.main-navigation-menu ul .menu-item-has-children > a:hover .icon,
+					.main-navigation-menu ul .menu-item-has-children > a:active .icon  {
+						fill: rgba(0,0,0,0.5);
 					}
 				';
 			}
@@ -210,150 +351,42 @@ class Chronus_Pro_Custom_Colors {
 		if ( $theme_options['title_color'] != $default_options['title_color'] ) {
 
 			$custom_css .= '
-				/* Post Titles Primary Color Setting */
-				.site-title,
-				.site-title a:link,
-				.site-title a:visited,
-				.page-title,
-				.entry-title,
-				.entry-title a:link,
-				.entry-title a:visited,
-				.post-slider-controls .zeeflex-direction-nav a:link,
-				.post-slider-controls .zeeflex-direction-nav a:visited {
+				/* Headings Color Setting */
+				.site-title a:hover,
+				.site-title a:active,
+				.entry-title a:hover,
+				.entry-title a:active {
 					color: ' . $theme_options['title_color'] . ';
 				}
-
-				.site-title a:hover,
-				.site-title a:active,
-				.widget-title a:hover,
-				.widget-title a:active,
-				.entry-title a:hover,
-				.entry-title a:active,
-				.post-slider-controls .zeeflex-direction-nav a:hover,
-				.post-slider-controls .zeeflex-direction-nav a:active {
-					color: #ee3333;
-				}
-
-				button:hover,
-				input[type="button"]:hover,
-				input[type="reset"]:hover,
-				input[type="submit"]:hover,
-				button:focus,
-				input[type="button"]:focus,
-				input[type="reset"]:focus,
-				input[type="submit"]:focus,
-				button:active,
-				input[type="button"]:active,
-				input[type="reset"]:active,
-				input[type="submit"]:active,
-				.more-link:hover,
-				.more-link:active,
-				.pagination a:link,
-				.pagination a:visited,
-				.infinite-scroll #infinite-handle span,
-				.tzwb-social-icons .social-icons-menu li a:active,
-				.tzwb-social-icons .social-icons-menu li a:hover {
-					background: ' . $theme_options['title_color'] . ';
-				}
 			';
 		}
 
-		// Set Widget Title Color.
-		if ( $theme_options['widget_title_color'] !== $default_options['widget_title_color'] ) {
-
-			$custom_css .= '
-				/* Widget Titles Color Setting */
-				.widget-title,
-				.widget-title a:link,
-				.widget-title a:visited,
-				.archive-title,
-				.comments-header .comments-title,
-				.comment-reply-title span {
-					color: ' . $theme_options['widget_title_color'] . ';
-				}
-			';
-		}
-
-		// Set Title Hover Color (= Link and Buttons color)
-		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
-
-			$custom_css .= '
-				/* Title Hover Color Setting */
-				.site-title a:hover,
-				.site-title a:active,
-				.widget-title a:hover,
-				.widget-title a:active,
-				.entry-title a:hover,
-				.entry-title a:active,
-				.post-slider-controls .zeeflex-direction-nav a:hover,
-				.post-slider-controls .zeeflex-direction-nav a:active {
-					color: ' . $theme_options['link_color'] . ';
-				}
-
-				.pagination a:hover,
-				.pagination a:active,
-				.infinite-scroll #infinite-handle span:hover {
-					background: ' . $theme_options['link_color'] . ';
-				}
-			';
-		}
-
-		// Set Footer Widgets Color.
-		if ( $theme_options['footer_widgets_color'] != $default_options['footer_widgets_color'] ) {
-
-			$custom_css .= '
-				.footer-widgets-background {
-					background: ' . $theme_options['footer_widgets_color'] . ';
-				}
-				';
+		// Set Page Background Hover Color.
+		if ( $theme_options['page_bg_color'] !== $default_options['page_bg_color'] ) {
 
 			// Check if a dark background color was chosen.
-			if ( self::is_color_light( $theme_options['footer_widgets_color'] ) ) {
+			if ( self::is_color_dark( $theme_options['page_bg_color'] ) ) {
 				$custom_css .= '
-					.footer-widgets .widget,
-					.footer-widgets .widget-title,
-					.footer-widgets .widget-title a:link,
-					.footer-widgets .widget-title a:visited,
-					.footer-widgets .widget a:link,
-					.footer-widgets .widget a:visited  {
-						color: #111111;
-					}
-
-					.footer-widgets .widget-title a:hover,
-					.footer-widgets .widget-title a:active,
-					.footer-widgets .widget a:hover,
-					.footer-widgets .widget a:active {
-						color: rgba(0,0,0,0.5);
-					}
-				';
-			}
-		}
-
-		// Set Footer Color.
-		if ( $theme_options['footer_color'] != $default_options['footer_color'] ) {
-
-			$custom_css .= '
-				.footer-wrap {
-					background: ' . $theme_options['footer_color'] . ';
-				}
-				';
-
-			// Check if a dark background color was chosen.
-			if ( self::is_color_light( $theme_options['footer_color'] ) ) {
-				$custom_css .= '
-					.site-footer,
-					.site-footer .site-info,
-					.site-footer .site-info a:link,
-					.site-footer .site-info a:visited,
-					.footer-navigation-menu a:link,
-					.footer-navigation-menu a:visited {
-						color: #111111;
-					}
-					.site-footer .site-info a:hover,
-					.site-footer .site-info a:active,
-					.footer-navigation-menu a:hover,
-					.footer-navigation-menu a:active {
-						color: rgba(0,0,0,0.5);
+					a:hover,
+					a:focus,
+					a:active,
+					button:hover,
+					input[type="button"]:hover,
+					input[type="reset"]:hover,
+					input[type="submit"]:hover,
+					button:focus,
+					input[type="button"]:focus,
+					input[type="reset"]:focus,
+					input[type="submit"]:focus,
+					button:active,
+					input[type="button"]:active,
+					input[type="reset"]:active,
+					input[type="submit"]:active,
+					.infinite-scroll #infinite-handle span:hover,
+					.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
+					.tzwb-tabbed-content .tzwb-tabnavi li a:active,
+					.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
+						color: #ffffff;
 					}
 				';
 			}
@@ -380,6 +413,23 @@ class Chronus_Pro_Custom_Colors {
 		// Get Default Colors from settings.
 		$default_options = Chronus_Pro_Customizer::get_default_options();
 
+		// Add Page Background Color setting.
+		$wp_customize->add_setting( 'chronus_theme_options[page_bg_color]', array(
+			'default'           => $default_options['page_bg_color'],
+			'type'           	=> 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'chronus_theme_options[page_bg_color]', array(
+				'label'      => _x( 'Page Background', 'color setting', 'chronus-pro' ),
+				'section'    => 'chronus_pro_section_colors',
+				'settings'   => 'chronus_theme_options[page_bg_color]',
+				'priority' => 10,
+			)
+		) );
+
 		// Add Top Navigation Color setting.
 		$wp_customize->add_setting( 'chronus_theme_options[top_navi_color]', array(
 			'default'           => $default_options['top_navi_color'],
@@ -393,11 +443,11 @@ class Chronus_Pro_Custom_Colors {
 				'label'      => _x( 'Top Navigation', 'color setting', 'chronus-pro' ),
 				'section'    => 'chronus_pro_section_colors',
 				'settings'   => 'chronus_theme_options[top_navi_color]',
-				'priority' => 10,
+				'priority' => 20,
 			)
 		) );
 
-		// Add Navigation Primary Color setting.
+		// Add Navigation Color setting.
 		$wp_customize->add_setting( 'chronus_theme_options[navi_color]', array(
 			'default'           => $default_options['navi_color'],
 			'type'           	=> 'option',
@@ -410,7 +460,7 @@ class Chronus_Pro_Custom_Colors {
 				'label'      => _x( 'Main Navigation', 'color setting', 'chronus-pro' ),
 				'section'    => 'chronus_pro_section_colors',
 				'settings'   => 'chronus_theme_options[navi_color]',
-				'priority' => 20,
+				'priority' => 30,
 			)
 		) );
 
@@ -427,11 +477,11 @@ class Chronus_Pro_Custom_Colors {
 				'label'      => _x( 'Links and Buttons', 'color setting', 'chronus-pro' ),
 				'section'    => 'chronus_pro_section_colors',
 				'settings'   => 'chronus_theme_options[link_color]',
-				'priority' => 30,
+				'priority' => 40,
 			)
 		) );
 
-		// Add Navigation Secondary Color setting.
+		// Add Title Color setting.
 		$wp_customize->add_setting( 'chronus_theme_options[title_color]', array(
 			'default'           => $default_options['title_color'],
 			'type'           	=> 'option',
@@ -444,58 +494,7 @@ class Chronus_Pro_Custom_Colors {
 				'label'      => _x( 'Post Titles', 'color setting', 'chronus-pro' ),
 				'section'    => 'chronus_pro_section_colors',
 				'settings'   => 'chronus_theme_options[title_color]',
-				'priority' => 40,
-			)
-		) );
-
-		// Add Widget Title Color setting.
-		$wp_customize->add_setting( 'chronus_theme_options[widget_title_color]', array(
-			'default'           => $default_options['widget_title_color'],
-			'type'           	=> 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
-		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'chronus_theme_options[widget_title_color]', array(
-				'label'      => _x( 'Widget Titles', 'color setting', 'chronus-pro' ),
-				'section'    => 'chronus_pro_section_colors',
-				'settings'   => 'chronus_theme_options[widget_title_color]',
 				'priority' => 50,
-			)
-		) );
-
-		// Add Footer Widget Color setting.
-		$wp_customize->add_setting( 'chronus_theme_options[footer_widgets_color]', array(
-			'default'           => $default_options['footer_widgets_color'],
-			'type'           	=> 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
-		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'chronus_theme_options[footer_widgets_color]', array(
-				'label'      => _x( 'Footer Widgets', 'color setting', 'chronus-pro' ),
-				'section'    => 'chronus_pro_section_colors',
-				'settings'   => 'chronus_theme_options[footer_widgets_color]',
-				'priority' => 60,
-			)
-		) );
-
-		// Add Footer Color setting.
-		$wp_customize->add_setting( 'chronus_theme_options[footer_color]', array(
-			'default'           => $default_options['footer_color'],
-			'type'           	=> 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
-		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'chronus_theme_options[footer_color]', array(
-				'label'      => _x( 'Footer', 'color setting', 'chronus-pro' ),
-				'section'    => 'chronus_pro_section_colors',
-				'settings'   => 'chronus_theme_options[footer_color]',
-				'priority' => 70,
 			)
 		) );
 	}

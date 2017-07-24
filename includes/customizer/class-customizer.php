@@ -59,21 +59,19 @@ class Chronus_Pro_Customizer {
 	static function get_default_options() {
 
 		$default_options = array(
-			'scroll_to_top'        => false,
-			'footer_text'          => '',
-			'credit_link'          => true,
-			'top_navi_color'       => '#ffffff',
-			'navi_color'           => '#303030',
-			'link_color'           => '#ee3333',
-			'title_color'          => '#303030',
-			'widget_title_color'   => '#303030',
-			'footer_widgets_color' => '#303030',
-			'footer_color'         => '#303030',
-			'text_font'            => 'Raleway',
-			'title_font'           => 'Rambla',
-			'navi_font'            => 'Rambla',
-			'widget_title_font'    => 'Rambla',
-			'available_fonts'      => 'favorites',
+			'scroll_to_top'     => false,
+			'footer_text'       => '',
+			'credit_link'       => true,
+			'page_bg_color'     => '#ffffff',
+			'top_navi_color'    => '#cc5555',
+			'navi_color'        => '#cc5555',
+			'link_color'        => '#cc5555',
+			'title_color'       => '#cc5555',
+			'text_font'         => 'Raleway',
+			'title_font'        => 'Rambla',
+			'navi_font'         => 'Rambla',
+			'widget_title_font' => 'Rambla',
+			'available_fonts'   => 'favorites',
 		);
 
 		return $default_options;

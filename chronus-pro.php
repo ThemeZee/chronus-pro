@@ -13,7 +13,6 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Chronus Pro
 Copyright(C) 2017, ThemeZee.com - support@themezee.com
-
 */
 
 // Exit if accessed directly.
@@ -109,7 +108,7 @@ class Chronus_Pro {
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/customizer/class-customizer.php';
 
 		// Include Pro Features.
-		#require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-custom-colors.php';
+		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-custom-colors.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-custom-fonts.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-line.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/modules/class-footer-widgets.php';
@@ -121,7 +120,6 @@ class Chronus_Pro {
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-vertical-box.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-list.php';
 		require_once CHRONUS_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-single.php';
-
 	}
 
 	/**
@@ -143,7 +141,6 @@ class Chronus_Pro {
 
 		// Add automatic plugin updater from ThemeZee Store API.
 		add_action( 'admin_init', array( __CLASS__, 'plugin_updater' ), 0 );
-
 	}
 
 	/**
@@ -176,7 +173,6 @@ class Chronus_Pro {
 
 		// Enqueue Custom CSS.
 		wp_add_inline_style( 'chronus-pro', $custom_css );
-
 	}
 
 	/**
@@ -195,7 +191,6 @@ class Chronus_Pro {
 		register_widget( 'Chronus_Pro_Magazine_Vertical_Box_Widget' );
 		register_widget( 'Chronus_Pro_Magazine_Posts_List_Widget' );
 		register_widget( 'Chronus_Pro_Magazine_Posts_Single_Widget' );
-
 	}
 
 	/**
@@ -237,7 +232,6 @@ class Chronus_Pro {
 			);
 
 		endif;
-
 	}
 }
 
