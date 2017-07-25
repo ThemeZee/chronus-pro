@@ -53,7 +53,7 @@ class Chronus_Pro_Custom_Colors {
 
 			$custom_css .= '
 				/* Page Background Color Setting */
-				.site {
+				.site, .scroll-to-top-button {
 					background: ' . $theme_options['page_bg_color'] . ';
 				}
 			';
@@ -148,7 +148,8 @@ class Chronus_Pro_Custom_Colors {
 					.tzwb-tabbed-content .tzwb-tabnavi li a,
 					.tzwb-social-icons .social-icons-menu li a,
 					.footer-widgets-background,
-					.footer-navigation {
+					.footer-navigation,
+					.scroll-to-top-button {
 						border-color: rgba(255,255,255,0.075);
 					}
 
@@ -166,7 +167,8 @@ class Chronus_Pro_Custom_Colors {
 					.main-navigation-menu > .menu-item-has-children > a .icon,
 					.main-navigation-toggle .icon,
 					.main-navigation-menu .submenu-dropdown-toggle .icon,
-					.tzwb-social-icons .social-icons-menu li a:hover .icon  {
+					.tzwb-social-icons .social-icons-menu li a:hover .icon,
+					.scroll-to-top-button:hover .icon {
 						fill: #ffffff;
 					}
 				';
@@ -215,18 +217,9 @@ class Chronus_Pro_Custom_Colors {
 				}
 
 				.search-form .search-submit .icon-search,
-				.tzwb-social-icons .social-icons-menu li a .icon {
+				.tzwb-social-icons .social-icons-menu li a .icon,
+				.scroll-to-top-button .icon {
 					fill: ' . $theme_options['link_color'] . ';
-				}
-
-				.scroll-to-top-button,
-				.scroll-to-top-button:focus,
-				.scroll-to-top-button:active {
-					background: ' . $theme_options['link_color'] . ';
-				}
-
-				.scroll-to-top-button:hover {
-					background: #303030;
 				}
 			';
 		}
