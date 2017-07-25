@@ -64,7 +64,7 @@ class Chronus_Pro {
 		define( 'CHRONUS_PRO_VERSION', '1.0' );
 
 		// Define Plugin Name.
-		define( 'CHRONUS_PRO_PRODUCT_ID', 113282 );
+		define( 'CHRONUS_PRO_PRODUCT_ID', 135412 );
 
 		// Define Update API URL.
 		define( 'CHRONUS_PRO_STORE_API_URL', 'https://themezee.com' );
