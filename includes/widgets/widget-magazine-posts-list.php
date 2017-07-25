@@ -54,14 +54,6 @@ class Chronus_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 	 */
 	function widget( $args, $instance ) {
 
-		// Show message to admins if Theme is not updated.
-		if ( ! function_exists( 'chronus_get_magazine_post_ids' ) ) {
-			if ( current_user_can( 'edit_theme_options' ) ) {
-				echo '<p>INFO: Magazine Widget is missing theme functions and can not be displayed. Please update the theme to the latest version. This message is only shown to admins.</p>';
-			}
-			return;
-		}
-
 		// Start Output Buffering.
 		ob_start();
 
@@ -119,12 +111,18 @@ class Chronus_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 		// Check if there are posts.
 		if ( $posts_query->have_posts() ) :
 
+			// Limit the number of words for the excerpt.
+			add_filter( 'excerpt_length', 'chronus_magazine_posts_excerpt_length' );
+
 			// Display Posts.
 			while ( $posts_query->have_posts() ) : $posts_query->the_post();
 
 				get_template_part( 'template-parts/widgets/magazine-large-post', 'list' );
 
 			endwhile;
+
+			// Remove excerpt filter.
+			remove_filter( 'excerpt_length', 'chronus_magazine_posts_excerpt_length' );
 
 		endif;
 
