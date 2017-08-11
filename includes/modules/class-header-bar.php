@@ -93,7 +93,9 @@ class Chronus_Pro_Header_Bar {
 
 			echo '</div>';
 		}
-	}/**
+	}
+
+	/**
 	 * Display SVG icons in social links menu.
 	 *
 	 * @param  string  $item_output The menu item output.

@@ -59,6 +59,7 @@ class Chronus_Pro_Customizer {
 	static function get_default_options() {
 
 		$default_options = array(
+			'author_bio'        => false,
 			'scroll_to_top'     => false,
 			'footer_text'       => '',
 			'credit_link'       => true,
