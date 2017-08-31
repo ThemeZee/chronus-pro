@@ -53,7 +53,9 @@ class Chronus_Pro_Custom_Colors {
 
 			$custom_css .= '
 				/* Page Background Color Setting */
-				.site, .scroll-to-top-button {
+				.site,
+				.header-search .header-search-form,
+				.scroll-to-top-button {
 					background: ' . $theme_options['page_bg_color'] . ';
 				}
 			';
@@ -149,6 +151,8 @@ class Chronus_Pro_Custom_Colors {
 					.tzwb-social-icons .social-icons-menu li a,
 					.footer-widgets-background,
 					.footer-navigation,
+					.header-search .header-search-form,
+					.entry-author,
 					.scroll-to-top-button {
 						border-color: rgba(255,255,255,0.075);
 					}
@@ -168,12 +172,13 @@ class Chronus_Pro_Custom_Colors {
 					.main-navigation-toggle .icon,
 					.main-navigation-menu .submenu-dropdown-toggle .icon,
 					.tzwb-social-icons .social-icons-menu li a:hover .icon,
+					.header-search .header-search-icon .icon-search,
 					.scroll-to-top-button:hover .icon {
 						fill: #ffffff;
 					}
 				';
-			}
-		}
+			} // End if().
+		} // End if().
 
 		// Set Link Color.
 		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
@@ -222,7 +227,7 @@ class Chronus_Pro_Custom_Colors {
 					fill: ' . $theme_options['link_color'] . ';
 				}
 			';
-		}
+		} // End if().
 
 		// Set Top Navigation Color.
 		if ( $theme_options['top_navi_color'] !== $default_options['top_navi_color'] ) {
@@ -281,8 +286,8 @@ class Chronus_Pro_Custom_Colors {
 						fill: rgba(0,0,0,0.5);
 					}
 				';
-			}
-		}
+			} // End if().
+		} // End if().
 
 		// Set Main Navigation Color.
 		if ( $theme_options['navi_color'] !== $default_options['navi_color'] ) {
@@ -296,7 +301,9 @@ class Chronus_Pro_Custom_Colors {
 				.main-navigation-menu a:hover,
 				.main-navigation-menu a:active,
 				.main-navigation-toggle:hover,
-				.main-navigation-toggle:active {
+				.main-navigation-toggle:active,
+				.footer-navigation-menu a:hover,
+				.footer-navigation-menu a:active {
 					color: ' . $theme_options['navi_color'] . ';
 				}
 
@@ -305,7 +312,9 @@ class Chronus_Pro_Custom_Colors {
 				.main-navigation-toggle:hover .icon,
 				.main-navigation-toggle:active .icon,
 				.main-navigation-menu .submenu-dropdown-toggle:hover .icon,
-				.main-navigation-menu .submenu-dropdown-toggle:active .icon {
+				.main-navigation-menu .submenu-dropdown-toggle:active .icon,
+				.header-search .header-search-icon:hover .icon-search,
+				.header-search .header-search-icon:active .icon-search {
 					fill: ' . $theme_options['navi_color'] . ';
 				}
 			';
@@ -338,7 +347,7 @@ class Chronus_Pro_Custom_Colors {
 					}
 				';
 			}
-		}
+		} // End if().
 
 		// Set Title Color.
 		if ( $theme_options['title_color'] != $default_options['title_color'] ) {

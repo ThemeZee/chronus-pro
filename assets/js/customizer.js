@@ -68,7 +68,7 @@
 				border_color = 'rgba(0,0,0,0.075)';
 			}
 
-			$( '.site, .scroll-to-top-button' )
+			$( '.site, .header-search .header-search-form, .scroll-to-top-button' )
 				.css( 'background', newval );
 
 			$( 'body, button, input, select, textarea, blockquote cite, blockquote small, .site-title, .site-title a, .main-navigation-menu, .main-navigation-menu > li > a, .main-navigation-toggle, .widget-title, .widget-title a, .entry-title, .entry-title a, .archive-title, .comments-header .comments-title, .comment-reply-title, .footer-navigation-menu a' )
@@ -95,13 +95,13 @@
 					function() { $( this ).css( 'color', text_color ); }
 				);
 
-			$( 'pre, th, td, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], textarea, .site-header, .primary-navigation-wrap, .widget ul li, .widget ol li, .sticky, .infinite-scroll #infinite-handle span, .featured-posts-wrap, .comment, .site-footer, .main-navigation-menu, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-social-icons .social-icons-menu li a, .footer-widgets-background, .footer-navigation, .scroll-to-top-button' )
+			$( 'pre, th, td, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], textarea, .site-header, .primary-navigation-wrap, .widget ul li, .widget ol li, .sticky, .infinite-scroll #infinite-handle span, .featured-posts-wrap, .comment, .site-footer, .main-navigation-menu, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-social-icons .social-icons-menu li a, .footer-widgets-background, .footer-navigation, .header-search .header-search-form, .entry-author, .scroll-to-top-button' )
 				.css( 'border-color', border_color );
 
 			$( '.entry-meta' )
 				.css( 'color', meta_color );
 
-			$( '.main-navigation-menu > .menu-item-has-children > a .icon, .main-navigation-toggle .icon, .main-navigation-menu .submenu-dropdown-toggle .icon' )
+			$( '.main-navigation-menu > .menu-item-has-children > a .icon, .main-navigation-toggle .icon, .main-navigation-menu .submenu-dropdown-toggle .icon, .header-search .header-search-icon .icon-search' )
 				.css( 'fill', text_color );
 
 			$( '.main-navigation-menu > .menu-item-has-children > a, .main-navigation-toggle, .main-navigation-menu .submenu-dropdown-toggle' )
@@ -213,7 +213,7 @@
 			$( '.main-navigation-menu ul' )
 				.css( 'background', newval );
 
-			$( '.main-navigation-menu > li > a, .main-navigation-menu > .menu-item-has-children > a, .main-navigation-toggle' )
+			$( '.main-navigation-menu > li > a, .main-navigation-menu > .menu-item-has-children > a, .main-navigation-toggle, .footer-navigation-menu a' )
 				.hover( function() { $( this ).css( 'color', newval ); },
 						function() { $( this ).css( 'color', text_color ); }
 				);
@@ -221,7 +221,7 @@
 			$( '.main-navigation-menu > .menu-item-has-children > a .icon, .main-navigation-toggle .icon, .main-navigation-menu .submenu-dropdown-toggle .icon' )
 				.css( 'fill', text_color );
 
-			$( '.main-navigation-menu > .menu-item-has-children > a, .main-navigation-toggle, .main-navigation-menu .submenu-dropdown-toggle' )
+			$( '.main-navigation-menu > .menu-item-has-children > a, .main-navigation-toggle, .main-navigation-menu .submenu-dropdown-toggle, .header-search .header-search-icon' )
 				.hover( function() { $( this ).find( '.icon' ).css( 'fill', newval ); },
 					function() { $( this ).find( '.icon' ).css( 'fill', text_color ); }
 				);
