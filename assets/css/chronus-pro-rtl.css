@@ -195,6 +195,49 @@
 }
 
 /*--------------------------------------------------------------
+# Header Search
+--------------------------------------------------------------*/
+.header-search .header-search-form {
+	position: absolute;
+	left: 0;
+	display: none;
+	margin: 0;
+	padding: 1em;
+	background: #fff;
+	border: 1px solid rgba(0,0,0,0.075);
+}
+
+.header-search .header-search-form .search-form {
+	min-width: 300px;
+}
+
+.header-search .header-search-icon {
+	padding: 0.75em 1em;
+}
+
+.header-search .header-search-icon:hover {
+	cursor: pointer;
+}
+
+.header-search .header-search-icon:focus {
+	outline: none;
+}
+
+.header-search .header-search-icon .icon-search {
+	margin: 0;
+	padding: 0;
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+	fill: #303030;
+}
+
+.header-search .header-search-icon:hover .icon-search,
+.header-search .header-search-icon:active .icon-search {
+	fill: #cc5555;
+}
+
+/*--------------------------------------------------------------
 # Magazine Post Widgets
 --------------------------------------------------------------*/
 
@@ -278,6 +321,49 @@
 
 .widget-magazine-posts .magazine-list .type-post .wp-post-image {
 	margin: 0;
+}
+
+/*--------------------------------------------------------------
+# Author Bio
+--------------------------------------------------------------*/
+.entry-author {
+	margin: 0 0 1.5em;
+	padding: 1.5em 0 1.35em;
+	border-top: 1px solid rgba(0,0,0,0.075);
+	border-bottom: 1px solid rgba(0,0,0,0.075);
+}
+
+.entry-author .author-avatar {
+	float: right;
+	margin: 0 0 0.15em 1.5em;
+	max-width: 25%;
+}
+
+.entry-author .author-avatar img {
+	vertical-align: top;
+}
+
+.entry-author .author-heading .author-title {
+	display: inline-block;
+	margin: 0 0 0.25em 1em;
+	padding: 0;
+	font-size: 20px;
+	font-size: 1.25rem;
+	font-family: 'Rambla', Tahoma, Arial;
+	font-weight: normal;
+}
+
+.entry-author .author-heading .author-link {
+	display: inline-block;
+	margin: 0 0 0.5em;
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.entry-author .author-bio {
+	margin: 0;
+	font-size: 17px;
+	font-size: 1.0625rem;
 }
 
 /*--------------------------------------------------------------
@@ -461,6 +547,27 @@
 ## Desktop Small ( < 960px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 57.5em) {
+	/* Header Search */
+	.header-search .header-search-form {
+		position: static;
+		display: block !important;
+		visibility: visible;
+		margin: 0.5em 0 1.5em;
+		padding: 0;
+		background: none;
+		border: none;
+	}
+
+	.header-search .header-search-form .search-form {
+		margin: 0 auto;
+		min-width: auto;
+		max-width: 400px;
+	}
+
+	.header-search .header-search-icon {
+		display: none;
+	}
+
 	/* Magazine Posts */
 	.widget-magazine-posts .magazine-horizontal-box .large-post .entry-content,
 	.widget-magazine-posts .magazine-horizontal-box .large-post .more-link,
@@ -786,6 +893,22 @@
 ## Mobile Medium ( < 480px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 30em) {
+	/* Author Bio */
+	.entry-author .author-avatar {
+		float: none;
+		margin: 0 0 1em;
+		max-width: 100%;
+	}
+
+	.entry-author .author-heading .author-title {
+		display: block;
+		margin: 0 0 0.25em;
+	}
+
+	.entry-author .author-heading .author-link {
+		display: block;
+	}
+
 	/* Magazine Posts */
 	.widget-magazine-posts-list .magazine-list .large-post .entry-title {
 		font-size: 18px;
