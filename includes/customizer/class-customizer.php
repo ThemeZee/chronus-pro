@@ -73,7 +73,6 @@ class Chronus_Pro_Customizer {
 			'title_font'        => 'Rambla',
 			'navi_font'         => 'Rambla',
 			'widget_title_font' => 'Rambla',
-			'available_fonts'   => 'favorites',
 		);
 
 		return $default_options;
