@@ -5,18 +5,20 @@ Plugin URI: http://themezee.com/addons/chronus-pro/
 Description: Adds additional features like footer widgets, custom colors, custom fonts, custom menus, and Magazine Post widgets to the Chronus theme.
 Author: ThemeZee
 Author URI: https://themezee.com/
-Version: 1.2
+Version: 1.3
 Text Domain: chronus-pro
 Domain Path: /languages/
-License: GPL v3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Chronus Pro
 Copyright(C) 2017, ThemeZee.com - support@themezee.com
 */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 
 /**
@@ -47,7 +49,6 @@ class Chronus_Pro {
 
 		// Setup Action Hooks.
 		self::setup_actions();
-
 	}
 
 	/**
@@ -61,7 +62,7 @@ class Chronus_Pro {
 		define( 'CHRONUS_PRO_NAME', 'Chronus Pro' );
 
 		// Define Version Number.
-		define( 'CHRONUS_PRO_VERSION', '1.2' );
+		define( 'CHRONUS_PRO_VERSION', '1.3' );
 
 		// Define Plugin Name.
 		define( 'CHRONUS_PRO_PRODUCT_ID', 135412 );
@@ -77,7 +78,6 @@ class Chronus_Pro {
 
 		// Plugin Root File.
 		define( 'CHRONUS_PRO_PLUGIN_FILE', __FILE__ );
-
 	}
 
 	/**
@@ -225,13 +225,12 @@ class Chronus_Pro {
 
 			// Setup the updater.
 			$chronus_pro_updater = new Chronus_Pro_Plugin_Updater( CHRONUS_PRO_STORE_API_URL, __FILE__, array(
-					'version' 	=> CHRONUS_PRO_VERSION,
-					'license' 	=> $license_key,
-					'item_name' => CHRONUS_PRO_NAME,
-					'item_id'   => CHRONUS_PRO_PRODUCT_ID,
-					'author' 	=> 'ThemeZee',
-				)
-			);
+				'version'   => CHRONUS_PRO_VERSION,
+				'license'   => $license_key,
+				'item_name' => CHRONUS_PRO_NAME,
+				'item_id'   => CHRONUS_PRO_PRODUCT_ID,
+				'author'    => 'ThemeZee',
+			) );
 
 		endif;
 	}

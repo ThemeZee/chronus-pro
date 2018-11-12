@@ -153,6 +153,9 @@
 				.hover( function() { $( this ).find( '.icon' ).css( 'fill', text_color ); },
 					function() { $( this ).find( '.icon' ).css( 'fill', newval ); }
 				);
+
+			$( '.has-primary-color' ).css( 'color', newval );
+			$( '.has-primary-background-color' ).css( 'background-color', newval );
 		} );
 	} );
 

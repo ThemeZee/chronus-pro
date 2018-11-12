@@ -8,7 +8,9 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Custom Colors Class
@@ -29,6 +31,9 @@ class Chronus_Pro_Custom_Colors {
 
 		// Add Custom Color CSS code to custom stylesheet output.
 		add_filter( 'chronus_pro_custom_css_stylesheet', array( __CLASS__, 'custom_colors_css' ) );
+
+		// Add Custom Color CSS code to the Gutenberg editor.
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'custom_editor_colors_css' ) );
 
 		// Add Custom Color Settings.
 		add_action( 'customize_register', array( __CLASS__, 'color_settings' ) );
@@ -195,7 +200,8 @@ class Chronus_Pro_Custom_Colors {
 				.tzwb-tabbed-content .tzwb-tabnavi li a:link,
 				.tzwb-tabbed-content .tzwb-tabnavi li a:visited,
 				.widget-title a:hover,
-				.widget-title a:active {
+				.widget-title a:active,
+				.has-primary-color {
 					color: ' . $theme_options['link_color'] . ';
 				}
 
@@ -225,6 +231,10 @@ class Chronus_Pro_Custom_Colors {
 				.tzwb-social-icons .social-icons-menu li a .icon,
 				.scroll-to-top-button .icon {
 					fill: ' . $theme_options['link_color'] . ';
+				}
+
+				.has-primary-background-color {
+					background-color: ' . $theme_options['link_color'] . ';
 				}
 			';
 		} // End if().
@@ -398,6 +408,56 @@ class Chronus_Pro_Custom_Colors {
 	}
 
 	/**
+	 * Adds Color CSS styles in the Gutenberg Editor to override default colors
+	 *
+	 * @return void
+	 */
+	static function custom_editor_colors_css() {
+
+		// Get Theme Options from Database.
+		$theme_options = Chronus_Pro_Customizer::get_theme_options();
+
+		// Get Default Fonts from settings.
+		$default_options = Chronus_Pro_Customizer::get_default_options();
+
+		// Set Primary Color.
+		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
+
+			$custom_css = '
+				.has-primary-color,
+				.edit-post-visual-editor .editor-block-list__block a {
+					color: ' . $theme_options['link_color'] . ';
+				}
+				.has-primary-background-color {
+					background-color: ' . $theme_options['link_color'] . ';
+				}
+			';
+
+			wp_add_inline_style( 'chronus-editor-styles', $custom_css );
+		}
+	}
+
+	/**
+	 * Change primary color in Gutenberg Editor.
+	 *
+	 * @return array $editor_settings
+	 */
+	static function change_primary_color( $color ) {
+		// Get Theme Options from Database.
+		$theme_options = Chronus_Pro_Customizer::get_theme_options();
+
+		// Get Default Fonts from settings.
+		$default_options = Chronus_Pro_Customizer::get_default_options();
+
+		// Set Primary Color.
+		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
+			$color = $theme_options['link_color'];
+		}
+
+		return $color;
+	}
+
+	/**
 	 * Adds all color settings in the Customizer
 	 *
 	 * @param object $wp_customize / Customizer Object.
@@ -408,9 +468,8 @@ class Chronus_Pro_Custom_Colors {
 		$wp_customize->add_section( 'chronus_pro_section_colors', array(
 			'title'    => __( 'Theme Colors', 'chronus-pro' ),
 			'priority' => 60,
-			'panel' => 'chronus_options_panel',
-			)
-		);
+			'panel'    => 'chronus_options_panel',
+		) );
 
 		// Get Default Colors from settings.
 		$default_options = Chronus_Pro_Customizer::get_default_options();
@@ -418,16 +477,15 @@ class Chronus_Pro_Custom_Colors {
 		// Add Page Background Color setting.
 		$wp_customize->add_setting( 'chronus_theme_options[page_bg_color]', array(
 			'default'           => $default_options['page_bg_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'chronus_theme_options[page_bg_color]', array(
-				'label'      => _x( 'Page Background', 'color setting', 'chronus-pro' ),
-				'section'    => 'chronus_pro_section_colors',
-				'settings'   => 'chronus_theme_options[page_bg_color]',
+				'label'    => _x( 'Page Background', 'color setting', 'chronus-pro' ),
+				'section'  => 'chronus_pro_section_colors',
+				'settings' => 'chronus_theme_options[page_bg_color]',
 				'priority' => 10,
 			)
 		) );
@@ -435,16 +493,15 @@ class Chronus_Pro_Custom_Colors {
 		// Add Top Navigation Color setting.
 		$wp_customize->add_setting( 'chronus_theme_options[top_navi_color]', array(
 			'default'           => $default_options['top_navi_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'chronus_theme_options[top_navi_color]', array(
-				'label'      => _x( 'Top Navigation', 'color setting', 'chronus-pro' ),
-				'section'    => 'chronus_pro_section_colors',
-				'settings'   => 'chronus_theme_options[top_navi_color]',
+				'label'    => _x( 'Top Navigation', 'color setting', 'chronus-pro' ),
+				'section'  => 'chronus_pro_section_colors',
+				'settings' => 'chronus_theme_options[top_navi_color]',
 				'priority' => 20,
 			)
 		) );
@@ -452,16 +509,15 @@ class Chronus_Pro_Custom_Colors {
 		// Add Navigation Color setting.
 		$wp_customize->add_setting( 'chronus_theme_options[navi_color]', array(
 			'default'           => $default_options['navi_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'chronus_theme_options[navi_color]', array(
-				'label'      => _x( 'Main Navigation', 'color setting', 'chronus-pro' ),
-				'section'    => 'chronus_pro_section_colors',
-				'settings'   => 'chronus_theme_options[navi_color]',
+				'label'    => _x( 'Main Navigation', 'color setting', 'chronus-pro' ),
+				'section'  => 'chronus_pro_section_colors',
+				'settings' => 'chronus_theme_options[navi_color]',
 				'priority' => 30,
 			)
 		) );
@@ -469,16 +525,15 @@ class Chronus_Pro_Custom_Colors {
 		// Add Link and Button Color setting.
 		$wp_customize->add_setting( 'chronus_theme_options[link_color]', array(
 			'default'           => $default_options['link_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'chronus_theme_options[link_color]', array(
-				'label'      => _x( 'Links and Buttons', 'color setting', 'chronus-pro' ),
-				'section'    => 'chronus_pro_section_colors',
-				'settings'   => 'chronus_theme_options[link_color]',
+				'label'    => _x( 'Links and Buttons', 'color setting', 'chronus-pro' ),
+				'section'  => 'chronus_pro_section_colors',
+				'settings' => 'chronus_theme_options[link_color]',
 				'priority' => 40,
 			)
 		) );
@@ -486,16 +541,15 @@ class Chronus_Pro_Custom_Colors {
 		// Add Title Color setting.
 		$wp_customize->add_setting( 'chronus_theme_options[title_color]', array(
 			'default'           => $default_options['title_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
-			)
-		);
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'chronus_theme_options[title_color]', array(
-				'label'      => _x( 'Post Titles', 'color setting', 'chronus-pro' ),
-				'section'    => 'chronus_pro_section_colors',
-				'settings'   => 'chronus_theme_options[title_color]',
+				'label'    => _x( 'Post Titles', 'color setting', 'chronus-pro' ),
+				'section'  => 'chronus_pro_section_colors',
+				'settings' => 'chronus_theme_options[title_color]',
 				'priority' => 50,
 			)
 		) );
@@ -540,3 +594,4 @@ class Chronus_Pro_Custom_Colors {
 
 // Run Class.
 add_action( 'init', array( 'Chronus_Pro_Custom_Colors', 'setup' ) );
+add_filter( 'chronus_primary_color', array( 'Chronus_Pro_Custom_Colors', 'change_primary_color' ) );
