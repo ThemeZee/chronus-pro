@@ -1,0 +1,28 @@
+.scroll-to-top-button {
+	position: fixed;
+	right: 0.75em;
+	bottom: 0.75em;
+	z-index: 9999;
+	display: inline;
+	margin: 0 auto;
+	padding: 0;
+	width: 45px;
+	height: 45px;
+	border: 1px solid rgba(0,0,0,0.075);
+	background: #fff;
+	cursor: pointer;
+	-webkit-transition: none;
+	transition: none;
+}
+
+.scroll-to-top-button .icon {
+	margin: 0.15em 0 0;
+	width: 22px;
+	height: 22px;
+	vertical-align: top;
+	fill: #cc5555;
+}
+
+.scroll-to-top-button:hover .icon {
+	fill: #303030;
+}
