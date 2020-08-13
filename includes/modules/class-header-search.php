@@ -138,7 +138,7 @@ class Chronus_Pro_Header_Search {
 
 		// Hide Header Search?
 		if ( false === $theme_options['header_search'] ) {
-			$elements[] = '.primary-navigation .main-navigation-menu li.header-search';
+			$elements[] = '.primary-navigation .main-navigation li.header-search';
 		}
 
 		return $elements;

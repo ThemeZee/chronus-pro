@@ -5,7 +5,7 @@
 	margin: 0;
 	padding: 1em;
 	background: #fff;
-	border: 1px solid rgba(0,0,0,0.075);
+	border: 1px solid rgba(0, 0, 0, 0.075);
 }
 
 .header-search .header-search-form .search-form {
@@ -13,7 +13,7 @@
 }
 
 .header-search .header-search-icon {
-	padding: 0.75em 1em;
+	padding: 1em;
 }
 
 .header-search .header-search-icon:hover {
@@ -25,11 +25,11 @@
 }
 
 .header-search .header-search-icon .icon-search {
-	margin: 0;
+	display: block;
+	margin: 0.05em 0 0;
 	padding: 0;
 	width: 24px;
 	height: 24px;
-	vertical-align: middle;
 	fill: #303030;
 }
 
@@ -52,7 +52,6 @@
 	.header-search .header-search-form .search-form {
 		margin: 0 auto;
 		min-width: auto;
-		max-width: 400px;
 	}
 
 	.header-search .header-search-icon {
