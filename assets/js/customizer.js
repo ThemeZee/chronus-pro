@@ -71,11 +71,11 @@
 			$( '.site, .header-search .header-search-form, .scroll-to-top-button' )
 				.css( 'background', newval );
 
-			$( 'body, button, input, select, textarea, blockquote cite, blockquote small, .site-title, .site-title a, .main-navigation-menu, .main-navigation-menu > li > a, .main-navigation-toggle, .widget-title, .widget-title a, .entry-title, .entry-title a, .archive-title, .comments-header .comments-title, .comment-reply-title, .footer-navigation-menu a' )
+			$( 'body, button, input, select, textarea, blockquote cite, blockquote small, .site-title, .site-title a, .main-navigation ul, .main-navigation ul > li > a, .primary-menu-toggle, .widget-title, .widget-title a, .entry-title, .entry-title a, .archive-title, .comments-header .comments-title, .comment-reply-title, .footer-navigation-menu a' )
 				.css( 'color', text_color );
 
 			$( 'a, button, input[type="button"], input[type="reset"], input[type="submit"], .infinite-scroll #infinite-handle span, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab' )
-				.not( $( '.header-bar a, .main-navigation-menu ul a' ) )
+				.not( $( '.header-bar a, .main-navigation ul ul a' ) )
 				.hover( function() { $( this ).css( 'color', text_color ); },
 					function() { $( this ).css( 'color', link_color ); }
 				);
@@ -85,7 +85,7 @@
 					function() { $( this ).css( 'color', text_color ); }
 				);
 
-			$( '.main-navigation-menu > li > a, .main-navigation-toggle, .footer-navigation-menu a' )
+			$( '.main-navigation ul > li > a, .primary-menu-toggle, .footer-navigation-menu a' )
 				.hover( function() { $( this ).css( 'color', navi_color ); },
 					function() { $( this ).css( 'color', text_color ); }
 				);
@@ -95,16 +95,16 @@
 					function() { $( this ).css( 'color', text_color ); }
 				);
 
-			$( 'pre, th, td, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], textarea, .site-header, .primary-navigation-wrap, .widget ul li, .widget ol li, .sticky, .infinite-scroll #infinite-handle span, .featured-posts-wrap, .comment, .site-footer, .main-navigation-menu, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-social-icons .social-icons-menu li a, .footer-widgets-background, .footer-navigation, .header-search .header-search-form, .entry-author, .scroll-to-top-button' )
+			$( 'pre, th, td, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], textarea, .site-header, .primary-navigation-wrap, .widget ul li, .widget ol li, .sticky, .infinite-scroll #infinite-handle span, .featured-posts-wrap, .comment, .site-footer, .main-navigation ul, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-social-icons .social-icons-menu li a, .footer-widgets-background, .footer-navigation, .header-search .header-search-form, .entry-author, .scroll-to-top-button' )
 				.css( 'border-color', border_color );
 
 			$( '.entry-meta' )
 				.css( 'color', meta_color );
 
-			$( '.main-navigation-menu > .menu-item-has-children > a .icon, .main-navigation-toggle .icon, .main-navigation-menu .submenu-dropdown-toggle .icon, .header-search .header-search-icon .icon-search' )
+			$( '.search-form .search-submit:hover .icon-search, .search-form .search-submit:active .icon-search, .main-navigation ul > .menu-item-has-children > a .icon, .main-navigation ul > li > .dropdown-toggle > .icon, .main-navigation ul > li > .dropdown-toggle:focus > .icon, .primary-menu-toggle .icon, .tzwb-social-icons .social-icons-menu li a:hover .icon, .header-search .header-search-icon .icon-search, .scroll-to-top-button:hover .icon' )
 				.css( 'fill', text_color );
 
-			$( '.main-navigation-menu > .menu-item-has-children > a, .main-navigation-toggle, .main-navigation-menu .submenu-dropdown-toggle' )
+			$( '.main-navigation ul > .menu-item-has-children > a, .primary-menu-toggle, .main-navigation ul .submenu-dropdown-toggle' )
 				.hover( function() { $( this ).find( '.icon' ).css( 'fill', navi_color ); },
 					function() { $( this ).find( '.icon' ).css( 'fill', text_color ); }
 				);
@@ -132,11 +132,11 @@
 			}
 
 			$( 'a, button, input[type="button"], input[type="reset"], input[type="submit"], .infinite-scroll #infinite-handle span, .tzwb-tabbed-content .tzwb-tabnavi li a, .widget-title a' )
-				.not( $( '.header-bar a, .site-title a, .entry-title a, .widget-title a, .main-navigation-menu a, .main-navigation-menu ul a' ) )
+				.not( $( '.header-bar a, .site-title a, .entry-title a, .widget-title a, .main-navigation ul a, .main-navigation ul ul a' ) )
 				.css( 'color', newval );
 
 			$( 'a, button, input[type="button"], input[type="reset"], input[type="submit"], .infinite-scroll #infinite-handle span, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab' )
-				.not( $( '.header-bar a, .site-title a, .entry-title a, .widget-title a, .main-navigation-menu a, .main-navigation-menu ul a' ) )
+				.not( $( '.header-bar a, .site-title a, .entry-title a, .widget-title a, .main-navigation ul a, .main-navigation ul ul a' ) )
 				.hover( function() { $( this ).css( 'color', text_color ); },
 					function() { $( this ).css( 'color', newval ); }
 				);
@@ -162,7 +162,7 @@
 	/* Top Navigation Color Option */
 	wp.customize( 'chronus_theme_options[top_navi_color]', function( value ) {
 		value.bind( function( newval ) {
-			$( '.header-bar-wrap, .top-navigation-menu ul' )
+			$( '.header-bar-wrap, .top-navigation ul ul' )
 				.css( 'background', newval );
 
 			var text_color, hover_color, border_color;
@@ -177,21 +177,21 @@
 				border_color = 'rgba(255,255,255,0.1)';
 			}
 
-			$( '.top-navigation-menu, .top-navigation-menu ul, .top-navigation-menu a, .top-navigation-menu ul a' )
+			$( '.top-navigation ul, .top-navigation ul ul, .top-navigation ul a, .top-navigation ul ul a' )
 				.css( 'border-color', border_color );
 
-			$( '.top-navigation-menu ul, .top-navigation-menu a, .top-navigation-toggle, .top-navigation-menu .submenu-dropdown-toggle' )
+			$( '.top-navigation ul ul, .top-navigation ul a, .secondary-menu-toggle' )
 				.css( 'color', text_color );
 
-			$( '.top-navigation-menu a, .top-navigation-toggle' )
+			$( '.top-navigation ul a, .secondary-menu-toggle' )
 				.hover( function() { $( this ).css( 'color', hover_color ); },
 						function() { $( this ).css( 'color', text_color ); }
 				);
 
-			$( '.top-navigation-menu > .menu-item-has-children > a .icon, .top-navigation-menu ul .menu-item-has-children > a .icon, .header-bar .social-icons-menu li a .icon, .top-navigation-toggle .icon, .top-navigation-menu .submenu-dropdown-toggle .icon' )
+			$( '.top-navigation ul > .menu-item-has-children > a .icon, .top-navigation ul ul .menu-item-has-children > a .icon, .header-bar .social-icons-menu li a .icon, .secondary-menu-toggle .icon, .top-navigation .dropdown-toggle .icon, .top-navigation ul .menu-item-has-children > a > .icon' )
 				.css( 'fill', text_color );
 
-			$( '.top-navigation-menu > .menu-item-has-children > a, .top-navigation-menu ul .menu-item-has-children > a, .header-bar .social-icons-menu li a, .top-navigation-toggle, .top-navigation-menu .submenu-dropdown-toggle' )
+			$( '.header-bar .social-icons-menu li a:hover .icon, .secondary-menu-toggle:hover .icon, .secondary-menu-toggle:active .icon, .top-navigation .dropdown-toggle:hover .icon, .top-navigation .dropdown-toggle:active .icon, .top-navigation ul .menu-item-has-children > a:hover > .icon, .top-navigation ul .menu-item-has-children > a:active > .icon' )
 				.hover( function() { $( this ).find( '.icon' ).css( 'fill', hover_color ); },
 					function() { $( this ).find( '.icon' ).css( 'fill', text_color ); }
 				);
@@ -213,18 +213,18 @@
 				text_color = '#303030';
 			}
 
-			$( '.main-navigation-menu ul' )
+			$( '.main-navigation ul ul' )
 				.css( 'background', newval );
 
-			$( '.main-navigation-menu > li > a, .main-navigation-menu > .menu-item-has-children > a, .main-navigation-toggle, .footer-navigation-menu a' )
+			$( '.main-navigation ul > li > a, .main-navigation ul > .menu-item-has-children > a, .primary-menu-toggle, .footer-navigation-menu a' )
 				.hover( function() { $( this ).css( 'color', newval ); },
 						function() { $( this ).css( 'color', text_color ); }
 				);
 
-			$( '.main-navigation-menu > .menu-item-has-children > a .icon, .main-navigation-toggle .icon, .main-navigation-menu .submenu-dropdown-toggle .icon' )
+			$( '.main-navigation ul > .menu-item-has-children > a .icon, .primary-menu-toggle .icon, .main-navigation ul .submenu-dropdown-toggle .icon' )
 				.css( 'fill', text_color );
 
-			$( '.main-navigation-menu > .menu-item-has-children > a, .main-navigation-toggle, .main-navigation-menu .submenu-dropdown-toggle, .header-search .header-search-icon' )
+			$( '.main-navigation ul > .menu-item-has-children > a, .primary-menu-toggle, .main-navigation ul .submenu-dropdown-toggle, .header-search .header-search-icon' )
 				.hover( function() { $( this ).find( '.icon' ).css( 'fill', newval ); },
 					function() { $( this ).find( '.icon' ).css( 'fill', text_color ); }
 				);
@@ -239,21 +239,21 @@
 				border_color = 'rgba(255,255,255,0.1)';
 			}
 
-			$( '.main-navigation-menu ul a' )
+			$( '.main-navigation ul ul a' )
 				.css( 'border-color', border_color );
 
-			$( '.main-navigation-menu ul, .main-navigation-menu ul a' )
+			$( '.main-navigation ul ul, .main-navigation ul ul a' )
 				.css( 'color', menu_color );
 
-			$( '.main-navigation-menu ul a' )
+			$( '.main-navigation ul ul a' )
 				.hover( function() { $( this ).css( 'color', hover_color ); },
 						function() { $( this ).css( 'color', menu_color ); }
 				);
 
-			$( '.main-navigation-menu ul .menu-item-has-children > a .icon' )
+			$( '.main-navigation ul ul .menu-item-has-children > a .icon, .main-navigation ul ul > li > .dropdown-toggle > .icon, .main-navigation ul ul > li > .dropdown-toggle:focus > .icon' )
 				.css( 'fill', menu_color );
 
-			$( '.main-navigation-menu ul .menu-item-has-children > a' )
+			$( '.main-navigation ul ul .menu-item-has-children > a, .main-navigation ul ul > li > .dropdown-toggle' )
 				.hover( function() { $( this ).find( '.icon' ).css( 'fill', hover_color ); },
 						function() { $( this ).find( '.icon' ).css( 'fill', menu_color ); }
 				);
@@ -355,7 +355,7 @@
 			var newFont = newval === 'SystemFontStack' ? systemFont : newval;
 
 			// Set CSS.
-			$( '.top-navigation-menu, .top-navigation-toggle, .main-navigation-menu, .main-navigation-toggle, .footer-navigation-menu' )
+			$( '.top-navigation ul, .secondary-menu-toggle, .main-navigation ul, .primary-menu-toggle, .footer-navigation-menu' )
 				.css( 'font-family', newFont );
 
 		} );

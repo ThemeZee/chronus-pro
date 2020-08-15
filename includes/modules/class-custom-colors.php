@@ -84,9 +84,9 @@ class Chronus_Pro_Custom_Colors {
 					.site-title,
 					.site-title a:link,
 					.site-title a:visited,
-					.main-navigation-menu,
-					.main-navigation-menu a:link,
-					.main-navigation-menu a:visited,
+					.main-navigation ul,
+					.main-navigation ul a:link,
+					.main-navigation ul a:visited,
 					.widget-title,
 					.widget-title a:link,
 					.widget-title a:visited,
@@ -96,7 +96,8 @@ class Chronus_Pro_Custom_Colors {
 					.archive-title,
 					.comments-header .comments-title,
 					.comment-reply-title,
-					.main-navigation-toggle,
+					.primary-menu-toggle,
+					.primary-menu-toggle:focus,
 					.footer-navigation-menu a,
 					.footer-navigation-menu a:link,
 					.footer-navigation-menu a:visited {
@@ -109,8 +110,8 @@ class Chronus_Pro_Custom_Colors {
 					.entry-title a:active,
 					.widget-title a:hover,
 					.widget-title a:active,
-					.main-navigation-menu a:hover,
-					.main-navigation-menu a:active,
+					.main-navigation ul a:hover,
+					.main-navigation ul a:active,
 					.footer-navigation-menu a:hover,
 					.footer-navigation-menu a:active {
 						color: #cc5555;
@@ -151,7 +152,7 @@ class Chronus_Pro_Custom_Colors {
 					.featured-posts-wrap,
 					.comment,
 					.site-footer,
-					.main-navigation-menu,
+					.main-navigation ul,
 					.tzwb-tabbed-content .tzwb-tabnavi li a,
 					.tzwb-social-icons .social-icons-menu li a,
 					.footer-widgets-background,
@@ -173,9 +174,10 @@ class Chronus_Pro_Custom_Colors {
 
 					.search-form .search-submit:hover .icon-search,
 					.search-form .search-submit:active .icon-search,
-					.main-navigation-menu > .menu-item-has-children > a .icon,
-					.main-navigation-toggle .icon,
-					.main-navigation-menu .submenu-dropdown-toggle .icon,
+					.main-navigation ul > .menu-item-has-children > a .icon,
+					.main-navigation ul > li > .dropdown-toggle > .icon,
+					.main-navigation ul > li > .dropdown-toggle:focus > .icon,
+					.primary-menu-toggle .icon,
 					.tzwb-social-icons .social-icons-menu li a:hover .icon,
 					.header-search .header-search-icon .icon-search,
 					.scroll-to-top-button:hover .icon {
@@ -245,7 +247,7 @@ class Chronus_Pro_Custom_Colors {
 			$custom_css .= '
 				/* Top Navigation Color Setting */
 				.header-bar-wrap,
-				.top-navigation-menu ul {
+				.top-navigation ul ul {
 					background: ' . $theme_options['top_navi_color'] . ';
 				}
 			';
@@ -253,46 +255,44 @@ class Chronus_Pro_Custom_Colors {
 			// Check if a dark background color was chosen.
 			if ( self::is_color_light( $theme_options['top_navi_color'] ) ) {
 				$custom_css .= '
-					.top-navigation-menu,
-					.top-navigation-menu ul,
-					.top-navigation-menu a,
-					.top-navigation-menu ul a {
+					.top-navigation ul,
+					.top-navigation ul ul,
+					.top-navigation ul a,
+					.top-navigation ul ul a {
 						border-color: rgba(0,0,0,0.05);
 					}
 
-					.top-navigation-menu ul,
-					.top-navigation-menu a:link,
-					.top-navigation-menu a:visited,
-					.top-navigation-toggle,
-					.top-navigation-toggle:focus,
-					.top-navigation-menu .submenu-dropdown-toggle {
+					.top-navigation ul ul,
+					.top-navigation ul a:link,
+					.top-navigation ul a:visited,
+					.secondary-menu-toggle,
+					.secondary-menu-toggle:focus {
 					    color: #303030;
 					}
 
-					.top-navigation-menu a:hover,
-					.top-navigation-menu a:active,
-					.top-navigation-toggle:hover,
-					.top-navigation-toggle:active {
+					.top-navigation ul a:hover,
+					.top-navigation ul a:active,
+					.secondary-menu-toggle:hover,
+					.secondary-menu-toggle:active {
 						color: rgba(0,0,0,0.5);
 					}
 
-					.top-navigation-menu > .menu-item-has-children > a .icon,
-					.top-navigation-menu ul .menu-item-has-children > a .icon,
+					.top-navigation ul > .menu-item-has-children > a .icon,
+					.top-navigation ul ul .menu-item-has-children > a .icon,
 					.header-bar .social-icons-menu li a .icon,
-					.top-navigation-toggle .icon,
-					.top-navigation-menu .submenu-dropdown-toggle .icon {
+					.secondary-menu-toggle .icon,
+					.top-navigation .dropdown-toggle .icon,
+					.top-navigation ul .menu-item-has-children > a > .icon {
 						fill: #303030;
 					}
 
-					.top-navigation-menu > .menu-item-has-children > a:hover .icon,
-					.top-navigation-menu > .menu-item-has-children > a:active .icon,
-					.top-navigation-menu ul .menu-item-has-children > a:hover .icon,
-					.top-navigation-menu ul .menu-item-has-children > a:active .icon,
 					.header-bar .social-icons-menu li a:hover .icon,
-					.top-navigation-toggle:hover .icon,
-					.top-navigation-toggle:active .icon,
-					.top-navigation-menu .submenu-dropdown-toggle:hover .icon,
-					.top-navigation-menu .submenu-dropdown-toggle:active .icon {
+					.secondary-menu-toggle:hover .icon,
+					.secondary-menu-toggle:active .icon,
+					.top-navigation .dropdown-toggle:hover .icon,
+					.top-navigation .dropdown-toggle:active .icon,
+					.top-navigation ul .menu-item-has-children > a:hover > .icon,
+					.top-navigation ul .menu-item-has-children > a:active > .icon {
 						fill: rgba(0,0,0,0.5);
 					}
 				';
@@ -304,25 +304,27 @@ class Chronus_Pro_Custom_Colors {
 
 			$custom_css .= '
 				/* Main Navigation Color Setting */
-				.main-navigation-menu ul {
+				.main-navigation ul ul {
 					background: ' . $theme_options['navi_color'] . ';
 				}
 
-				.main-navigation-menu a:hover,
-				.main-navigation-menu a:active,
-				.main-navigation-toggle:hover,
-				.main-navigation-toggle:active,
+				.main-navigation ul a:hover,
+				.main-navigation ul a:active,
+				.primary-menu-toggle:hover,
+				.primary-menu-toggle:active,
 				.footer-navigation-menu a:hover,
 				.footer-navigation-menu a:active {
 					color: ' . $theme_options['navi_color'] . ';
 				}
 
-				.main-navigation-menu > .menu-item-has-children > a:hover .icon,
-				.main-navigation-menu > .menu-item-has-children > a:active .icon,
-				.main-navigation-toggle:hover .icon,
-				.main-navigation-toggle:active .icon,
-				.main-navigation-menu .submenu-dropdown-toggle:hover .icon,
-				.main-navigation-menu .submenu-dropdown-toggle:active .icon,
+				.main-navigation ul > .menu-item-has-children > a:hover .icon,
+				.main-navigation ul > .menu-item-has-children > a:active .icon,
+				.primary-menu-toggle:hover .icon,
+				.primary-menu-toggle:active .icon,
+				.main-navigation > ul > li > .dropdown-toggle:hover > .icon,
+				.main-navigation > ul > li > .dropdown-toggle:active > .icon,
+				.main-navigation ul .menu-item-has-children > a:hover > .icon,
+				.main-navigation ul .menu-item-has-children > a:active > .icon,
 				.header-search .header-search-icon:hover .icon-search,
 				.header-search .header-search-icon:active .icon-search {
 					fill: ' . $theme_options['navi_color'] . ';
@@ -332,27 +334,31 @@ class Chronus_Pro_Custom_Colors {
 			// Check if a light background color was chosen.
 			if ( self::is_color_light( $theme_options['navi_color'] ) ) {
 				$custom_css .= '
-					.main-navigation-menu ul a {
+					.main-navigation ul ul a {
 						border-color: rgba(0,0,0,0.05);
 					}
 
-					.main-navigation-menu ul,
-					.main-navigation-menu ul a:link,
-					.main-navigation-menu ul a:visited {
+					.main-navigation ul ul,
+					.main-navigation ul ul a:link,
+					.main-navigation ul ul a:visited {
 						color: rgba(0,0,0,0.75);
 					}
 
-					.main-navigation-menu ul a:hover,
-					.main-navigation-menu ul a:active{
+					.main-navigation ul ul a:hover,
+					.main-navigation ul ul a:active{
 						color: rgba(0,0,0,0.5);
 					}
 
-					.main-navigation-menu ul .menu-item-has-children > a .icon {
+					.main-navigation ul ul .menu-item-has-children > a .icon,
+					.main-navigation ul ul > li > .dropdown-toggle > .icon,
+					.main-navigation ul ul > li > .dropdown-toggle:focus > .icon {
 						fill: rgba(0,0,0,0.75);
 					}
 
-					.main-navigation-menu ul .menu-item-has-children > a:hover .icon,
-					.main-navigation-menu ul .menu-item-has-children > a:active .icon  {
+					.main-navigation ul ul .menu-item-has-children > a:hover .icon,
+					.main-navigation ul ul .menu-item-has-children > a:active .icon,
+					.main-navigation ul ul > li > .dropdown-toggle:hover > .icon,
+					.main-navigation ul ul > li > .dropdown-toggle:active > .icon {
 						fill: rgba(0,0,0,0.5);
 					}
 				';
