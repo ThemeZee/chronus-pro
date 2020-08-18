@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chronus Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2018-04-13 09:57+0200\n"
-"PO-Revision-Date: 2018-04-13 09:57+0200\n"
+"POT-Creation-Date: 2020-08-18 14:14+0200\n"
+"PO-Revision-Date: 2020-08-18 14:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
 "Language: de_DE\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: chronus-pro.php:207
@@ -196,54 +196,54 @@ msgstr "Alle Beiträge ansehen"
 msgid "Display Author Bio"
 msgstr "Autor Bio anzeigen"
 
-#: includes/modules/class-custom-colors.php:409
+#: includes/modules/class-custom-colors.php:475
 msgid "Theme Colors"
 msgstr "Theme Farben"
 
-#: includes/modules/class-custom-colors.php:428
+#: includes/modules/class-custom-colors.php:492
 msgctxt "color setting"
 msgid "Page Background"
 msgstr "Theme Hintergrund"
 
-#: includes/modules/class-custom-colors.php:445
+#: includes/modules/class-custom-colors.php:508
 msgctxt "color setting"
 msgid "Top Navigation"
 msgstr "Obere Navigation"
 
-#: includes/modules/class-custom-colors.php:462
+#: includes/modules/class-custom-colors.php:524
 msgctxt "color setting"
 msgid "Main Navigation"
 msgstr "Hauptnavigation"
 
-#: includes/modules/class-custom-colors.php:479
+#: includes/modules/class-custom-colors.php:540
 msgctxt "color setting"
 msgid "Links and Buttons"
 msgstr "Links und Buttons"
 
-#: includes/modules/class-custom-colors.php:496
+#: includes/modules/class-custom-colors.php:556
 msgctxt "color setting"
 msgid "Post Titles"
 msgstr "Beitrags-Titel"
 
-#: includes/modules/class-custom-fonts.php:213
+#: includes/modules/class-custom-fonts.php:257
 msgid "Theme Fonts"
 msgstr "Theme Schriftarten"
 
-#: includes/modules/class-custom-fonts.php:232
+#: includes/modules/class-custom-fonts.php:274
 msgid "Base Font"
 msgstr "Basis Schriftart"
 
-#: includes/modules/class-custom-fonts.php:248
+#: includes/modules/class-custom-fonts.php:289
 msgctxt "font setting"
 msgid "Headings"
 msgstr "Überschriften"
 
-#: includes/modules/class-custom-fonts.php:264
+#: includes/modules/class-custom-fonts.php:304
 msgctxt "font setting"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: includes/modules/class-custom-fonts.php:280
+#: includes/modules/class-custom-fonts.php:319
 msgctxt "font setting"
 msgid "Widget Titles"
 msgstr "Widget Titel"
@@ -296,11 +296,19 @@ msgstr "Footer Spalte 4"
 msgid "Appears on the fourth footer column."
 msgstr "Erscheint in der vierten Footer Spalte."
 
-#: includes/modules/class-header-bar.php:216
+#: includes/modules/class-header-bar.php:81
+msgid "Menu"
+msgstr "Menü"
+
+#: includes/modules/class-header-bar.php:86
+msgid "Secondary Menu"
+msgstr "Sekundäres Menü"
+
+#: includes/modules/class-header-bar.php:229
 msgid "Top Navigation"
 msgstr "Obere Navigation"
 
-#: includes/modules/class-header-bar.php:217
+#: includes/modules/class-header-bar.php:230
 msgid "Social Icons"
 msgstr "Social Icons"
 
