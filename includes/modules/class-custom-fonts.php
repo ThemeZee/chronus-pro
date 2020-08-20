@@ -107,10 +107,10 @@ class Chronus_Pro_Custom_Fonts {
 
 			$custom_css .= '
 				/* Navigation Font Setting */
-				.top-navigation-menu,
-				.top-navigation-toggle,
-				.main-navigation-menu,
-				.main-navigation-toggle,
+				.top-navigation ul,
+				.secondary-menu-toggle,
+				.main-navigation ul,
+				.primary-menu-toggle,
 				.footer-navigation-menu {
 					font-family: ' . self::get_font_family( $theme_options['navi_font'] ) . ';
 				}
