@@ -85,6 +85,7 @@ class Chronus_Pro_Custom_Colors {
 					.site-title a:link,
 					.site-title a:visited,
 					.main-navigation ul,
+					.main-navigation ul a,
 					.main-navigation ul a:link,
 					.main-navigation ul a:visited,
 					.widget-title,
@@ -263,6 +264,7 @@ class Chronus_Pro_Custom_Colors {
 					}
 
 					.top-navigation ul ul,
+					.top-navigation ul a,
 					.top-navigation ul a:link,
 					.top-navigation ul a:visited,
 					.secondary-menu-toggle,
