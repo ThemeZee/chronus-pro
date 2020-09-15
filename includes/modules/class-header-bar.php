@@ -8,7 +8,9 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Header Bar Class
@@ -31,7 +33,7 @@ class Chronus_Pro_Header_Bar {
 		add_action( 'chronus_header_bar', array( __CLASS__, 'display_header_bar' ) );
 
 		// Filter Social Menu to add SVG icons.
-		add_filter( 'walker_nav_menu_start_el',  array( __CLASS__, 'nav_menu_social_icons' ), 10, 4 );
+		add_filter( 'walker_nav_menu_start_el', array( __CLASS__, 'nav_menu_social_icons' ), 10, 4 );
 	}
 
 	/**
@@ -56,15 +58,14 @@ class Chronus_Pro_Header_Bar {
 				// Display Social Icons Menu.
 				wp_nav_menu( array(
 					'theme_location' => 'social',
-					'container' => false,
-					'menu_class' => 'social-icons-menu',
-					'echo' => true,
-					'fallback_cb' => '',
-					'link_before' => '<span class="screen-reader-text">',
-					'link_after' => '</span>',
-					'depth' => 1,
-					)
-				);
+					'container'      => false,
+					'menu_class'     => 'social-icons-menu',
+					'echo'           => true,
+					'fallback_cb'    => '',
+					'link_before'    => '<span class = "screen-reader-text">',
+					'link_after'     => '</span>',
+					'depth'          => 1,
+				) );
 
 				echo '</div>';
 
@@ -73,7 +74,7 @@ class Chronus_Pro_Header_Bar {
 			// Check if there is a top navigation menu.
 			if ( has_nav_menu( 'secondary' ) ) : ?>
 
-				<button class="secondary-menu-toggle menu-toggle" aria-controls="secondary-menu" aria-expanded="false">
+				<button class="secondary-menu-toggle menu-toggle" aria-controls="secondary-menu" aria-expanded="false" <?php self::amp_menu_toggle(); ?>>
 					<?php
 					echo chronus_get_svg( 'menu' );
 					echo chronus_get_svg( 'close' );
@@ -83,7 +84,7 @@ class Chronus_Pro_Header_Bar {
 
 				<div class="secondary-navigation">
 
-					<nav class="top-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Secondary Menu', 'chronus-pro' ); ?>">
+					<nav class="top-navigation" role="navigation" <?php self::amp_menu_is_toggled(); ?> aria-label="<?php esc_attr_e( 'Secondary Menu', 'chronus-pro' ); ?>">
 
 						<?php
 						wp_nav_menu(
@@ -149,7 +150,7 @@ class Chronus_Pro_Header_Bar {
 		}
 
 		// Create SVG markup.
-		$svg = '<svg class="icon icon-' . esc_attr( $icon ) . '" aria-hidden="true" role="img">';
+		$svg  = '<svg class="icon icon-' . esc_attr( $icon ) . '" aria-hidden="true" role="img">';
 		$svg .= ' <use xlink:href="' . CHRONUS_PRO_PLUGIN_URL . 'assets/icons/social-icons.svg#icon-' . esc_html( $icon ) . '"></use> ';
 		$svg .= '</svg>';
 
@@ -227,9 +228,27 @@ class Chronus_Pro_Header_Bar {
 
 		register_nav_menus( array(
 			'secondary' => esc_html__( 'Top Navigation', 'chronus-pro' ),
-			'social' => esc_html__( 'Social Icons', 'chronus-pro' ),
+			'social'    => esc_html__( 'Social Icons', 'chronus-pro' ),
 		) );
+	}
 
+	/**
+	 * Adds amp support for menu toggle.
+	 */
+	static function amp_menu_toggle() {
+		if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+			echo "[aria-expanded]=\"secondaryMenuExpanded? 'true' : 'false'\" ";
+			echo 'on="tap:AMP.setState({secondaryMenuExpanded: !secondaryMenuExpanded})"';
+		}
+	}
+
+	/**
+	 * Adds amp support for mobile dropdown navigation menu.
+	 */
+	static function amp_menu_is_toggled() {
+		if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+			echo "[class]=\"'top-navigation' + ( secondaryMenuExpanded ? ' toggled-on' : '' )\"";
+		}
 	}
 }
 
