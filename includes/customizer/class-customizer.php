@@ -8,7 +8,9 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Customizer Class
@@ -43,11 +45,7 @@ class Chronus_Pro_Customizer {
 	static function get_theme_options() {
 
 		// Merge Theme Options Array from Database with Default Options Array.
-		$theme_options = wp_parse_args( get_option( 'chronus_theme_options', array() ), self::get_default_options() );
-
-		// Return theme options.
-		return $theme_options;
-
+		return wp_parse_args( get_option( 'chronus_theme_options', array() ), self::get_default_options() );
 	}
 
 
@@ -59,24 +57,29 @@ class Chronus_Pro_Customizer {
 	static function get_default_options() {
 
 		$default_options = array(
-			'header_search'     => false,
-			'author_bio'        => false,
-			'scroll_to_top'     => false,
-			'footer_text'       => '',
-			'credit_link'       => true,
-			'page_bg_color'     => '#ffffff',
-			'top_navi_color'    => '#cc5555',
-			'navi_color'        => '#cc5555',
-			'link_color'        => '#cc5555',
-			'title_color'       => '#cc5555',
-			'text_font'         => 'Raleway',
-			'title_font'        => 'Rambla',
-			'navi_font'         => 'Rambla',
-			'widget_title_font' => 'Rambla',
+			'header_search'             => false,
+			'author_bio'                => false,
+			'scroll_to_top'             => false,
+			'footer_text'               => '',
+			'credit_link'               => true,
+			'page_bg_color'             => '#ffffff',
+			'top_navi_color'            => '#cc5555',
+			'navi_color'                => '#cc5555',
+			'link_color'                => '#cc5555',
+			'title_color'               => '#cc5555',
+			'text_font'                 => 'Raleway',
+			'title_font'                => 'Rambla',
+			'title_is_bold'             => true,
+			'title_is_uppercase'        => false,
+			'navi_font'                 => 'Rambla',
+			'navi_is_bold'              => false,
+			'navi_is_uppercase'         => false,
+			'widget_title_font'         => 'Rambla',
+			'widget_title_is_bold'      => false,
+			'widget_title_is_uppercase' => false,
 		);
 
 		return $default_options;
-
 	}
 
 	/**
@@ -85,9 +88,7 @@ class Chronus_Pro_Customizer {
 	 * @return void
 	 */
 	static function customize_preview_js() {
-
-		wp_enqueue_script( 'chronus-pro-customizer-js', CHRONUS_PRO_PLUGIN_URL . 'assets/js/customizer.js', array( 'customize-preview' ), CHRONUS_PRO_VERSION, true );
-
+		wp_enqueue_script( 'chronus-pro-customizer-js', CHRONUS_PRO_PLUGIN_URL . 'assets/js/customizer.js', array( 'customize-preview' ), '20201119', true );
 	}
 
 	/**
@@ -96,9 +97,7 @@ class Chronus_Pro_Customizer {
 	 * @return void
 	 */
 	static function customize_preview_css() {
-
-		wp_enqueue_style( 'chronus-pro-customizer-css', CHRONUS_PRO_PLUGIN_URL . 'assets/css/customizer.css', array(), CHRONUS_PRO_VERSION );
-
+		wp_enqueue_style( 'chronus-pro-customizer-css', CHRONUS_PRO_PLUGIN_URL . 'assets/css/customizer.css', array(), '20201119' );
 	}
 }
 
