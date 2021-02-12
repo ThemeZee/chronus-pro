@@ -100,8 +100,12 @@
 	text-decoration: none;
 	font-size: 17px;
 	font-size: 1.0625rem;
-	font-family: 'Rambla', Tahoma, Arial;
+	font-family: "Rambla", arial, helvetica, sans-serif;
+	font-family: var(--navi-font);
 	font-weight: normal;
+	font-weight: var(--navi-font-weight);
+	text-transform: none;
+	text-transform: var(--navi-text-transform);
 	text-align: left;
 	align-items: center;
 }
@@ -153,7 +157,12 @@
 	list-style: none;
 	font-size: 17px;
 	font-size: 1.0625rem;
-	font-family: 'Rambla', Tahoma, Arial;
+	font-family: "Rambla", arial, helvetica, sans-serif;
+	font-family: var(--navi-font);
+	font-weight: normal;
+	font-weight: var(--navi-font-weight);
+	text-transform: none;
+	text-transform: var(--navi-text-transform);
 }
 
 .top-navigation > ul {
@@ -815,10 +824,7 @@
 }
 
 .footer-navigation-menu {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
 	margin: 0;
 	padding: 0;
@@ -826,7 +832,12 @@
 	list-style-type: none;
 	font-size: 20px;
 	font-size: 1.25rem;
-	font-family: 'Rambla', Tahoma, Arial;
+	font-family: "Rambla", arial, helvetica, sans-serif;
+	font-family: var(--navi-font);
+	font-weight: normal;
+	font-weight: var(--navi-font-weight);
+	text-transform: none;
+	text-transform: var(--navi-text-transform);
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 }

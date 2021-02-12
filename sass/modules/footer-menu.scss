@@ -13,18 +13,16 @@
 }
 
 .footer-navigation-menu {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-flow: row wrap;
-	        flex-flow: row wrap;
+	flex-flow: row wrap;
 	margin: 0;
 	padding: 0;
 	list-style-position: outside;
 	list-style-type: none;
-	font-size: 20px;
-	font-size: 1.25rem;
-	font-family: 'Rambla', Tahoma, Arial;
+	@include font-size(20);
+	@include font-family(--navi-font);
+	@include font-weight(--navi-font-weight);
+	@include text-transform(--navi-text-transform);
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 }
