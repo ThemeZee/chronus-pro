@@ -1,8 +1,9 @@
 .entry-author {
 	margin: 0 0 1.5em;
 	padding: 1.5em 0 1.35em;
-	border-top: 1px solid rgba(0,0,0,0.075);
-	border-bottom: 1px solid rgba(0,0,0,0.075);
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	@include border-color(--light-border-color);
 }
 
 .entry-author .author-avatar {
@@ -19,23 +20,23 @@
 	display: inline-block;
 	margin: 0 1em 0.25em 0;
 	padding: 0;
-	font-size: 20px;
-	font-size: 1.25rem;
-	font-family: 'Rambla', Tahoma, Arial;
-	font-weight: normal;
+	@include color(--widget-title-color);
+	@include font-size(20);
+	@include font-family(--widget-title-font);
+	@include font-weight(--widget-title-font-weight);
+	@include text-transform(--widget-title-text-transform);
+	@include line-height(--title-line-height);
 }
 
 .entry-author .author-heading .author-link {
 	display: inline-block;
 	margin: 0 0 0.5em;
-	font-size: 16px;
-	font-size: 1rem;
+	@include font-size(16);
 }
 
 .entry-author .author-bio {
 	margin: 0;
-	font-size: 17px;
-	font-size: 1.0625rem;
+	@include font-size(17);
 }
 
 @media only screen and (max-width: 30em) {

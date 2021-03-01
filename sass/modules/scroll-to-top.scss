@@ -8,8 +8,9 @@
 	padding: 0;
 	width: 45px;
 	height: 45px;
-	border: 1px solid rgba(0,0,0,0.075);
-	background: #fff;
+	@include background(--page-background-color);
+	border: 1px solid;
+	@include border-color(--light-border-color);
 	cursor: pointer;
 	-webkit-transition: none;
 	transition: none;
@@ -20,9 +21,9 @@
 	width: 22px;
 	height: 22px;
 	vertical-align: top;
-	fill: #cc5555;
+	@include fill(--button-color);
 }
 
 .scroll-to-top-button:hover .icon {
-	fill: #303030;
+	@include fill(--button-hover-color);
 }

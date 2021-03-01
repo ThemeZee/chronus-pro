@@ -2,14 +2,10 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
-	        justify-content: center;
-	border-top: 1px solid rgba(0,0,0,0.075);
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
+	justify-content: center;
+	border-top: 1px solid;
+	@include border-color(--light-border-color);
 }
 
 .footer-navigation-menu {
@@ -23,8 +19,6 @@
 	@include font-family(--navi-font);
 	@include font-weight(--navi-font-weight);
 	@include text-transform(--navi-text-transform);
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
 }
 
 .footer-navigation-menu li {
@@ -35,19 +29,19 @@
 	display: block;
 	margin: 0;
 	padding: 0.75em 1em;
-	color: #303030;
+	@include color(--navi-color);
 	text-decoration: none;
 }
 
 .footer-navigation-menu a:link,
 .footer-navigation-menu a:visited {
-	color: #303030;
+	@include color(--navi-color);
 	text-decoration: none;
 }
 
 .footer-navigation-menu a:hover,
 .footer-navigation-menu a:active {
-	color: #cc5555;
+	@include color(--navi-hover-color);
 }
 
 .footer-navigation-menu li.current-menu-item > a {
@@ -65,7 +59,6 @@
 	}
 
 	.footer-navigation-menu a {
-		font-size: 18px;
-		font-size: 1.125rem;
+		@include font-size(18);
 	}
 }

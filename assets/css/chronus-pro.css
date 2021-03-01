@@ -11,13 +11,20 @@
 /*--------------------------------------------------------------
 # - CSS Variables
 --------------------------------------------------------------*/
+:root {
+	--header-bar-background-color: #cc5555;
+	--header-bar-text-color: #fff;
+	--header-bar-text-hover-color: rgba(255, 255, 255, 0.5);
+	--header-bar-border-color: rgba(255, 255, 255, 0.1);
+}
 
 /*--------------------------------------------------------------
 # Header Bar
 --------------------------------------------------------------*/
 .header-bar-wrap {
 	width: 100%;
-	background: #cc5555;
+	background-color: #cc5555;
+	background-color: var(--header-bar-background-color);
 }
 
 .header-bar {
@@ -41,8 +48,6 @@
 	padding: 0;
 	border: none;
 	list-style: none;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
 }
 
 .header-bar .social-icons-menu li {
@@ -65,10 +70,12 @@
 	height: 24px;
 	vertical-align: middle;
 	fill: #fff;
+	fill: var(--header-bar-text-color);
 }
 
 .header-bar .social-icons-menu li a:hover .icon {
 	fill: rgba(255, 255, 255, 0.5);
+	fill: var(--header-bar-text-hover-color);
 }
 
 /* Secondary Navigation */
@@ -97,6 +104,7 @@
 	border: none;
 	background: none;
 	color: #fff;
+	color: var(--header-bar-text-color);
 	text-decoration: none;
 	font-size: 17px;
 	font-size: 1.0625rem;
@@ -117,12 +125,14 @@
 .secondary-menu-toggle:focus {
 	outline: thin dotted;
 	color: #fff;
+	color: var(--header-bar-text-color);
 	background: none;
 }
 
 .secondary-menu-toggle:hover,
 .secondary-menu-toggle:active {
 	color: rgba(255, 255, 255, 0.5);
+	color: var(--header-bar-text-hover-color);
 	background: none;
 	cursor: pointer;
 }
@@ -133,11 +143,13 @@
 	height: 22px;
 	vertical-align: top;
 	fill: #fff;
+	fill: var(--header-bar-text-color);
 }
 
 .secondary-menu-toggle:hover .icon,
 .secondary-menu-toggle:active .icon {
 	fill: rgba(255, 255, 255, 0.5);
+	fill: var(--header-bar-text-hover-color);
 }
 
 .secondary-menu-toggle[aria-expanded="true"] .icon-menu,
@@ -154,6 +166,7 @@
 	margin: 0;
 	padding: 0;
 	color: #fff;
+	color: var(--header-bar-text-color);
 	list-style: none;
 	font-size: 17px;
 	font-size: 1.0625rem;
@@ -166,7 +179,9 @@
 }
 
 .top-navigation > ul {
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-top: 1px solid;
+	border-color: rgba(255, 255, 255, 0.1);
+	border-color: var(--header-bar-border-color);
 }
 
 .top-navigation ul li {
@@ -178,7 +193,9 @@
 	display: block;
 	margin: 0;
 	padding: 0.75em 1em;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	border-bottom: 1px solid;
+	border-color: rgba(255, 255, 255, 0.1);
+	border-color: var(--header-bar-border-color);
 	text-decoration: none;
 }
 
@@ -186,6 +203,7 @@
 .top-navigation ul a:link,
 .top-navigation ul a:visited {
 	color: #fff;
+	color: var(--header-bar-text-color);
 	text-decoration: none;
 }
 
@@ -193,6 +211,7 @@
 .top-navigation ul a:active,
 .top-navigation ul a:focus {
 	color: rgba(255, 255, 255, 0.5);
+	color: var(--header-bar-text-hover-color);
 }
 
 .top-navigation ul li.current-menu-item > a {
@@ -235,7 +254,6 @@
 
 .top-navigation .dropdown-toggle:focus {
 	outline: thin dotted;
-	color: #303030;
 	background: none;
 }
 
@@ -250,11 +268,13 @@
 	height: 20px;
 	vertical-align: top;
 	fill: #fff;
+	fill: var(--header-bar-text-color);
 }
 
 .top-navigation .dropdown-toggle:hover .icon,
 .top-navigation .dropdown-toggle:active .icon {
 	fill: rgba(255, 255, 255, 0.5);
+	fill: var(--header-bar-text-hover-color);
 }
 
 .top-navigation .dropdown-toggle.toggled-on .icon {
@@ -315,8 +335,11 @@
 		left: -999em;
 		top: 100%;
 		z-index: 99999;
-		border-top: 2px solid rgba(255, 255, 255, 0.1);
-		background: #cc5555;
+		border-top: 2px solid;
+		border-color: rgba(255, 255, 255, 0.1);
+		border-color: var(--header-bar-border-color);
+		background-color: #cc5555;
+		background-color: var(--header-bar-background-color);
 		font-size: 16px;
 		font-size: 1rem;
 	}
@@ -358,6 +381,7 @@
 		width: 13px;
 		height: 13px;
 		fill: #fff;
+		fill: var(--header-bar-text-color);
 	}
 
 	.top-navigation ul ul .menu-item-has-children > a > .icon {
@@ -373,6 +397,7 @@
 
 	.top-navigation ul .menu-item-has-children > a:hover > .icon {
 		fill: rgba(255, 255, 255, 0.5);
+		fill: var(--header-bar-text-hover-color);
 	}
 }
 
@@ -392,8 +417,11 @@
 	display: none;
 	margin: 0;
 	padding: 1em;
-	background: #fff;
-	border: 1px solid rgba(0, 0, 0, 0.075);
+	background-color: #fff;
+	background-color: var(--page-background-color);
+	border: 1px solid;
+	border-color: rgba(0, 0, 0, 0.075);
+	border-color: var(--light-border-color);
 	z-index: 999;
 }
 
@@ -424,11 +452,13 @@
 	width: 24px;
 	height: 24px;
 	fill: #303030;
+	fill: var(--navi-color);
 }
 
 .header-search .header-search-icon:hover .icon-search,
 .header-search .header-search-icon:active .icon-search {
 	fill: #cc5555;
+	fill: var(--navi-hover-color);
 }
 
 @media only screen and (max-width: 57.5em) {
@@ -684,8 +714,10 @@
 .entry-author {
 	margin: 0 0 1.5em;
 	padding: 1.5em 0 1.35em;
-	border-top: 1px solid rgba(0, 0, 0, 0.075);
-	border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	border-color: rgba(0, 0, 0, 0.075);
+	border-color: var(--light-border-color);
 }
 
 .entry-author .author-avatar {
@@ -702,10 +734,18 @@
 	display: inline-block;
 	margin: 0 1em 0.25em 0;
 	padding: 0;
+	color: #303030;
+	color: var(--widget-title-color);
 	font-size: 20px;
 	font-size: 1.25rem;
-	font-family: 'Rambla', Tahoma, Arial;
+	font-family: "Rambla", arial, helvetica, sans-serif;
+	font-family: var(--widget-title-font);
 	font-weight: normal;
+	font-weight: var(--widget-title-font-weight);
+	text-transform: none;
+	text-transform: var(--widget-title-text-transform);
+	line-height: 1.4;
+	line-height: var(--title-line-height);
 }
 
 .entry-author .author-heading .author-link {
@@ -743,14 +783,13 @@
 --------------------------------------------------------------*/
 .footer-widgets-background {
 	padding: 2.5em 0 0;
-	border-top: 1px solid rgba(0, 0, 0, 0.075);
+	border-top: 1px solid;
+	border-color: rgba(0, 0, 0, 0.075);
+	border-color: var(--light-border-color);
 }
 
 .footer-widgets {
-	display: -webkit-box;
-	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	margin-right: -2.5em;
 }
@@ -760,8 +799,6 @@
 	box-sizing: border-box;
 	padding-right: 2.5em;
 	width: 25%;
-	-webkit-box-flex: 1;
-	-ms-flex-positive: 1;
 }
 
 @media only screen and (max-width: 80em) {
@@ -813,14 +850,11 @@
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-ms-flex-flow: row wrap;
 	flex-flow: row wrap;
 	justify-content: center;
-	border-top: 1px solid rgba(0, 0, 0, 0.075);
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
+	border-top: 1px solid;
+	border-color: rgba(0, 0, 0, 0.075);
+	border-color: var(--light-border-color);
 }
 
 .footer-navigation-menu {
@@ -838,8 +872,6 @@
 	font-weight: var(--navi-font-weight);
 	text-transform: none;
 	text-transform: var(--navi-text-transform);
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
 }
 
 .footer-navigation-menu li {
@@ -851,18 +883,21 @@
 	margin: 0;
 	padding: 0.75em 1em;
 	color: #303030;
+	color: var(--navi-color);
 	text-decoration: none;
 }
 
 .footer-navigation-menu a:link,
 .footer-navigation-menu a:visited {
 	color: #303030;
+	color: var(--navi-color);
 	text-decoration: none;
 }
 
 .footer-navigation-menu a:hover,
 .footer-navigation-menu a:active {
 	color: #cc5555;
+	color: var(--navi-hover-color);
 }
 
 .footer-navigation-menu li.current-menu-item > a {
@@ -898,8 +933,11 @@
 	padding: 0;
 	width: 45px;
 	height: 45px;
-	border: 1px solid rgba(0, 0, 0, 0.075);
-	background: #fff;
+	background-color: #fff;
+	background-color: var(--page-background-color);
+	border: 1px solid;
+	border-color: rgba(0, 0, 0, 0.075);
+	border-color: var(--light-border-color);
 	cursor: pointer;
 	-webkit-transition: none;
 	transition: none;
@@ -911,8 +949,10 @@
 	height: 22px;
 	vertical-align: top;
 	fill: #cc5555;
+	fill: var(--button-color);
 }
 
 .scroll-to-top-button:hover .icon {
 	fill: #303030;
+	fill: var(--button-hover-color);
 }

@@ -4,8 +4,9 @@
 	display: none;
 	margin: 0;
 	padding: 1em;
-	background: #fff;
-	border: 1px solid rgba(0, 0, 0, 0.075);
+	@include background(--page-background-color);
+	border: 1px solid;
+	@include border-color(--light-border-color);
 	z-index: 999;
 }
 
@@ -35,12 +36,12 @@
 	padding: 0;
 	width: 24px;
 	height: 24px;
-	fill: #303030;
+	@include fill(--navi-color);
 }
 
 .header-search .header-search-icon:hover .icon-search,
 .header-search .header-search-icon:active .icon-search {
-	fill: #cc5555;
+	@include fill(--navi-hover-color);
 }
 
 @media only screen and (max-width: 57.5em) {
