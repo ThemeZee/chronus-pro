@@ -32,9 +32,6 @@ class Chronus_Pro_Custom_Colors {
 		// Add Custom Color CSS code to custom stylesheet output.
 		add_filter( 'chronus_pro_custom_css_stylesheet', array( __CLASS__, 'custom_colors_css' ) );
 
-		// Add Custom Color CSS code to the Gutenberg editor.
-		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'custom_editor_colors_css' ) );
-
 		// Add Custom Color Settings.
 		add_action( 'customize_register', array( __CLASS__, 'color_settings' ) );
 	}
@@ -53,8 +50,12 @@ class Chronus_Pro_Custom_Colors {
 		// Get Default Fonts from settings.
 		$default_options = Chronus_Pro_Customizer::get_default_options();
 
+		// Color Variables.
+		$color_variables = '';
+
 		// Set Page Background Color.
 		if ( $theme_options['page_bg_color'] !== $default_options['page_bg_color'] ) {
+			$color_variables .= '--page-background-color: ' . $theme_options['page_bg_color'] . ';';
 
 			$custom_css .= '
 				/* Page Background Color Setting */
@@ -412,57 +413,12 @@ class Chronus_Pro_Custom_Colors {
 			}
 		}
 
+		// Set Color Variables.
+		if ( '' !== $color_variables ) {
+			$custom_css .= ':root {' . $color_variables . '}';
+		}
+
 		return $custom_css;
-	}
-
-	/**
-	 * Adds Color CSS styles in the Gutenberg Editor to override default colors
-	 *
-	 * @return void
-	 */
-	static function custom_editor_colors_css() {
-
-		// Get Theme Options from Database.
-		$theme_options = Chronus_Pro_Customizer::get_theme_options();
-
-		// Get Default Fonts from settings.
-		$default_options = Chronus_Pro_Customizer::get_default_options();
-
-		// Set Primary Color.
-		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
-
-			$custom_css = '
-				.has-primary-color,
-				.edit-post-visual-editor .editor-block-list__block a {
-					color: ' . $theme_options['link_color'] . ';
-				}
-				.has-primary-background-color {
-					background-color: ' . $theme_options['link_color'] . ';
-				}
-			';
-
-			wp_add_inline_style( 'chronus-editor-styles', $custom_css );
-		}
-	}
-
-	/**
-	 * Change primary color in Gutenberg Editor.
-	 *
-	 * @return array $editor_settings
-	 */
-	static function change_primary_color( $color ) {
-		// Get Theme Options from Database.
-		$theme_options = Chronus_Pro_Customizer::get_theme_options();
-
-		// Get Default Fonts from settings.
-		$default_options = Chronus_Pro_Customizer::get_default_options();
-
-		// Set Primary Color.
-		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
-			$color = $theme_options['link_color'];
-		}
-
-		return $color;
 	}
 
 	/**
@@ -602,4 +558,3 @@ class Chronus_Pro_Custom_Colors {
 
 // Run Class.
 add_action( 'init', array( 'Chronus_Pro_Custom_Colors', 'setup' ) );
-add_filter( 'chronus_primary_color', array( 'Chronus_Pro_Custom_Colors', 'change_primary_color' ) );
