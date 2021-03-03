@@ -57,360 +57,58 @@ class Chronus_Pro_Custom_Colors {
 		if ( $theme_options['page_bg_color'] !== $default_options['page_bg_color'] ) {
 			$color_variables .= '--page-background-color: ' . $theme_options['page_bg_color'] . ';';
 
-			$custom_css .= '
-				/* Page Background Color Setting */
-				.site,
-				.header-search .header-search-form,
-				.scroll-to-top-button {
-					background: ' . $theme_options['page_bg_color'] . ';
-				}
-			';
-
 			// Check if a dark background color was chosen.
 			if ( self::is_color_dark( $theme_options['page_bg_color'] ) ) {
-				$custom_css .= '
-					body,
-					button,
-					input,
-					select,
-					textarea,
-					blockquote cite,
-					blockquote small,
-					input[type="text"]:focus,
-					input[type="email"]:focus,
-					input[type="url"]:focus,
-					input[type="password"]:focus,
-					input[type="search"]:focus,
-					textarea:focus,
-					.site-title,
-					.site-title a:link,
-					.site-title a:visited,
-					.main-navigation ul,
-					.main-navigation ul a,
-					.main-navigation ul a:link,
-					.main-navigation ul a:visited,
-					.widget-title,
-					.widget-title a:link,
-					.widget-title a:visited,
-					.entry-title,
-					.entry-title a:link,
-					.entry-title a:visited,
-					.archive-title,
-					.comments-header .comments-title,
-					.comment-reply-title,
-					.primary-menu-toggle,
-					.primary-menu-toggle:focus,
-					.footer-navigation-menu a,
-					.footer-navigation-menu a:link,
-					.footer-navigation-menu a:visited {
-						color: #ffffff;
-					}
+				$color_variables .= '--text-color: #fff;';
+				$color_variables .= '--medium-text-color: rgba(255,255,255,0.8);';
+				$color_variables .= '--light-text-color: rgba(255,255,255,0.6);';
+				$color_variables .= '--dark-border-color: #fff;';
+				$color_variables .= '--medium-border-color: rgba(255,255,255,0.2);';
+				$color_variables .= '--light-border-color: rgba(255,255,255,0.1);';
 
-					.site-title a:hover,
-					.site-title a:active,
-					.entry-title a:hover,
-					.entry-title a:active,
-					.widget-title a:hover,
-					.widget-title a:active,
-					.main-navigation ul a:hover,
-					.main-navigation ul a:active,
-					.footer-navigation-menu a:hover,
-					.footer-navigation-menu a:active {
-						color: #cc5555;
-					}
-
-					.entry-meta {
-						color: rgba(255,255,255,0.45);
-					}
-
-					.entry-meta .meta-date:after,
-					.entry-meta .meta-author:after {
-						color: rgba(255,255,255,0.15);
-					}
-
-					blockquote {
-						border-color: #ffffff;
-					}
-
-					pre,
-					th,
-					td,
-					button,
-					input[type="button"],
-					input[type="reset"],
-					input[type="submit"],
-					input[type="text"],
-					input[type="email"],
-					input[type="url"],
-					input[type="password"],
-					input[type="search"],
-					textarea,
-					.site-header,
-					.primary-navigation-wrap,
-					.widget ul li,
-					.widget ol li,
-					.sticky,
-					.infinite-scroll #infinite-handle span,
-					.featured-posts-wrap,
-					.comment,
-					.site-footer,
-					.main-navigation ul,
-					.tzwb-tabbed-content .tzwb-tabnavi li a,
-					.tzwb-social-icons .social-icons-menu li a,
-					.footer-widgets-background,
-					.footer-navigation,
-					.header-search .header-search-form,
-					.entry-author,
-					.scroll-to-top-button {
-						border-color: rgba(255,255,255,0.075);
-					}
-
-					input[type="text"]:focus,
-					input[type="email"]:focus,
-					input[type="url"]:focus,
-					input[type="password"]:focus,
-					input[type="search"]:focus,
-					textarea:focus {
-						border: 1px solid  rgba(255,255,255,0.2);
-					}
-
-					.search-form .search-submit:hover .icon-search,
-					.search-form .search-submit:active .icon-search,
-					.main-navigation ul > .menu-item-has-children > a .icon,
-					.main-navigation ul > li > .dropdown-toggle > .icon,
-					.main-navigation ul > li > .dropdown-toggle:focus > .icon,
-					.primary-menu-toggle .icon,
-					.tzwb-social-icons .social-icons-menu li a:hover .icon,
-					.header-search .header-search-icon .icon-search,
-					.scroll-to-top-button:hover .icon {
-						fill: #ffffff;
-					}
-				';
-			} // End if().
-		} // End if().
-
-		// Set Link Color.
-		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
-
-			$custom_css .= '
-				/* Link and Button Color Setting */
-				a:link,
-				a:visited,
-				button,
-				input[type="button"],
-				input[type="reset"],
-				input[type="submit"],
-				.infinite-scroll #infinite-handle span,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:link,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:visited,
-				.widget-title a:hover,
-				.widget-title a:active,
-				.has-primary-color {
-					color: ' . $theme_options['link_color'] . ';
-				}
-
-				a:hover,
-				a:focus,
-				a:active,
-				button:hover,
-				input[type="button"]:hover,
-				input[type="reset"]:hover,
-				input[type="submit"]:hover,
-				button:focus,
-				input[type="button"]:focus,
-				input[type="reset"]:focus,
-				input[type="submit"]:focus,
-				button:active,
-				input[type="button"]:active,
-				input[type="reset"]:active,
-				input[type="submit"]:active,
-				.infinite-scroll #infinite-handle span:hover,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
-				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
-					color: #303030;
-				}
-
-				.search-form .search-submit .icon-search,
-				.tzwb-social-icons .social-icons-menu li a .icon,
-				.scroll-to-top-button .icon {
-					fill: ' . $theme_options['link_color'] . ';
-				}
-
-				.has-primary-background-color {
-					background-color: ' . $theme_options['link_color'] . ';
-				}
-			';
-		} // End if().
+				$color_variables .= '--navi-color: #fff;';
+				$color_variables .= '--title-color: #fff;';
+				$color_variables .= '--widget-title-color: #fff;';
+				$color_variables .= '--link-hover-color: #fff;';
+				$color_variables .= '--button-hover-color: #fff;';
+			}
+		}
 
 		// Set Top Navigation Color.
 		if ( $theme_options['top_navi_color'] !== $default_options['top_navi_color'] ) {
-
-			$custom_css .= '
-				/* Top Navigation Color Setting */
-				.header-bar-wrap,
-				.top-navigation ul ul {
-					background: ' . $theme_options['top_navi_color'] . ';
-				}
-			';
+			$color_variables .= '--header-bar-background-color: ' . $theme_options['top_navi_color'] . ';';
 
 			// Check if a dark background color was chosen.
 			if ( self::is_color_light( $theme_options['top_navi_color'] ) ) {
-				$custom_css .= '
-					.top-navigation ul,
-					.top-navigation ul ul,
-					.top-navigation ul a,
-					.top-navigation ul ul a {
-						border-color: rgba(0,0,0,0.05);
-					}
-
-					.top-navigation ul ul,
-					.top-navigation ul a,
-					.top-navigation ul a:link,
-					.top-navigation ul a:visited,
-					.secondary-menu-toggle,
-					.secondary-menu-toggle:focus {
-					    color: #303030;
-					}
-
-					.top-navigation ul a:hover,
-					.top-navigation ul a:active,
-					.secondary-menu-toggle:hover,
-					.secondary-menu-toggle:active {
-						color: rgba(0,0,0,0.5);
-					}
-
-					.top-navigation ul > .menu-item-has-children > a .icon,
-					.top-navigation ul ul .menu-item-has-children > a .icon,
-					.header-bar .social-icons-menu li a .icon,
-					.secondary-menu-toggle .icon,
-					.top-navigation .dropdown-toggle .icon,
-					.top-navigation ul .menu-item-has-children > a > .icon {
-						fill: #303030;
-					}
-
-					.header-bar .social-icons-menu li a:hover .icon,
-					.secondary-menu-toggle:hover .icon,
-					.secondary-menu-toggle:active .icon,
-					.top-navigation .dropdown-toggle:hover .icon,
-					.top-navigation .dropdown-toggle:active .icon,
-					.top-navigation ul .menu-item-has-children > a:hover > .icon,
-					.top-navigation ul .menu-item-has-children > a:active > .icon {
-						fill: rgba(0,0,0,0.5);
-					}
-				';
-			} // End if().
-		} // End if().
+				$color_variables .= '--header-bar-text-color: #151515;';
+				$color_variables .= '--header-bar-text-hover-color: rgba(0, 0, 0, 0.5);';
+				$color_variables .= '--header-bar-border-color: rgba(0, 0, 0, 0.1);';
+			}
+		}
 
 		// Set Main Navigation Color.
 		if ( $theme_options['navi_color'] !== $default_options['navi_color'] ) {
-
-			$custom_css .= '
-				/* Main Navigation Color Setting */
-				.main-navigation ul ul {
-					background: ' . $theme_options['navi_color'] . ';
-				}
-
-				.main-navigation ul a:hover,
-				.main-navigation ul a:active,
-				.primary-menu-toggle:hover,
-				.primary-menu-toggle:active,
-				.footer-navigation-menu a:hover,
-				.footer-navigation-menu a:active {
-					color: ' . $theme_options['navi_color'] . ';
-				}
-
-				.main-navigation ul > .menu-item-has-children > a:hover .icon,
-				.main-navigation ul > .menu-item-has-children > a:active .icon,
-				.primary-menu-toggle:hover .icon,
-				.primary-menu-toggle:active .icon,
-				.main-navigation > ul > li > .dropdown-toggle:hover > .icon,
-				.main-navigation > ul > li > .dropdown-toggle:active > .icon,
-				.main-navigation ul .menu-item-has-children > a:hover > .icon,
-				.main-navigation ul .menu-item-has-children > a:active > .icon,
-				.header-search .header-search-icon:hover .icon-search,
-				.header-search .header-search-icon:active .icon-search {
-					fill: ' . $theme_options['navi_color'] . ';
-				}
-			';
+			$color_variables .= '--navi-hover-color: ' . $theme_options['navi_color'] . ';';
+			$color_variables .= '--navi-submenu-color: ' . $theme_options['navi_color'] . ';';
 
 			// Check if a light background color was chosen.
 			if ( self::is_color_light( $theme_options['navi_color'] ) ) {
-				$custom_css .= '
-					.main-navigation ul ul a {
-						border-color: rgba(0,0,0,0.05);
-					}
-
-					.main-navigation ul ul,
-					.main-navigation ul ul a:link,
-					.main-navigation ul ul a:visited {
-						color: rgba(0,0,0,0.75);
-					}
-
-					.main-navigation ul ul a:hover,
-					.main-navigation ul ul a:active{
-						color: rgba(0,0,0,0.5);
-					}
-
-					.main-navigation ul ul .menu-item-has-children > a .icon,
-					.main-navigation ul ul > li > .dropdown-toggle > .icon,
-					.main-navigation ul ul > li > .dropdown-toggle:focus > .icon {
-						fill: rgba(0,0,0,0.75);
-					}
-
-					.main-navigation ul ul .menu-item-has-children > a:hover .icon,
-					.main-navigation ul ul .menu-item-has-children > a:active .icon,
-					.main-navigation ul ul > li > .dropdown-toggle:hover > .icon,
-					.main-navigation ul ul > li > .dropdown-toggle:active > .icon {
-						fill: rgba(0,0,0,0.5);
-					}
-				';
+				$color_variables .= '--navi-submenu-text-color: #151515;';
+				$color_variables .= '--navi-submenu-hover-color: rgba(0, 0, 0, 0.5);';
+				$color_variables .= '--navi-submenu-border-color: rgba(0, 0, 0, 0.1);';
 			}
-		} // End if().
+		}
+
+		// Set Link Color.
+		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
+			$color_variables .= '--link-color: ' . $theme_options['link_color'] . ';';
+			$color_variables .= '--button-color: ' . $theme_options['link_color'] . ';';
+		}
 
 		// Set Title Color.
 		if ( $theme_options['title_color'] != $default_options['title_color'] ) {
-
-			$custom_css .= '
-				/* Headings Color Setting */
-				.site-title a:hover,
-				.site-title a:active,
-				.entry-title a:hover,
-				.entry-title a:active {
-					color: ' . $theme_options['title_color'] . ';
-				}
-			';
-		}
-
-		// Set Page Background Hover Color.
-		if ( $theme_options['page_bg_color'] !== $default_options['page_bg_color'] ) {
-
-			// Check if a dark background color was chosen.
-			if ( self::is_color_dark( $theme_options['page_bg_color'] ) ) {
-				$custom_css .= '
-					a:hover,
-					a:focus,
-					a:active,
-					button:hover,
-					input[type="button"]:hover,
-					input[type="reset"]:hover,
-					input[type="submit"]:hover,
-					button:focus,
-					input[type="button"]:focus,
-					input[type="reset"]:focus,
-					input[type="submit"]:focus,
-					button:active,
-					input[type="button"]:active,
-					input[type="reset"]:active,
-					input[type="submit"]:active,
-					.infinite-scroll #infinite-handle span:hover,
-					.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
-					.tzwb-tabbed-content .tzwb-tabnavi li a:active,
-					.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
-						color: #ffffff;
-					}
-				';
-			}
+			$color_variables .= '--title-hover-color : ' . $theme_options['title_color'] . ';';
+			$color_variables .= '--widget-title-hover-color : ' . $theme_options['title_color'] . ';';
 		}
 
 		// Set Color Variables.
