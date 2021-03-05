@@ -40,248 +40,99 @@
 	/* Page Background Color Option */
 	wp.customize( 'chronus_theme_options[page_bg_color]', function( value ) {
 		value.bind( function( newval ) {
-			var title_color = '#cc5555',
-				link_color  = '#cc5555';
-				navi_color  = '#cc5555';
-
-			if( typeof wp.customize.value( 'chronus_theme_options[title_color]' ) !== 'undefined' ) {
-				title_color = wp.customize.value( 'chronus_theme_options[title_color]' ).get();
-			}
-
-			if( typeof wp.customize.value( 'chronus_theme_options[link_color]' ) !== 'undefined' ) {
-				link_color = wp.customize.value( 'chronus_theme_options[link_color]' ).get();
-			}
-
-			if( typeof wp.customize.value( 'chronus_theme_options[navi_color]' ) !== 'undefined' ) {
-				navi_color = wp.customize.value( 'chronus_theme_options[navi_color]' ).get();
-			}
-
-			var text_color, meta_color, border_color;
+			var text_color, medium_text_color, light_text_color, dark_border_color, medium_border_color, light_border_color;
 
 			if( isColorDark( newval ) ) {
-				text_color = '#ffffff';
-				meta_color = 'rgba(255,255,255,0.45)';
-				border_color = 'rgba(255,255,255,0.075)';
+				text_color = '#fff';
+				medium_text_color = 'rgba(255,255,255,0.8)';
+				light_text_color = 'rgba(255,255,255,0.6)';
+				dark_border_color = '#fff';
+				medium_border_color = 'rgba(255,255,255,0.2)';
+				light_border_color = 'rgba(255,255,255,0.1)';
+
 			} else {
 				text_color = '#303030';
-				meta_color = 'rgba(0,0,0,0.45)';
-				border_color = 'rgba(0,0,0,0.075)';
+				medium_text_color = '#666';
+				light_text_color = '#999';
+				dark_border_color = '#303030';
+				medium_border_color = 'rgba(0, 0, 0, 0.15)';
+				light_border_color = 'rgba(0, 0, 0, 0.075)';
 			}
 
-			$( '.site, .header-search .header-search-form, .scroll-to-top-button' )
-				.css( 'background', newval );
+			document.documentElement.style.setProperty( '--page-background-color', newval );
+			document.documentElement.style.setProperty( '--text-color', text_color );
+			document.documentElement.style.setProperty( '--medium-text-color', medium_text_color );
+			document.documentElement.style.setProperty( '--light-text-color', light_text_color );
+			document.documentElement.style.setProperty( '--dark-border-color', dark_border_color );
+			document.documentElement.style.setProperty( '--medium-border-color', medium_border_color );
+			document.documentElement.style.setProperty( '--light-border-color', light_border_color );
 
-			$( 'body, button, input, select, textarea, blockquote cite, blockquote small, .site-title, .site-title a, .main-navigation ul, .main-navigation ul > li > a, .primary-menu-toggle, .widget-title, .widget-title a, .entry-title, .entry-title a, .archive-title, .comments-header .comments-title, .comment-reply-title, .footer-navigation-menu a' )
-				.css( 'color', text_color );
-
-			$( 'a, button, input[type="button"], input[type="reset"], input[type="submit"], .infinite-scroll #infinite-handle span, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab' )
-				.not( $( '.header-bar a, .main-navigation ul ul a' ) )
-				.hover( function() { $( this ).css( 'color', text_color ); },
-					function() { $( this ).css( 'color', link_color ); }
-				);
-
-			$( '.site-title a, .entry-title a' )
-				.hover( function() { $( this ).css( 'color', title_color ); },
-					function() { $( this ).css( 'color', text_color ); }
-				);
-
-			$( '.main-navigation ul > li > a, .primary-menu-toggle, .footer-navigation-menu a' )
-				.hover( function() { $( this ).css( 'color', navi_color ); },
-					function() { $( this ).css( 'color', text_color ); }
-				);
-
-			$( '.widget-title a' )
-				.hover( function() { $( this ).css( 'color', link_color ); },
-					function() { $( this ).css( 'color', text_color ); }
-				);
-
-			$( 'pre, th, td, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], textarea, .site-header, .primary-navigation-wrap, .widget ul li, .widget ol li, .sticky, .infinite-scroll #infinite-handle span, .featured-posts-wrap, .comment, .site-footer, .main-navigation ul, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-social-icons .social-icons-menu li a, .footer-widgets-background, .footer-navigation, .header-search .header-search-form, .entry-author, .scroll-to-top-button' )
-				.css( 'border-color', border_color );
-
-			$( '.entry-meta' )
-				.css( 'color', meta_color );
-
-			$( '.search-form .search-submit:hover .icon-search, .search-form .search-submit:active .icon-search, .main-navigation ul > .menu-item-has-children > a .icon, .main-navigation ul > li > .dropdown-toggle > .icon, .main-navigation ul > li > .dropdown-toggle:focus > .icon, .primary-menu-toggle .icon, .tzwb-social-icons .social-icons-menu li a:hover .icon, .header-search .header-search-icon .icon-search, .scroll-to-top-button:hover .icon' )
-				.css( 'fill', text_color );
-
-			$( '.main-navigation ul > .menu-item-has-children > a, .primary-menu-toggle, .main-navigation ul .submenu-dropdown-toggle' )
-				.hover( function() { $( this ).find( '.icon' ).css( 'fill', navi_color ); },
-					function() { $( this ).find( '.icon' ).css( 'fill', text_color ); }
-				);
-
-			$( '.search-form .search-submit, .tzwb-social-icons .social-icons-menu li a, .scroll-to-top-button' )
-				.hover( function() { $( this ).find( '.icon' ).css( 'fill', text_color ); },
-					function() { $( this ).find( '.icon' ).css( 'fill', link_color ); }
-				);
-		} );
-	} );
-
-	/* Link & Button Color Option */
-	wp.customize( 'chronus_theme_options[link_color]', function( value ) {
-		value.bind( function( newval ) {
-			var text_color, page_bg_color;
-
-			if( typeof wp.customize.value( 'chronus_theme_options[page_bg_color]' ) !== 'undefined' ) {
-				page_bg_color = wp.customize.value( 'chronus_theme_options[page_bg_color]' ).get();
-			}
-
-			if( isColorDark( page_bg_color ) ) {
-				text_color = '#ffffff';
-			} else {
-				text_color = '#303030';
-			}
-
-			$( 'a, button, input[type="button"], input[type="reset"], input[type="submit"], .infinite-scroll #infinite-handle span, .tzwb-tabbed-content .tzwb-tabnavi li a, .widget-title a' )
-				.not( $( '.header-bar a, .site-title a, .entry-title a, .widget-title a, .main-navigation ul a, .main-navigation ul ul a' ) )
-				.css( 'color', newval );
-
-			$( 'a, button, input[type="button"], input[type="reset"], input[type="submit"], .infinite-scroll #infinite-handle span, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab' )
-				.not( $( '.header-bar a, .site-title a, .entry-title a, .widget-title a, .main-navigation ul a, .main-navigation ul ul a' ) )
-				.hover( function() { $( this ).css( 'color', text_color ); },
-					function() { $( this ).css( 'color', newval ); }
-				);
-
-			$( '.widget-title a' )
-				.hover( function() { $( this ).css( 'color', newval ); },
-					function() { $( this ).css( 'color', text_color ); }
-				);
-
-			$( '.search-form .search-submit .icon, .tzwb-social-icons .social-icons-menu li a .icon, .scroll-to-top-button .icon' )
-				.css( 'fill', newval );
-
-			$( '.search-form .search-submit, .tzwb-social-icons .social-icons-menu li a, .scroll-to-top-button' )
-				.hover( function() { $( this ).find( '.icon' ).css( 'fill', text_color ); },
-					function() { $( this ).find( '.icon' ).css( 'fill', newval ); }
-				);
-
-			$( '.has-primary-color' ).css( 'color', newval );
-			$( '.has-primary-background-color' ).css( 'background-color', newval );
+			document.documentElement.style.setProperty( '--navi-color', text_color );
+			document.documentElement.style.setProperty( '--title-color', text_color );
+			document.documentElement.style.setProperty( '--widget-title-color', text_color );
+			document.documentElement.style.setProperty( '--link-hover-color', text_color );
+			document.documentElement.style.setProperty( '--button-hover-color', text_color );
 		} );
 	} );
 
 	/* Top Navigation Color Option */
 	wp.customize( 'chronus_theme_options[top_navi_color]', function( value ) {
 		value.bind( function( newval ) {
-			$( '.header-bar-wrap, .top-navigation ul ul' )
-				.css( 'background', newval );
-
 			var text_color, hover_color, border_color;
 
 			if( isColorLight( newval ) ) {
-				text_color = '#303030';
-				hover_color = 'rgba(0,0,0,0.5)';
-				border_color = 'rgba(0,0,0,0.05)';
+				text_color = '#151515';
+				hover_color = 'rgba(0, 0, 0, 0.5)';
+				border_color = 'rgba(0, 0, 0, 0.1)';
 			} else {
-				text_color = '#ffffff';
-				hover_color = 'rgba(255,255,255,0.5)';
-				border_color = 'rgba(255,255,255,0.1)';
+				text_color = '#fff';
+				hover_color = 'rgba(255, 255, 255, 0.5)';
+				border_color = 'rgba(255, 255, 255, 0.1)';
 			}
 
-			$( '.top-navigation ul, .top-navigation ul ul, .top-navigation ul a, .top-navigation ul ul a' )
-				.css( 'border-color', border_color );
-
-			$( '.top-navigation ul ul, .top-navigation ul a, .secondary-menu-toggle' )
-				.css( 'color', text_color );
-
-			$( '.top-navigation ul a, .secondary-menu-toggle' )
-				.hover( function() { $( this ).css( 'color', hover_color ); },
-						function() { $( this ).css( 'color', text_color ); }
-				);
-
-			$( '.top-navigation ul > .menu-item-has-children > a .icon, .top-navigation ul ul .menu-item-has-children > a .icon, .header-bar .social-icons-menu li a .icon, .secondary-menu-toggle .icon, .top-navigation .dropdown-toggle .icon, .top-navigation ul .menu-item-has-children > a > .icon' )
-				.css( 'fill', text_color );
-
-			$( '.header-bar .social-icons-menu li a:hover .icon, .secondary-menu-toggle:hover .icon, .secondary-menu-toggle:active .icon, .top-navigation .dropdown-toggle:hover .icon, .top-navigation .dropdown-toggle:active .icon, .top-navigation ul .menu-item-has-children > a:hover > .icon, .top-navigation ul .menu-item-has-children > a:active > .icon' )
-				.hover( function() { $( this ).find( '.icon' ).css( 'fill', hover_color ); },
-					function() { $( this ).find( '.icon' ).css( 'fill', text_color ); }
-				);
+			document.documentElement.style.setProperty( '--header-bar-background-color', newval );
+			document.documentElement.style.setProperty( '--header-bar-text-color', text_color );
+			document.documentElement.style.setProperty( '--header-bar-text-hover-color', hover_color );
+			document.documentElement.style.setProperty( '--header-bar-border-color', border_color );
 		} );
 	} );
 
 	/* Main Navigation Color Option */
 	wp.customize( 'chronus_theme_options[navi_color]', function( value ) {
 		value.bind( function( newval ) {
-			var text_color, page_bg_color, menu_color, hover_color, border_color;
-
-			if( typeof wp.customize.value( 'chronus_theme_options[page_bg_color]' ) !== 'undefined' ) {
-				page_bg_color = wp.customize.value( 'chronus_theme_options[page_bg_color]' ).get();
-			}
-
-			if( isColorDark( page_bg_color ) ) {
-				text_color = '#ffffff';
-			} else {
-				text_color = '#303030';
-			}
-
-			$( '.main-navigation ul ul' )
-				.css( 'background', newval );
-
-			$( '.main-navigation ul > li > a, .main-navigation ul > .menu-item-has-children > a, .primary-menu-toggle, .footer-navigation-menu a' )
-				.hover( function() { $( this ).css( 'color', newval ); },
-						function() { $( this ).css( 'color', text_color ); }
-				);
-
-			$( '.main-navigation ul > .menu-item-has-children > a .icon, .primary-menu-toggle .icon, .main-navigation ul .submenu-dropdown-toggle .icon' )
-				.css( 'fill', text_color );
-
-			$( '.main-navigation ul > .menu-item-has-children > a, .primary-menu-toggle, .main-navigation ul .submenu-dropdown-toggle, .header-search .header-search-icon' )
-				.hover( function() { $( this ).find( '.icon' ).css( 'fill', newval ); },
-					function() { $( this ).find( '.icon' ).css( 'fill', text_color ); }
-				);
+			var text_color, hover_color, border_color;
 
 			if( isColorLight( newval ) ) {
-				menu_color = 'rgba(0,0,0,0.75)';
-				hover_color = 'rgba(0,0,0,0.5)';
-				border_color = 'rgba(0,0,0,0.05)';
+				text_color = '#151515';
+				hover_color = 'rgba(0, 0, 0, 0.5)';
+				border_color = 'rgba(0, 0, 0, 0.1)';
 			} else {
-				menu_color = '#ffffff';
-				hover_color = 'rgba(255,255,255,0.5)';
-				border_color = 'rgba(255,255,255,0.1)';
+				text_color = '#fff';
+				hover_color = 'rgba(255, 255, 255, 0.5)';
+				border_color = 'rgba(255, 255, 255, 0.1)';
 			}
 
-			$( '.main-navigation ul ul a' )
-				.css( 'border-color', border_color );
+			document.documentElement.style.setProperty( '--navi-hover-color', newval );
+			document.documentElement.style.setProperty( '--navi-submenu-color', newval );
+			document.documentElement.style.setProperty( '--navi-submenu-text-color', text_color );
+			document.documentElement.style.setProperty( '--navi-submenu-hover-color', hover_color );
+			document.documentElement.style.setProperty( '--navi-submenu-border-color', border_color );
+		} );
+	} );
 
-			$( '.main-navigation ul ul, .main-navigation ul ul a' )
-				.css( 'color', menu_color );
-
-			$( '.main-navigation ul ul a' )
-				.hover( function() { $( this ).css( 'color', hover_color ); },
-						function() { $( this ).css( 'color', menu_color ); }
-				);
-
-			$( '.main-navigation ul ul .menu-item-has-children > a .icon, .main-navigation ul ul > li > .dropdown-toggle > .icon, .main-navigation ul ul > li > .dropdown-toggle:focus > .icon' )
-				.css( 'fill', menu_color );
-
-			$( '.main-navigation ul ul .menu-item-has-children > a, .main-navigation ul ul > li > .dropdown-toggle' )
-				.hover( function() { $( this ).find( '.icon' ).css( 'fill', hover_color ); },
-						function() { $( this ).find( '.icon' ).css( 'fill', menu_color ); }
-				);
+	/* Link & Button Color Option */
+	wp.customize( 'chronus_theme_options[link_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--link-color', newval );
+			document.documentElement.style.setProperty( '--button-color', newval );
 		} );
 	} );
 
 	/* Title Color Option */
 	wp.customize( 'chronus_theme_options[title_color]', function( value ) {
 		value.bind( function( newval ) {
-			var text_color, page_bg_color;
-
-			if( typeof wp.customize.value( 'chronus_theme_options[page_bg_color]' ) !== 'undefined' ) {
-				page_bg_color = wp.customize.value( 'chronus_theme_options[page_bg_color]' ).get();
-			}
-
-			if( isColorDark( page_bg_color ) ) {
-				text_color = '#ffffff';
-			} else {
-				text_color = '#303030';
-			}
-
-			$( '.site-title, .site-title a, .entry-title, .entry-title a' )
-				.css( 'color', text_color );
-
-			$( '.site-title a, .entry-title a' )
-				.hover( function() { $( this ).css( 'color', newval ); },
-						function() { $( this ).css( 'color', text_color ); }
-				);
+			document.documentElement.style.setProperty( '--title-hover-color', newval );
+			document.documentElement.style.setProperty( '--widget-title-hover-color', newval );
 		} );
 	} );
 
