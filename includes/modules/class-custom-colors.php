@@ -65,12 +65,6 @@ class Chronus_Pro_Custom_Colors {
 				$color_variables .= '--dark-border-color: #fff;';
 				$color_variables .= '--medium-border-color: rgba(255,255,255,0.2);';
 				$color_variables .= '--light-border-color: rgba(255,255,255,0.1);';
-
-				$color_variables .= '--navi-color: #fff;';
-				$color_variables .= '--title-color: #fff;';
-				$color_variables .= '--widget-title-color: #fff;';
-				$color_variables .= '--link-hover-color: #fff;';
-				$color_variables .= '--button-hover-color: #fff;';
 			}
 		}
 
@@ -86,7 +80,12 @@ class Chronus_Pro_Custom_Colors {
 			}
 		}
 
-		// Set Main Navigation Color.
+		// Set Main Navigation Text Color.
+		if ( $theme_options['navi_text_color'] !== $default_options['navi_text_color'] ) {
+			$color_variables .= '--navi-color: ' . $theme_options['navi_text_color'] . ';';
+		}
+
+		// Set Main Navigation Hover Color.
 		if ( $theme_options['navi_color'] !== $default_options['navi_color'] ) {
 			$color_variables .= '--navi-hover-color: ' . $theme_options['navi_color'] . ';';
 			$color_variables .= '--navi-submenu-color: ' . $theme_options['navi_color'] . ';';
@@ -105,10 +104,22 @@ class Chronus_Pro_Custom_Colors {
 			$color_variables .= '--button-color: ' . $theme_options['link_color'] . ';';
 		}
 
+		// Set Link Hover Color.
+		if ( $theme_options['link_hover_color'] !== $default_options['link_hover_color'] ) {
+			$color_variables .= '--link-hover-color: ' . $theme_options['link_hover_color'] . ';';
+			$color_variables .= '--button-hover-color: ' . $theme_options['link_hover_color'] . ';';
+		}
+
 		// Set Title Color.
+		if ( $theme_options['titles_color'] != $default_options['titles_color'] ) {
+			$color_variables .= '--title-color: ' . $theme_options['titles_color'] . ';';
+			$color_variables .= '--widget-title-color: ' . $theme_options['titles_color'] . ';';
+		}
+
+		// Set Title Hover Color.
 		if ( $theme_options['title_color'] != $default_options['title_color'] ) {
-			$color_variables .= '--title-hover-color : ' . $theme_options['title_color'] . ';';
-			$color_variables .= '--widget-title-hover-color : ' . $theme_options['title_color'] . ';';
+			$color_variables .= '--title-hover-color: ' . $theme_options['title_color'] . ';';
+			$color_variables .= '--widget-title-hover-color: ' . $theme_options['title_color'] . ';';
 		}
 
 		// Set Color Variables.
@@ -145,7 +156,7 @@ class Chronus_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'chronus_theme_options[page_bg_color]', array(
-				'label'    => _x( 'Page Background', 'color setting', 'chronus-pro' ),
+				'label'    => esc_html_x( 'Page Background', 'Color Option', 'chronus-pro' ),
 				'section'  => 'chronus_pro_section_colors',
 				'settings' => 'chronus_theme_options[page_bg_color]',
 				'priority' => 10,
@@ -161,10 +172,26 @@ class Chronus_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'chronus_theme_options[top_navi_color]', array(
-				'label'    => _x( 'Top Navigation', 'color setting', 'chronus-pro' ),
+				'label'    => esc_html_x( 'Top Navigation', 'Color Option', 'chronus-pro' ),
 				'section'  => 'chronus_pro_section_colors',
 				'settings' => 'chronus_theme_options[top_navi_color]',
 				'priority' => 20,
+			)
+		) );
+
+		// Add Navigation Color setting.
+		$wp_customize->add_setting( 'chronus_theme_options[navi_text_color]', array(
+			'default'           => $default_options['navi_text_color'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'chronus_theme_options[navi_text_color]', array(
+				'label'    => esc_html_x( 'Navigation', 'Color Option', 'chronus-pro' ),
+				'section'  => 'chronus_pro_section_colors',
+				'settings' => 'chronus_theme_options[navi_text_color]',
+				'priority' => 30,
 			)
 		) );
 
@@ -177,10 +204,10 @@ class Chronus_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'chronus_theme_options[navi_color]', array(
-				'label'    => _x( 'Main Navigation', 'color setting', 'chronus-pro' ),
+				'label'    => esc_html_x( 'Navigation Hover', 'Color Option', 'chronus-pro' ),
 				'section'  => 'chronus_pro_section_colors',
 				'settings' => 'chronus_theme_options[navi_color]',
-				'priority' => 30,
+				'priority' => 40,
 			)
 		) );
 
@@ -193,14 +220,46 @@ class Chronus_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'chronus_theme_options[link_color]', array(
-				'label'    => _x( 'Links and Buttons', 'color setting', 'chronus-pro' ),
+				'label'    => esc_html_x( 'Links and Buttons', 'Color Option', 'chronus-pro' ),
 				'section'  => 'chronus_pro_section_colors',
 				'settings' => 'chronus_theme_options[link_color]',
-				'priority' => 40,
+				'priority' => 50,
+			)
+		) );
+
+		// Add Link Hover Color setting.
+		$wp_customize->add_setting( 'chronus_theme_options[link_hover_color]', array(
+			'default'           => $default_options['link_hover_color'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'chronus_theme_options[link_hover_color]', array(
+				'label'    => esc_html_x( 'Link Hover', 'Color Option', 'chronus-pro' ),
+				'section'  => 'chronus_pro_section_colors',
+				'settings' => 'chronus_theme_options[link_hover_color]',
+				'priority' => 60,
 			)
 		) );
 
 		// Add Title Color setting.
+		$wp_customize->add_setting( 'chronus_theme_options[titles_color]', array(
+			'default'           => $default_options['titles_color'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'chronus_theme_options[titles_color]', array(
+				'label'    => esc_html_x( 'Titles', 'Color Option', 'chronus-pro' ),
+				'section'  => 'chronus_pro_section_colors',
+				'settings' => 'chronus_theme_options[titles_color]',
+				'priority' => 70,
+			)
+		) );
+
+		// Add Title Hover Color setting.
 		$wp_customize->add_setting( 'chronus_theme_options[title_color]', array(
 			'default'           => $default_options['title_color'],
 			'type'              => 'option',
@@ -209,10 +268,10 @@ class Chronus_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'chronus_theme_options[title_color]', array(
-				'label'    => _x( 'Post Titles', 'color setting', 'chronus-pro' ),
+				'label'    => esc_html_x( 'Title Hover', 'Color Option', 'chronus-pro' ),
 				'section'  => 'chronus_pro_section_colors',
 				'settings' => 'chronus_theme_options[title_color]',
-				'priority' => 50,
+				'priority' => 80,
 			)
 		) );
 	}

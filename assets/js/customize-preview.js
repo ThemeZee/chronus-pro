@@ -122,12 +122,6 @@
 			document.documentElement.style.setProperty( '--dark-border-color', dark_border_color );
 			document.documentElement.style.setProperty( '--medium-border-color', medium_border_color );
 			document.documentElement.style.setProperty( '--light-border-color', light_border_color );
-
-			document.documentElement.style.setProperty( '--navi-color', text_color );
-			document.documentElement.style.setProperty( '--title-color', text_color );
-			document.documentElement.style.setProperty( '--widget-title-color', text_color );
-			document.documentElement.style.setProperty( '--link-hover-color', text_color );
-			document.documentElement.style.setProperty( '--button-hover-color', text_color );
 		} );
 	} );
 
@@ -153,7 +147,14 @@
 		} );
 	} );
 
-	/* Main Navigation Color Option */
+	/* Navigation Color Option */
+	wp.customize( 'chronus_theme_options[navi_text_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--navi-color', newval );
+		} );
+	} );
+
+	/* Navigation Hover Color Option */
 	wp.customize( 'chronus_theme_options[navi_color]', function( value ) {
 		value.bind( function( newval ) {
 			var text_color, hover_color, border_color;
@@ -184,7 +185,23 @@
 		} );
 	} );
 
+	/* Link Hover Color Option */
+	wp.customize( 'chronus_theme_options[link_hover_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--link-hover-color', newval );
+			document.documentElement.style.setProperty( '--button-hover-color', newval );
+		} );
+	} );
+
 	/* Title Color Option */
+	wp.customize( 'chronus_theme_options[titles_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--title-color', newval );
+			document.documentElement.style.setProperty( '--widget-title-color', newval );
+		} );
+	} );
+
+	/* Title Hover Color Option */
 	wp.customize( 'chronus_theme_options[title_color]', function( value ) {
 		value.bind( function( newval ) {
 			document.documentElement.style.setProperty( '--title-hover-color', newval );

@@ -72,9 +72,12 @@ class Chronus_Pro_Customizer {
 			'dark_gray_color'           => '#303030',
 			'page_bg_color'             => '#ffffff',
 			'top_navi_color'            => '#cc5555',
+			'navi_text_color'           => '#303030',
 			'navi_color'                => '#cc5555',
 			'link_color'                => '#cc5555',
-			'title_color'               => '#cc5555',
+			'link_hover_color'          => '#303030',
+			'titles_color'              => '#303030', // Title
+			'title_color'               => '#cc5555', // Title Hover
 			'text_font'                 => 'Raleway',
 			'title_font'                => 'Rambla',
 			'title_is_bold'             => true,
@@ -96,7 +99,7 @@ class Chronus_Pro_Customizer {
 	 * @return void
 	 */
 	static function customize_preview_js() {
-		wp_enqueue_script( 'chronus-pro-customizer-js', CHRONUS_PRO_PLUGIN_URL . 'assets/js/customize-preview.js', array( 'customize-preview' ), '20210215', true );
+		wp_enqueue_script( 'chronus-pro-customizer-js', CHRONUS_PRO_PLUGIN_URL . 'assets/js/customize-preview.js', array( 'customize-preview' ), '20210308', true );
 	}
 
 	/**
