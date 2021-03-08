@@ -212,7 +212,7 @@ class Chronus_Pro_Custom_Fonts {
 		// Add Section for Theme Fonts.
 		$wp_customize->add_section( 'chronus_pro_section_typography', array(
 			'title'    => __( 'Typography', 'chronus-pro' ),
-			'priority' => 70,
+			'priority' => 80,
 			'panel'    => 'chronus_options_panel',
 		) );
 

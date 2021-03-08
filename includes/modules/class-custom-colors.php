@@ -129,7 +129,7 @@ class Chronus_Pro_Custom_Colors {
 		// Add Section for Theme Colors.
 		$wp_customize->add_section( 'chronus_pro_section_colors', array(
 			'title'    => __( 'Theme Colors', 'chronus-pro' ),
-			'priority' => 60,
+			'priority' => 70,
 			'panel'    => 'chronus_options_panel',
 		) );
 
