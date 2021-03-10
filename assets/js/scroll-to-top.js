@@ -46,7 +46,7 @@
 	$( document ).ready( function() {
 
 		/* Add Button to HTML DOM */
-		$( 'body' ).append( '<button id=\"scroll-to-top\" class=\"scroll-to-top-button\">' + chronus_pro_scroll_button + '</button>' );
+		$( 'body' ).append( '<button id=\"scroll-to-top\" class=\"scroll-to-top-button\">' + chronusProScrollToTop.icon + '</button>' );
 
 		/* Add Scroll To Top Functionality */
 		$( '#scroll-to-top' ).scrollToTop();
