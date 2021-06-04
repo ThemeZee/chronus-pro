@@ -5,14 +5,14 @@ Plugin URI: http://themezee.com/addons/chronus-pro/
 Description: Adds additional features like footer widgets, custom colors, custom fonts, custom menus, and Magazine Post widgets to the Chronus theme.
 Author: ThemeZee
 Author URI: https://themezee.com/
-Version: 1.7
+Version: 1.7.1
 Text Domain: chronus-pro
 Domain Path: /languages/
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Chronus Pro
-Copyright(C) 2020, ThemeZee.com - support@themezee.com
+Copyright(C) 2021, ThemeZee.com - support@themezee.com
 */
 
 // Exit if accessed directly.
@@ -62,7 +62,7 @@ class Chronus_Pro {
 		define( 'CHRONUS_PRO_NAME', 'Chronus Pro' );
 
 		// Define Version Number.
-		define( 'CHRONUS_PRO_VERSION', '1.7' );
+		define( 'CHRONUS_PRO_VERSION', '1.7.1' );
 
 		// Define Plugin Name.
 		define( 'CHRONUS_PRO_PRODUCT_ID', 135412 );
