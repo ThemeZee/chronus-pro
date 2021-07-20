@@ -29,7 +29,7 @@ class Chronus_Pro_Footer_Line {
 		}
 
 		// Display footer navigation.
-		add_action( 'chronus_before_footer', array( __CLASS__, 'display_footer_menu' ) );
+		add_action( 'chronus_before_footer', array( __CLASS__, 'display_footer_menu' ), 30 );
 
 		// Display Footer Text in theme.
 		add_action( 'chronus_footer_text', array( __CLASS__, 'footer_text' ) );
