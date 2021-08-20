@@ -131,7 +131,7 @@ class Chronus_Pro_Widget_Areas {
 
 		// Register Before Blog widget area.
 		register_sidebar( array(
-			'name'          => esc_html__( 'Before Blog Posts', 'chronus-pro' ),
+			'name'          => esc_html__( 'Before Latest Blog Posts', 'chronus-pro' ),
 			'id'            => 'before-blog',
 			'description'   => esc_html_x( 'Appears on the blog page above the latest posts.', 'widget area description', 'chronus-pro' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -142,7 +142,7 @@ class Chronus_Pro_Widget_Areas {
 
 		// Register After Posts widget area.
 		register_sidebar( array(
-			'name'          => esc_html__( 'After Posts', 'chronus-pro' ),
+			'name'          => esc_html__( 'After Single Posts', 'chronus-pro' ),
 			'id'            => 'after-posts',
 			'description'   => esc_html_x( 'Appears below single posts.', 'widget area description', 'chronus-pro' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -153,7 +153,7 @@ class Chronus_Pro_Widget_Areas {
 
 		// Register After Pages widget area.
 		register_sidebar( array(
-			'name'          => esc_html__( 'After Pages', 'chronus-pro' ),
+			'name'          => esc_html__( 'After Static Pages', 'chronus-pro' ),
 			'id'            => 'after-pages',
 			'description'   => esc_html_x( 'Appears below static pages.', 'widget area description', 'chronus-pro' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
