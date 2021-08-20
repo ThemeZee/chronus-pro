@@ -2,6 +2,10 @@
 Chronus Pro Changelog
 ===================================
 
+Version 1.8
+-----------------------------------
+* added extra widget areas
+
 Version 1.7.1
 -----------------------------------
 * updated social icons menu

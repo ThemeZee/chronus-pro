@@ -1,0 +1,19 @@
+.before-header-widget-area {
+	margin-top: 2.5em;
+
+	.widget:last-child {
+		margin-bottom: 0;
+	}
+}
+
+@media only screen and (max-width: 80em) {
+	.before-header-widget-area {
+		margin-top: 2em;
+	}
+}
+
+@media only screen and (max-width: 40em) {
+	.before-header-widget-area {
+		margin-top: 1.5em;
+	}
+}
