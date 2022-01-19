@@ -962,8 +962,13 @@
 	border-color: rgba(0, 0, 0, 0.075);
 	border-color: var(--light-border-color);
 	cursor: pointer;
-	-webkit-transition: none;
-	transition: none;
+	opacity: 0;
+	-webkit-transition: opacity 0.2s ease-in-out;
+	transition: opacity 0.2s ease-in-out;
+}
+
+.scroll-to-top-button.visible {
+	opacity: 1;
 }
 
 .scroll-to-top-button .icon {

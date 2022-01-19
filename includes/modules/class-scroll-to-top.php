@@ -49,7 +49,7 @@ class Chronus_Pro_Scroll_To_Top {
 		// Call Credit Link function of theme if credit link is activated.
 		if ( true === $theme_options['scroll_to_top'] && ! self::is_amp() ) :
 
-			wp_enqueue_script( 'chronus-pro-scroll-to-top', CHRONUS_PRO_PLUGIN_URL . 'assets/js/scroll-to-top.min.js', array( 'jquery' ), '20210309', true );
+			wp_enqueue_script( 'chronus-pro-scroll-to-top', CHRONUS_PRO_PLUGIN_URL . 'assets/js/scroll-to-top.min.js', array(), '20220119', true );
 
 			// Passing Parameters to navigation.js.
 			wp_localize_script( 'chronus-pro-scroll-to-top', 'chronusProScrollToTop', array( 'icon' => chronus_get_svg( 'collapse' ) ) );
