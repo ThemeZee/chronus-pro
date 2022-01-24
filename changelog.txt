@@ -2,6 +2,12 @@
 Chronus Pro Changelog
 ===================================
 
+Version 1.8.1
+-----------------------------------
+* added Steam and Discord to social icons
+* updated Header Search script to use vanilla js
+* updated Scroll to Top button script to use vanilla js
+
 Version 1.8
 -----------------------------------
 * added extra widget areas
