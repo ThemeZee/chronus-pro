@@ -2,6 +2,10 @@
 Chronus Pro Changelog
 ===================================
 
+Version 1.8.2
+-----------------------------------
+* updated aria labels to improve accessibility
+
 Version 1.8.1
 -----------------------------------
 * added Steam and Discord to social icons
