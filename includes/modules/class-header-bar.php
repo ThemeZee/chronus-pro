@@ -130,7 +130,7 @@ class Chronus_Pro_Header_Bar {
 		// Search if menu URL is in supported icons.
 		$icon = 'star';
 		foreach ( $social_icons as $attr => $value ) {
-			if ( false !== strpos( $item_output, $attr ) ) {
+			if ( false !== stripos( $item_output, $attr ) ) {
 				$icon = esc_attr( $value );
 			}
 		}
@@ -158,7 +158,7 @@ class Chronus_Pro_Header_Bar {
 
 		// Create SVG markup.
 		$svg  = '<svg class="icon icon-' . esc_attr( $icon ) . '" aria-hidden="true" role="img">';
-		$svg .= ' <use xlink:href="' . CHRONUS_PRO_PLUGIN_URL . 'assets/icons/social-icons.svg#icon-' . esc_html( $icon ) . '"></use> ';
+		$svg .= ' <use xlink:href="' . CHRONUS_PRO_PLUGIN_URL . 'assets/icons/social-icons.svg?ver=20221122#icon-' . esc_html( $icon ) . '"></use> ';
 		$svg .= '</svg>';
 
 		return $svg;
@@ -194,6 +194,7 @@ class Chronus_Pro_Header_Bar {
 			'instagram.com'   => 'instagram',
 			'linkedin.com'    => 'linkedin',
 			'mailto:'         => 'envelope',
+			'mastodon'        => 'mastodon',
 			'medium.com'      => 'medium-m',
 			'meetup.com'      => 'meetup',
 			'patreon'         => 'patreon',
