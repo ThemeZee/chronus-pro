@@ -1,12 +1,14 @@
+@use "../_mixins";
+
 .header-search .header-search-form {
 	position: absolute;
 	right: 0;
 	display: none;
 	margin: 0;
 	padding: 1em;
-	@include background(--page-background-color);
+	@include mixins.background(--page-background-color);
 	border: 1px solid;
-	@include border-color(--light-border-color);
+	@include mixins.border-color(--light-border-color);
 	z-index: 999;
 }
 
@@ -38,12 +40,12 @@
 	padding: 0;
 	width: 24px;
 	height: 24px;
-	@include fill(--navi-color);
+	@include mixins.fill(--navi-color);
 }
 
 .header-search .header-search-icon:hover .icon-search,
 .header-search .header-search-icon:active .icon-search {
-	@include fill(--navi-hover-color);
+	@include mixins.fill(--navi-hover-color);
 }
 
 @media only screen and (max-width: 57.5em) {

@@ -152,12 +152,12 @@
 	fill: var(--header-bar-text-hover-color);
 }
 
-.secondary-menu-toggle[aria-expanded="true"] .icon-menu,
-.secondary-menu-toggle[aria-expanded="false"] .icon-close {
+.secondary-menu-toggle[aria-expanded=true] .icon-menu,
+.secondary-menu-toggle[aria-expanded=false] .icon-close {
 	display: none;
 }
 
-.secondary-menu-toggle[aria-expanded="true"] .icon-close {
+.secondary-menu-toggle[aria-expanded=true] .icon-close {
 	display: inline-block;
 }
 
@@ -298,7 +298,6 @@
 		padding-right: 1.5em;
 	}
 }
-
 @media only screen and (min-width: 60em) {
 	.secondary-menu-toggle,
 	.top-navigation .dropdown-toggle {
@@ -400,14 +399,12 @@
 		fill: var(--header-bar-text-hover-color);
 	}
 }
-
 @media only screen and (min-width: 80em) {
 	.header-bar {
 		padding-left: 2em;
 		padding-right: 2em;
 	}
 }
-
 /*--------------------------------------------------------------
 # Header Search
 --------------------------------------------------------------*/
@@ -483,14 +480,12 @@
 		display: none;
 	}
 }
-
 /*--------------------------------------------------------------
 # Widget Areas
 --------------------------------------------------------------*/
 .before-header-widget-area {
 	margin-top: 2.5em;
 }
-
 .before-header-widget-area .widget:last-child {
 	margin-bottom: 0;
 }
@@ -500,13 +495,11 @@
 		margin-top: 2em;
 	}
 }
-
 @media only screen and (max-width: 40em) {
 	.before-header-widget-area {
 		margin-top: 1.5em;
 	}
 }
-
 /*--------------------------------------------------------------
 # Magazine Post Widgets
 --------------------------------------------------------------*/
@@ -604,14 +597,12 @@
 		display: none;
 	}
 }
-
 @media only screen and (max-width: 65em) {
 	.widget-magazine-posts .magazine-horizontal-box .large-post .entry-content,
 	.widget-magazine-posts .magazine-list .type-post .entry-content {
 		display: none;
 	}
 }
-
 @media only screen and (max-width: 57.5em) {
 	.widget-magazine-posts .magazine-horizontal-box .large-post .entry-content,
 	.widget-magazine-posts .magazine-horizontal-box .large-post .more-link,
@@ -625,7 +616,6 @@
 		margin-bottom: 1.5em;
 	}
 }
-
 @media only screen and (max-width: 50em) {
 	.widget-magazine-posts .magazine-horizontal-box .large-post .more-link,
 	.widget-magazine-posts .magazine-list .type-post .more-link {
@@ -637,14 +627,12 @@
 		margin-bottom: 0;
 	}
 }
-
 @media only screen and (max-width: 45em) {
 	.widget-magazine-posts .magazine-horizontal-box .large-post .entry-content,
 	.widget-magazine-posts .magazine-list .type-post .entry-content {
 		display: none;
 	}
 }
-
 @media only screen and (max-width: 40em) {
 	.widget-magazine-posts .magazine-horizontal-box .large-post,
 	.widget-magazine-posts .magazine-vertical-box {
@@ -706,7 +694,6 @@
 		font-size: 0.875rem;
 	}
 }
-
 @media only screen and (max-width: 30em) {
 	.widget-magazine-posts-list .magazine-list .large-post .entry-title {
 		font-size: 18px;
@@ -721,7 +708,6 @@
 		display: none;
 	}
 }
-
 @media only screen and (max-width: 20em) {
 	.widget-magazine-posts-list .magazine-list .large-post .entry-title {
 		font-size: 16px;
@@ -732,7 +718,6 @@
 		display: none;
 	}
 }
-
 /*--------------------------------------------------------------
 # Author Bio
 --------------------------------------------------------------*/
@@ -802,7 +787,6 @@
 		display: block;
 	}
 }
-
 /*--------------------------------------------------------------
 # Footer Widgets
 --------------------------------------------------------------*/
@@ -839,7 +823,6 @@
 		padding-right: 2em;
 	}
 }
-
 @media only screen and (max-width: 65em) {
 	.footer-widget-column:nth-child(1):nth-last-child(4),
 	.footer-widget-column:nth-child(2):nth-last-child(3),
@@ -848,7 +831,6 @@
 		width: 50%;
 	}
 }
-
 @media only screen and (max-width: 50em) {
 	.footer-widget-column:nth-child(1):nth-last-child(3),
 	.footer-widget-column:nth-child(2):nth-last-child(2),
@@ -856,7 +838,6 @@
 		width: 100%;
 	}
 }
-
 @media only screen and (max-width: 35em) {
 	.footer-widgets {
 		margin-right: 0;
@@ -867,7 +848,6 @@
 		width: 100%;
 	}
 }
-
 /*--------------------------------------------------------------
 # Footer Navigation
 --------------------------------------------------------------*/
@@ -944,7 +924,6 @@
 		font-size: 1.125rem;
 	}
 }
-
 /*--------------------------------------------------------------
 # Scroll to Top Button
 --------------------------------------------------------------*/

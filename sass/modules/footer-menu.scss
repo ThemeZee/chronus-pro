@@ -1,3 +1,5 @@
+@use "../_mixins";
+
 .footer-navigation {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -5,7 +7,7 @@
 	flex-flow: row wrap;
 	justify-content: center;
 	border-top: 1px solid;
-	@include border-color(--light-border-color);
+	@include mixins.border-color(--light-border-color);
 }
 
 .footer-navigation-menu {
@@ -15,10 +17,10 @@
 	padding: 0;
 	list-style-position: outside;
 	list-style-type: none;
-	@include font-size(20);
-	@include font-family(--navi-font);
-	@include font-weight(--navi-font-weight);
-	@include text-transform(--navi-text-transform);
+	@include mixins.font-size(20);
+	@include mixins.font-family(--navi-font);
+	@include mixins.font-weight(--navi-font-weight);
+	@include mixins.text-transform(--navi-text-transform);
 }
 
 .footer-navigation-menu li {
@@ -29,19 +31,19 @@
 	display: block;
 	margin: 0;
 	padding: 0.75em 1em;
-	@include color(--navi-color);
+	@include mixins.color(--navi-color);
 	text-decoration: none;
 }
 
 .footer-navigation-menu a:link,
 .footer-navigation-menu a:visited {
-	@include color(--navi-color);
+	@include mixins.color(--navi-color);
 	text-decoration: none;
 }
 
 .footer-navigation-menu a:hover,
 .footer-navigation-menu a:active {
-	@include color(--navi-hover-color);
+	@include mixins.color(--navi-hover-color);
 }
 
 .footer-navigation-menu li.current-menu-item > a {
@@ -59,6 +61,6 @@
 	}
 
 	.footer-navigation-menu a {
-		@include font-size(18);
+		@include mixins.font-size(18);
 	}
 }
